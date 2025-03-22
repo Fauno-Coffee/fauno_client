@@ -1,0 +1,36 @@
+.hero {
+  width: 100%;
+}
+
+.navbar_wrapper {
+  background: #B6B3A9;
+  width: 100%;
+}
+
+.hero_main {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(182, 179, 169, 1) 10%, rgba(182, 179, 160, 0) 100%);
+}
+
+.hero_content {
+  padding: 80px 10px 170px;
+}
+
