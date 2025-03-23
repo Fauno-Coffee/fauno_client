@@ -6,6 +6,8 @@ import { Hero } from '@/blocks/Hero';
 import { ProductsList } from '@/blocks/ProductsList';
 import { IProduct } from '@/shared/types/Product';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
+import { NotCoffee } from '@/blocks/NotCoffee';
+import { Feautures } from '@/blocks/Feautures';
 
 async function getProducts() {
   try {
@@ -23,8 +25,10 @@ export default async function Home() {
   return (
     <div className={s.page}>
       <Hero />
+      <Feautures />
       <ProductsList products={products} />
       <Clouds />
+      <NotCoffee />
       <Footer />
     </div>
   );
