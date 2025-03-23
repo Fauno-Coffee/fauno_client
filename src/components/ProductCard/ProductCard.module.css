@@ -1,0 +1,21 @@
+.card_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+  padding: 40px;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 323/380;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card_info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
