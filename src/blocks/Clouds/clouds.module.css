@@ -1,0 +1,45 @@
+.clouds_block{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100vw;
+  margin-top: 94px;
+  padding: 200px 0;
+}
+
+.heading{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-weight: 300;
+  font-size: 72px;
+}
+
+.image{
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: calc(100vw + 360px);
+  aspect-ratio: 181/76.4;
+}
+
+.company{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.more{
+  text-decoration: underline;
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+}

@@ -12,3 +12,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+html {
+  font-family: "SuisseIntl-Regular";
+}

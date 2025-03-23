@@ -20,6 +20,8 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
           sizes='100%'
           src={imageUrlBuilder(product?.images?.[0].imageUrl)}
           alt={product?.name}
+          placeholder="blur"
+          blurDataURL={imageUrlBuilder(product?.images?.[0].previewUrl)} 
         />
       </div>
       <div className={s.card_info}>

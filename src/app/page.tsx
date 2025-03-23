@@ -1,3 +1,4 @@
+import { Clouds } from '@/blocks/Clouds';
 import s from './page.module.css';
 
 import { Footer } from '@/blocks/Footer';
@@ -23,6 +24,7 @@ export default async function Home() {
     <div className={s.page}>
       <Hero />
       <ProductsList products={products} />
+      <Clouds />
       <Footer />
     </div>
   );
