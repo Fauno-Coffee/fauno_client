@@ -2,49 +2,92 @@ import s from './ProductsList.module.css';
 import { FC } from 'react';
 import { IProduct } from '@/shared/types/Product';
 import { ProductCard } from '@/components/ProductCard';
+import { AllCategoriesCard, CategoryCard } from '@/components/CategoryCard';
 
 interface IProductsListProps {
   products: IProduct[];
 }
 
-const products: IProduct[] = [
-  {
-    id: 1,
-    name: 'Элитный кофе из Эфиопии',
-    description: 'Ароматный кофе с яркими нотами цитрусов и цветов.',
-    link: 'elite-coffee',
-    price: 1200,
-    old_price: 1500,
-    categoryId: 101,
-    about:
-      'Этот кофе выращен на высокогорных плантациях Эфиопии, обладает насыщенным вкусом и ароматом.',
-    weight: 250,
-    variation: ['Зерновой', 'Молотый'],
-    processing: ['Мытая обработка'],
-    fermentation: ['Естественная ферментация'],
-    region: 'Сидамо, Эфиопия',
-    farmer: 'Абдул Карим',
-    keyDescriptor: 'Цитрусовые, цветочные ноты',
-    createdAt: '2023-10-01T12:00:00Z',
-    updatedAt: '2023-10-05T15:30:00Z',
-    images: [
-      {
-        imageUrl: 'products/5c95c7ab-0f68-4ead-89a2-7a3e6794bcfc.png',
-        previewUrl: 'products/previews/11a1bd24-9495-4b2a-94a5-2ae95d0e742b.png',
-      },
-      {
-        imageUrl: 'products/5c95c7ab-0f68-4ead-89a2-7a3e6794bcfc.png',
-        previewUrl: 'products/previews/11a1bd24-9495-4b2a-94a5-2ae95d0e742b.png',
-      },
-    ],
-    isDeleted: false,
-  },
-];
+export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
+  return (
+    <div className={s.wrapper}>
+      <div className={s.big_2x2}>
+        <AllCategoriesCard category={{ id: 5, name: 'Filtro' }} />
+      </div>
+      {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+    </div>
+  );
+};
 
-export const ProductsList: FC<IProductsListProps> = ({ products: fake }) => {
+export const DripProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
     <div className={s.wrapper}>
       {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+      <div className={s.big_2x1}>
+        <CategoryCard
+          category={{
+            id: 6,
+            name: 'Drip',
+            description:
+              'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
+            imageUrl: '/drip.png',
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
+  const productsSliced = [products.slice(0, 4), products.slice(4)];
+  return (
+    <div className={s.wrapper}>
+      {products &&
+        !!products?.length &&
+        productsSliced[0]?.map(product => <ProductCard key={product?.id} product={product} />)}
+
+      <div className={s.big_2x1}>
+        <CategoryCard
+          category={{
+            id: 6,
+            name: 'Espresso',
+            description:
+              'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
+            imageUrl: '/espresso.png',
+          }}
+        />
+      </div>
+
+      {products &&
+        !!products?.length &&
+        productsSliced[1]?.map(product => <ProductCard key={product?.id} product={product} />)}
+    </div>
+  );
+};
+
+export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
+  const productsSliced = [products.slice(0, 5), products.slice(5)];
+  return (
+    <div className={s.wrapper}>
+      {products &&
+        !!products?.length &&
+        productsSliced[0]?.map(product => <ProductCard key={product?.id} product={product} />)}
+
+      <div className={s.big_2x1}>
+        <CategoryCard
+          category={{
+            id: 6,
+            name: 'Capsules',
+            description:
+              'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
+            imageUrl: '/capsules.png',
+          }}
+        />
+      </div>
+
+      {products &&
+        !!products?.length &&
+        productsSliced[1]?.map(product => <ProductCard key={product?.id} product={product} />)}
     </div>
   );
 };

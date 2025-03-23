@@ -13,17 +13,19 @@ interface IProductCardProps {
 export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   return (
     <div className={s.card_wrapper}>
-      <div className={s.image}>
-        <Image
-          fill
-          objectFit='cover'
-          sizes='100%'
-          src={imageUrlBuilder(product?.images?.[0].imageUrl)}
-          alt={product?.name}
-          placeholder="blur"
-          blurDataURL={imageUrlBuilder(product?.images?.[0].previewUrl)} 
-        />
-      </div>
+      {product?.images && !!product?.images?.length && (
+        <div className={s.image}>
+          <Image
+            fill
+            objectFit='cover'
+            sizes='100%'
+            src={imageUrlBuilder(product?.images?.[0].imageUrl)}
+            alt={product?.name}
+            placeholder='blur'
+            blurDataURL={imageUrlBuilder(product?.images?.[0].previewUrl)}
+          />
+        </div>
+      )}
       <div className={s.card_info}>
         <span>{product?.name}</span>
         <span>{numberWithSpaces(product?.price)} ₽</span>

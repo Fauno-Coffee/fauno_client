@@ -1,3 +1,4 @@
+export * from './ArrowIcon';
 export * from './FaunoBigLogo';
 export * from './FaunoHeroLogo';
 export * from './CloudPaymentsLogo';

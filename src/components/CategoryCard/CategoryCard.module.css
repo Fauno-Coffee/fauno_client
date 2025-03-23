@@ -1,0 +1,114 @@
+.all_wrapper, .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  color: #FFFFFF;
+}
+
+.all_wrapper .background, .wrapper .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.wrapper .background::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(182, 179, 160, 0) 100%);
+}
+
+.all_wrapper .background_fx_up {
+  content: "";
+  position: absolute;
+  background: red;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 60%, rgba(18, 12, 8, 1) 150%);
+}
+
+.all_wrapper .background_fx_down {
+  content: "";
+  position: absolute;
+  background: red;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(18, 12, 8, 1) 200%);
+}
+
+.all_wrapper .category_name {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 132px;
+}
+
+.all_wrapper .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.all_wrapper .subcategory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1px;
+}
+
+.all_wrapper .subcategory:hover {
+  padding-bottom: unset;
+  border-bottom: 1px solid #FFFFFF;
+  cursor: pointer;
+}
+
+.all_wrapper .subcategory .subcategory_name {
+  font-weight: 300;
+  font-size: 68px;
+}
+
+.all_wrapper .content {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+
+.wrapper .content {
+  padding: 26px;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.wrapper .content .data {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wrapper .content .category_name {
+  font-weight: 300;
+  font-size: 46px;
+}
+
+.wrapper .content .category_desc {
+  font-weight: 300;
+  font-size: 18px;
+  text-wrap: balance;
+}
+
+
