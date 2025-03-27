@@ -91,3 +91,11 @@ export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
     </div>
   );
 };
+
+export const ProductsList: FC<IProductsListProps> = ({ products }) => {
+  return (
+    <div className={s.wrapper}>
+      {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+    </div>
+  );
+};

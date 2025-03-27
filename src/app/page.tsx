@@ -16,6 +16,16 @@ import { Feautures } from '@/blocks/Feautures';
 import { Button } from '@/shared/ui';
 import Link from 'next/link';
 
+async function getCategories() {
+  try {
+    const res = await fetch(apiUrlBuilder('/category'));
+    console.log(res)
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function getProductsFiltro() {
   try {
     const res = await fetch(apiUrlBuilder('/product?categoryId=1&limit=4'));
@@ -70,6 +80,8 @@ export default async function Home() {
   const espresso: IProduct[] = await getProductsEspresso();
   const capsule: IProduct[] = await getProductsCapsule();
 
+  const categories = await getCategories();
+
   return (
     <div className={s.page}>
       <Hero />
@@ -79,11 +91,11 @@ export default async function Home() {
       {espresso && <EspressoProductsList products={espresso} />}
       {capsule && <CapsulesProductsList products={capsule} />}
 
-      <Link href='/catalog'>
-        <div style={{ width: '100%', padding: '40px', fontSize: '22px' }}>
+      <div style={{ width: '100%', padding: '40px', fontSize: '22px' }}>
+        <Link href='/catalog'>
           <Button>Перейти в каталог</Button>
-        </div>
-      </Link>
+        </Link>
+      </div>
       <Clouds />
       <NotCoffee />
       <Footer />
