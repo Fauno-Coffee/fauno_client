@@ -1,9 +1,14 @@
 import s from './Navbar.module.css';
 import { PersonIcon, CartIcon } from '@/shared/assets';
+import { FC } from 'react';
 
-export const Navbar = () => {
+interface INavbarProps {
+  black?: boolean;
+}
+
+export const Navbar: FC<INavbarProps> = ({ black }) => {
   return (
-    <header className={s.header}>
+    <header className={s.header} style={{ color: black ? '#000000' : '#FFFFFF' }}>
       <div className={s.wrapper}>
         <span>
           <a href='#'>Кофе</a>
@@ -23,11 +28,11 @@ export const Navbar = () => {
       </div>
       <div className={s.wrapper}>
         <span className={s.link_button}>
-          <PersonIcon />
+          <PersonIcon color={black ? '#000000' : undefined} />
           <a href='#'>Личный кабинет</a>
         </span>
         <span className={s.link_button}>
-          <CartIcon />
+          <CartIcon color={black ? '#000000' : undefined} />
           <a href='#'>Корзина</a>
         </span>
       </div>

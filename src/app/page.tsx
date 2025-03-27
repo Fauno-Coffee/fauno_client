@@ -14,6 +14,7 @@ import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 import { NotCoffee } from '@/blocks/NotCoffee';
 import { Feautures } from '@/blocks/Feautures';
 import { Button } from '@/shared/ui';
+import Link from 'next/link';
 
 async function getProductsFiltro() {
   try {
@@ -78,9 +79,11 @@ export default async function Home() {
       {espresso && <EspressoProductsList products={espresso} />}
       {capsule && <CapsulesProductsList products={capsule} />}
 
-      <div style={{ width: '100%', padding: '40px', fontSize: '22px' }}>
-        <Button>Перейти в каталог</Button>
-      </div>
+      <Link href='/catalog'>
+        <div style={{ width: '100%', padding: '40px', fontSize: '22px' }}>
+          <Button>Перейти в каталог</Button>
+        </div>
+      </Link>
       <Clouds />
       <NotCoffee />
       <Footer />
