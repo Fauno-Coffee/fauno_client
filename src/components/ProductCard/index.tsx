@@ -14,6 +14,18 @@ interface IProductCardProps {
 export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   return (
     <Link href={product?.link} className={s.card_wrapper}>
+      <div className={s.brightness}>
+        <p className={s.brightnessTitle}>Яркость</p>
+        <div className={s.dotsWrapper} >
+          {
+            Array.from(Array(5).keys()).map((_, index) => {
+              return(
+                <div className={`${s.dot} ${index < product?.brightness ? s.activeDot : ""}`} key={index}></div>
+              )
+            })
+          }
+        </div>
+      </div>
       {product?.images && !!product?.images?.length && (
         <div className={s.image}>
           <Image

@@ -6,6 +6,7 @@ export interface IProduct {
   description: string;
   link: string;
   price: number;
+  brightness: number;
   old_price: number;
   categoryId: number;
   about: string;
