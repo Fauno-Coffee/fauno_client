@@ -5,6 +5,7 @@ import { IProduct } from '@/shared/types/Product';
 import { FC } from 'react';
 import { imageUrlBuilder } from '@/shared/utils/urlBuilder';
 import { numberWithSpaces } from '@/shared/utils/numberWithSpaces';
+import Link from 'next/link';
 
 interface IProductCardProps {
   product: IProduct;
@@ -12,7 +13,7 @@ interface IProductCardProps {
 
 export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   return (
-    <div className={s.card_wrapper}>
+    <Link href={product?.link} className={s.card_wrapper}>
       {product?.images && !!product?.images?.length && (
         <div className={s.image}>
           <Image
@@ -30,6 +31,6 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
         <span>{product?.name}</span>
         <span>{numberWithSpaces(product?.price)} ₽</span>
       </div>
-    </div>
+    </Link>
   );
 };

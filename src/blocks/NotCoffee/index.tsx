@@ -8,7 +8,7 @@ export const NotCoffee = () => {
     <section className={s.block}>
       <div className={s.blockContent}>
         <div className={s.headingWrapper}>
-          <h1 className={s.heading}>Не коффе</h1>
+          <h1 className={s.heading}>Не кофе</h1>
           <p className={s.description}>Наша коллекция для дома, продолжает традицию наполнять привычные ритуалы атмосферой. Свеча для ароматерапии, выполненная из натурального кокосового воска с парфюмерной композицией</p>
         </div>
         <div className={s.cards}>
