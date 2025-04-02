@@ -19,8 +19,7 @@ import Link from 'next/link';
 async function getCategories() {
   try {
     const res = await fetch(apiUrlBuilder('/category'));
-    console.log(res)
-
+    console.log(res);
   } catch (error) {
     console.log(error);
   }
@@ -86,10 +85,12 @@ export default async function Home() {
     <div className={s.page}>
       <Hero />
       <Feautures />
-      {filtro && <FiltroProductsList products={filtro} />}
-      {drip && <DripProductsList products={drip} />}
-      {espresso && <EspressoProductsList products={espresso} />}
-      {capsule && <CapsulesProductsList products={capsule} />}
+      <div className={s.products_wrapper}>
+        {filtro && <FiltroProductsList products={filtro} />}
+        {drip && <DripProductsList products={drip} />}
+        {espresso && <EspressoProductsList products={espresso} />}
+        {capsule && <CapsulesProductsList products={capsule} />}
+      </div>
 
       <div style={{ width: '100%', padding: '40px', fontSize: '22px' }}>
         <Link href='/catalog'>
