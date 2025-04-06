@@ -92,12 +92,15 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  gap: 20px;
 }
 
 .wrapper .content .data {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 16px;
+  height: 100%;
 }
 
 .wrapper .content .category_name {

@@ -1,7 +1,24 @@
 .catalog_wrapper {
+  position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr;
   padding: 40px;
   gap: 20px;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: fit-content;
+}
+
+
+@media (max-width: 768px) {
+  .catalog_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }

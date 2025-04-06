@@ -3,9 +3,12 @@ import { ICategory } from '@/shared/types/Category';
 import { FC } from 'react';
 import { NextButton } from '@/shared/ui';
 import Image from 'next/image';
+import { imageUrlBuilder } from '@/shared/utils/urlBuilder';
 
 interface ICategoryCardProps {
   category: ICategory;
+  noButton?: boolean;
+  hardcodeImage?: boolean;
 }
 
 export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
@@ -52,12 +55,16 @@ export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
   );
 };
 
-export const CategoryCard: FC<ICategoryCardProps> = ({ category }) => {
+export const CategoryCard: FC<ICategoryCardProps> = ({ category, noButton, hardcodeImage }) => {
   return (
     <div className={s.wrapper}>
       <div className={s.background}>
         <Image
-          src={category?.imageUrl as string}
+          src={
+            hardcodeImage
+              ? (category?.imageUrl as string)
+              : imageUrlBuilder(category?.imageUrl as string)
+          }
           alt='Background'
           layout='fill'
           objectFit='cover'
@@ -70,7 +77,7 @@ export const CategoryCard: FC<ICategoryCardProps> = ({ category }) => {
           <div className={s.category_name}>{category?.name}</div>
           <div className={s.category_desc}>{category?.description}</div>
         </div>
-        <NextButton outlined />
+        {!noButton && <NextButton outlined />}
       </div>
     </div>
   );

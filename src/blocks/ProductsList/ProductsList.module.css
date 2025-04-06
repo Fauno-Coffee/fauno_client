@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper, .catalog_wrapper {
   overflow: hidden;
   width: 100%;
   display: grid;
@@ -20,19 +20,19 @@
   height: 100%;
 }
 
-.mobileWrapper{
+.mobileWrapper {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .big_2x2{
-    display: none;
-  }
-  .big_2x1{
-    display: none;
+@media (max-width: 1024px) {
+  .catalog_wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .mobileWrapper{
+}
+
+@media (max-width: 768px) {
+  .mobileWrapper {
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr;
@@ -40,7 +40,7 @@
     padding: 0 16px;
   }
 
-  .wrapper{
-    display: none;
+  .catalog_wrapper {
+    grid-template-columns: 1fr 1fr;
   }
 }

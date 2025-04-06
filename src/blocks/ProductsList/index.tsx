@@ -7,6 +7,7 @@ import { AllCategoriesCard, CategoryCard } from '@/components/CategoryCard';
 interface IProductsListProps {
   products: IProduct[];
 }
+
 interface IAllProductsListProps {
   products: IProduct[][];
 }
@@ -35,6 +36,7 @@ export const DripProductsList: FC<IProductsListProps> = ({ products }) => {
               'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
             imageUrl: '/drip.png',
           }}
+          hardcodeImage
         />
       </div>
     </div>
@@ -58,6 +60,7 @@ export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
               'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
             imageUrl: '/espresso.png',
           }}
+          hardcodeImage
         />
       </div>
 
@@ -85,6 +88,7 @@ export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
               'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
             imageUrl: '/capsules.png',
           }}
+          hardcodeImage
         />
       </div>
 
@@ -95,26 +99,25 @@ export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
   );
 };
 
+// ИСПОЛЬЗОВАТЬ ТОЛЬКО НА СТРАНИЦЕ КАТАЛОГА
 export const ProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
-    <div className={s.wrapper}>
+    <div className={s.catalog_wrapper}>
       {products?.map(product => <ProductCard key={product?.id} product={product} />)}
     </div>
   );
 };
 
 export const MobileProductsList: FC<IAllProductsListProps> = ({ products }) => {
-
-  const allProducts: IProduct[] = []
-  products.forEach((productsList) => {
-    if(productsList && productsList.length){
-      allProducts.push(...productsList)}
+  const allProducts: IProduct[] = [];
+  products.forEach(productsList => {
+    if (productsList && productsList.length) {
+      allProducts.push(...productsList);
     }
-  )
-  console.log("allProducts", allProducts)
+  });
   return (
     <div className={s.mobileWrapper}>
-      {allProducts?.map(product => <ProductCard key={product?.id+"mbl"} product={product} />)}
+      {allProducts?.map(product => <ProductCard key={product?.id + 'mbl'} product={product} />)}
     </div>
   );
 };

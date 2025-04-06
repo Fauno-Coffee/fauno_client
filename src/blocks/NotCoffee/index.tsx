@@ -3,11 +3,17 @@ import s from './notCoffee.module.css';
 import { LightArrow } from '@/shared/assets/LightArrow';
 import Link from 'next/link';
 import Slider from './slider';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export const NotCoffee = () => {
-  
-  const isMobile = useState(window?.innerWidth <= 768)
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setIsMobile(window?.innerWidth <= 768);
+    }
+  }, []);
 
   return (
     <section className={s.block}>

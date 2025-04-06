@@ -6,20 +6,16 @@ import { ICategory } from '@/shared/types/Category';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 
 interface ICatalogFiltersProps {
-  selectedCategoryId: number | null;
-  setSelectedCategoryId: (id: number | null) => void;
+  selectedCategory: ICategory | null;
+  setSelectedCategory: (category: ICategory | null) => void;
 
-  selectedSubCategoryId: number | null;
-  setSelectedSubCategoryId: (id: number | null) => void;
+  selectedSubCategory: ICategory | null;
+  setSelectedSubCategory: (category: ICategory | null) => void;
 }
 
 export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
-  const {
-    selectedCategoryId,
-    setSelectedCategoryId,
-    selectedSubCategoryId,
-    setSelectedSubCategoryId,
-  } = props;
+  const { selectedCategory, setSelectedCategory, selectedSubCategory, setSelectedSubCategory } =
+    props;
 
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [subCategories, setSubCategories] = useState<ICategory[]>([]);
@@ -35,7 +31,7 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
 
   async function getSubCategories() {
     try {
-      const res = await fetch(apiUrlBuilder(`/category/by/parent/${selectedCategoryId}`));
+      const res = await fetch(apiUrlBuilder(`/category/by/parent/${selectedCategory?.id}`));
       setSubCategories(await res.json());
     } catch (error) {
       console.log(error);
@@ -47,19 +43,19 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
   }, []);
 
   useEffect(() => {
-    setSelectedSubCategoryId(null);
+    setSelectedSubCategory(null);
     setSubCategories([]);
-    if (selectedCategoryId !== null) {
+    if (selectedCategory !== null) {
       getSubCategories();
     }
-  }, [selectedCategoryId]);
+  }, [selectedCategory]);
 
   return (
     <div className={s.container}>
       <div className={s.paper}>
         <div
-          className={`${s.button} ${selectedCategoryId === null && s.selected}`}
-          onClick={() => setSelectedCategoryId(null)}
+          className={`${s.button} ${selectedCategory === null && s.selected}`}
+          onClick={() => setSelectedCategory(null)}
         >
           Все категории
         </div>
@@ -68,8 +64,8 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
           categories?.map(category => (
             <div
               key={category?.id}
-              className={`${s.button} ${selectedCategoryId === category?.id && s.selected}`}
-              onClick={() => setSelectedCategoryId(category?.id)}
+              className={`${s.button} ${selectedCategory?.id === category?.id && s.selected}`}
+              onClick={() => setSelectedCategory(category)}
             >
               {category?.name}
             </div>
@@ -79,16 +75,16 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
       {subCategories && !!subCategories?.length && (
         <div className={s.paper}>
           <div
-            className={`${s.button} ${selectedSubCategoryId === null && s.selected}`}
-            onClick={() => setSelectedCategoryId(null)}
+            className={`${s.button} ${selectedSubCategory === null && s.selected}`}
+            onClick={() => setSelectedCategory(null)}
           >
             Все коллекции
           </div>
           {subCategories?.map(subCategory => (
             <div
               key={subCategory?.id}
-              className={`${s.button} ${selectedSubCategoryId === subCategory?.id && s.selected}`}
-              onClick={() => setSelectedSubCategoryId(subCategory?.id)}
+              className={`${s.button} ${selectedSubCategory?.id === subCategory?.id && s.selected}`}
+              onClick={() => setSelectedSubCategory(subCategory)}
             >
               {subCategory?.name}
             </div>

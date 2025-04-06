@@ -7,16 +7,26 @@ import { ProductsList } from '@/blocks/ProductsList';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useEffect, useState } from 'react';
 import { IProduct } from '@/shared/types/Product';
+import { CategoryCard } from '@/components/CategoryCard';
+import { ICategory } from '@/shared/types/Category';
 
 export const Catalog = () => {
-  const [products, setProducts] = useState<IProduct[]>();
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
-  const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const [categoryId, setCategoryId] = useState<number | null>(null);
+  useEffect(() => {
+    if (window !== undefined) {
+      setIsMobile(window?.innerWidth <= 768);
+    }
+  }, []);
+
+  const [products, setProducts] = useState<IProduct[]>();
+  const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<ICategory | null>(null);
+
+  const [category, setCategory] = useState<ICategory | null>(null);
 
   async function getProducts() {
-    const url = categoryId ? `/product?categoryId=${categoryId}` : '/product';
+    const url = category?.id ? `/product?categoryId=${category?.id}` : '/product';
     try {
       const res = await fetch(apiUrlBuilder(url));
       const data = await res.json();
@@ -27,37 +37,40 @@ export const Catalog = () => {
   }
 
   const mergeCategories = (
-    selectedSubCategoryId: number | null,
-    selectedCategoryId: number | null,
+    selectedSubCategory: ICategory | null,
+    selectedCategory: ICategory | null,
   ) => {
-    if (selectedSubCategoryId) {
-      setCategoryId(selectedSubCategoryId);
+    if (selectedSubCategory?.id) {
+      setCategory(selectedSubCategory);
       return;
     }
-    if (selectedCategoryId) {
-      setCategoryId(selectedCategoryId);
+    if (selectedCategory?.id) {
+      setCategory(selectedCategory);
       return;
     }
-    setCategoryId(null);
+    setCategory(null);
   };
 
   useEffect(() => {
-    mergeCategories(selectedSubCategoryId, selectedCategoryId);
-  }, [selectedSubCategoryId, selectedCategoryId]);
+    mergeCategories(selectedSubCategory, selectedCategory);
+  }, [selectedSubCategory, selectedCategory]);
 
   useEffect(() => {
     getProducts();
-  }, [categoryId]);
+  }, [category?.id]);
 
   return (
     <div className={s.catalog_wrapper}>
       <CatalogFilters
-        selectedCategoryId={selectedCategoryId}
-        setSelectedCategoryId={setSelectedCategoryId}
-        selectedSubCategoryId={selectedSubCategoryId}
-        setSelectedSubCategoryId={setSelectedSubCategoryId}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedSubCategory={selectedSubCategory}
+        setSelectedSubCategory={setSelectedSubCategory}
       />
-      {products && !!products?.length && <ProductsList products={products} />}
+      <div className={s.products}>
+        {category && !isMobile && <CategoryCard category={category} noButton />}
+        {products && !!products?.length && <ProductsList products={products} />}
+      </div>
     </div>
   );
 };
