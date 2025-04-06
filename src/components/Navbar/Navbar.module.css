@@ -18,3 +18,9 @@
   align-items: center;
   gap: 18px;
 }
+
+@media (max-width: 768px) {
+  .header{
+    display: none;
+  }
+}

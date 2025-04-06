@@ -2,12 +2,13 @@
 import Image from 'next/image';
 import s from './clouds.module.css';
 import {motion, useScroll, useTransform, useSpring} from "framer-motion"
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { FaunoGreenLogo } from '@/shared/assets/FaunoGreenLogo';
 import Link from 'next/link';
 
 export const Clouds = () => {
   const secondRef = useRef<HTMLDivElement>(null)
+  const isMobile = useState(window?.innerWidth <= 768)
   
   const scroll = useScroll({
     target: secondRef,
@@ -18,7 +19,7 @@ export const Clouds = () => {
     stiffness: 60,
     damping: 30,
     restDelta: 0.001
-  }), [0, 1], ["0px", "-200px"])
+  }), [0, 1], isMobile ? ["-200px", "-400px"] : ["0px", "-200px"])
 
   return (
     <section className={s.clouds_block}>

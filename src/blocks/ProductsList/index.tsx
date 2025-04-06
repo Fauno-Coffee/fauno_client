@@ -7,6 +7,9 @@ import { AllCategoriesCard, CategoryCard } from '@/components/CategoryCard';
 interface IProductsListProps {
   products: IProduct[];
 }
+interface IAllProductsListProps {
+  products: IProduct[][];
+}
 
 export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
@@ -96,6 +99,22 @@ export const ProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
     <div className={s.wrapper}>
       {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+    </div>
+  );
+};
+
+export const MobileProductsList: FC<IAllProductsListProps> = ({ products }) => {
+
+  const allProducts: IProduct[] = []
+  products.forEach((productsList) => {
+    if(productsList && productsList.length){
+      allProducts.push(...productsList)}
+    }
+  )
+  console.log("allProducts", allProducts)
+  return (
+    <div className={s.mobileWrapper}>
+      {allProducts?.map(product => <ProductCard key={product?.id+"mbl"} product={product} />)}
     </div>
   );
 };

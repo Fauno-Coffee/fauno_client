@@ -9,3 +9,9 @@
 .button_outlined:hover {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .button_outlined{
+    padding-block: 22px;
+  }
+}

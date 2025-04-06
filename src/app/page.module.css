@@ -4,3 +4,20 @@
   flex-direction: column;
   gap: 40px;
 }
+
+.catalog{
+  padding: 40px;
+  width: 100%;
+  font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .products_wrapper{
+    display: none;
+  }
+
+  .catalog{
+    padding: 32px 16px;
+    font-size: 18px;
+  }
+}

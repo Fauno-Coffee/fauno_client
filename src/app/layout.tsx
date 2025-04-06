@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-
+import 'swiper/css';
 import './globals.css';
 import { SuisseIntl } from '@/shared/fonts';
 

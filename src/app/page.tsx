@@ -8,6 +8,7 @@ import {
   DripProductsList,
   EspressoProductsList,
   FiltroProductsList,
+  MobileProductsList,
 } from '@/blocks/ProductsList';
 import { IProduct } from '@/shared/types/Product';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
@@ -85,6 +86,7 @@ export default async function Home() {
     <div className={s.page}>
       <Hero />
       <Feautures />
+      <MobileProductsList products={[filtro, drip, espresso, capsule]} />
       <div className={s.products_wrapper}>
         {filtro && <FiltroProductsList products={filtro} />}
         {drip && <DripProductsList products={drip} />}
@@ -92,7 +94,7 @@ export default async function Home() {
         {capsule && <CapsulesProductsList products={capsule} />}
       </div>
 
-      <div style={{ width: '100%', padding: '40px', fontSize: '22px' }}>
+      <div className={s.catalog}>
         <Link href='/catalog'>
           <Button>Перейти в каталог</Button>
         </Link>

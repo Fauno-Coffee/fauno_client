@@ -57,3 +57,17 @@
   flex-direction: column;
   gap: 8px;
 }
+
+@media (max-width: 768px) {
+  .card_wrapper{
+    gap: 12px;
+  }
+  
+  .brightness{
+    display: none;
+  }
+
+  .card_info{
+    font-size: 16px;
+  }
+}

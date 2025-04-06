@@ -91,3 +91,61 @@
   font-size: 46px;
   font-weight: 300;
 }
+
+.slideContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+/* Slider.module.css */
+
+.image{
+  position: relative;
+  width: 80vw;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+  .blockContent{
+    margin-top: 64px;
+    padding: 0;
+  }
+
+  .headingWrapper{
+    gap: 8px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading{
+    font-size: 42px;
+    font-weight: 300;
+  }
+
+  .description{
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .name{
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    color: #000000;
+  }
+
+  .cardInfo{
+    padding: 0;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .cardInfo svg{
+    height: 26px;
+    width: auto;
+  }
+}

@@ -34,3 +34,14 @@
   padding: 80px 10px 170px;
 }
 
+@media (max-width: 768px) {
+  .hero_content svg{
+    width: 70vw !important;
+    height: auto;
+  }
+
+  .hero_content{
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
