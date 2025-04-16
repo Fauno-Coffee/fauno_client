@@ -22,3 +22,36 @@ html {
   width: 100%;
   overflow: visible;
 }
+
+.swiper-pagination{
+  z-index: 22;
+  width: fit-content !important;
+  left: unset !important;
+  bottom: 12px !important;
+  right: unset !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@media (max-width: 744px){
+  .swiper-pagination{
+    height: fit-content;
+    top: 24px !important;
+    right: 20px !important;
+  }
+}
+
+.swiper-pagination-bullet{
+  background: rgba(255,255,255, 1) !important;
+  opacity: 0.4 !important;
+  height: 10px;
+  width: 10px;
+  transition: 400ms;
+}
+
+.swiper-pagination-bullet-active{
+  background: rgba(255,255,255, 1) !important;
+  width: 32px !important;
+  border-radius: 8px !important;
+  opacity: 1 !important;
+}

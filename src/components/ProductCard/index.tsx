@@ -13,7 +13,7 @@ interface IProductCardProps {
 
 export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   return (
-    <Link href={product?.link} className={s.card_wrapper}>
+    <Link href={"product/"+product?.link} className={s.card_wrapper}>
       <div className={s.brightness}>
         <p className={s.brightnessTitle}>Яркость</p>
         <div className={s.dotsWrapper} >

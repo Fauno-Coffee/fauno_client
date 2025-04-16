@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // не забудьте стили
 import s from "./notCoffee.module.css"
 import Image from 'next/image';
-import { LightArrow } from '@/shared/assets/LightArrow';
 import Link from 'next/link';
 
 export default function SwiperSlider() {

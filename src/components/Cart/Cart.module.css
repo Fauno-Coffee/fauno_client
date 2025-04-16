@@ -1,0 +1,19 @@
+.cartBackground{
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.cartWrapper{
+    display: flex;
+    height: 100vh;
+    padding: 46px;
+    width: 800px;
+    background: #FFFEF5;
+}

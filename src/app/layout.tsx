@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 import './globals.css';
 import { SuisseIntl } from '@/shared/fonts';
+import { SessionLayout } from '@/layouts/SessionLayout';
+import { CartStoreProvider } from '@/shared/store/CartStoreProvider';
+import { CartLayout } from '@/layouts/CartLayout';
 
 export const metadata: Metadata = {
   title: '☕ fauno',
@@ -12,7 +18,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang='en'>
-      <body className={`${SuisseIntl.className}`}>{children}</body>
+      <body className={`${SuisseIntl.className}`}>
+        <CartStoreProvider>
+          <SessionLayout>
+            <CartLayout>
+              {children}
+            </CartLayout>
+          </SessionLayout>
+        </CartStoreProvider>
+      </body>
     </html>
   );
 }

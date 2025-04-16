@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { IProduct } from '@/shared/types/Product';
 import { ProductCard } from '@/components/ProductCard';
 import { AllCategoriesCard, CategoryCard } from '@/components/CategoryCard';
+import { Reveal } from '@/shared/ui/Reveal';
 
 interface IProductsListProps {
   products: IProduct[];
@@ -18,7 +19,14 @@ export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
       <div className={s.big_2x2}>
         <AllCategoriesCard category={{ id: 5, name: 'Filtro' }} />
       </div>
-      {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+      {products?.map((product, index) => {
+            return(
+              <Reveal key={product.id} delay={index * 0.1} height='100%'>
+                <ProductCard key={product?.id} product={product} />
+              </Reveal>
+            )
+          })
+        }
     </div>
   );
 };
@@ -26,7 +34,14 @@ export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
 export const DripProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
     <div className={s.wrapper}>
-      {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+      {products?.map((product, index) => {
+            return(
+              <Reveal key={product.id} delay={index * 0.1} height='100%'>
+                <ProductCard key={product?.id} product={product} />
+              </Reveal>
+            )
+          })
+        }
       <div className={s.big_2x1}>
         <CategoryCard
           category={{
@@ -49,7 +64,14 @@ export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
     <div className={s.wrapper}>
       {products &&
         !!products?.length &&
-        productsSliced[0]?.map(product => <ProductCard key={product?.id} product={product} />)}
+        productsSliced[0]?.map((product, index) => {
+          return(
+            <Reveal key={product.id} delay={index * 0.1} height='100%'>
+              <ProductCard key={product?.id} product={product} />
+            </Reveal>
+          )
+        })
+        }
 
       <div className={s.big_2x1}>
         <CategoryCard
@@ -66,7 +88,18 @@ export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
 
       {products &&
         !!products?.length &&
-        productsSliced[1]?.map(product => <ProductCard key={product?.id} product={product} />)}
+        productsSliced[1]?.map((product, index) => {
+          return(
+            <Reveal key={product.id} delay={index * 0.1} height='100%'>
+              <ProductCard key={product?.id} product={product} />
+            </Reveal>
+          )
+        })
+      }
+
+        
+
+        
     </div>
   );
 };
@@ -103,7 +136,15 @@ export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
 export const ProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
     <div className={s.catalog_wrapper}>
-      {products?.map(product => <ProductCard key={product?.id} product={product} />)}
+      
+        {products?.map((product, index) => {
+            return(
+              <Reveal key={product.id} delay={index * 0.1} height='100%'>
+                <ProductCard key={product?.id} product={product} />
+              </Reveal>
+            )
+          })
+        }
     </div>
   );
 };
@@ -117,7 +158,14 @@ export const MobileProductsList: FC<IAllProductsListProps> = ({ products }) => {
   });
   return (
     <div className={s.mobileWrapper}>
-      {allProducts?.map(product => <ProductCard key={product?.id + 'mbl'} product={product} />)}
+      {allProducts?.map((product, index) => {
+            return(
+              <Reveal key={product.id} delay={index * 0.1} height='100%'>
+                <ProductCard key={product?.id} product={product} />
+              </Reveal>
+            )
+          })
+        }
     </div>
   );
 };

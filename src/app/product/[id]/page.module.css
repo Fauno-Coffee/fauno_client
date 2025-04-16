@@ -1,0 +1,138 @@
+.productGridWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.productGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    /* max-width: 1320px; */
+    width: 100%;
+    padding: 12px 80px;
+}
+
+.productImages{
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.image{
+    width: 100% !important;
+    height: 100%;
+    overflow: hidden;
+}
+
+.swiper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    z-index: 3 !important;
+}
+
+.aboutProduct{
+    background: #F4F2E4;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name{
+    font-size: 64px;
+    font-weight: 300;
+    color: #302E2C;
+}
+
+.productHeading{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.description{
+    font-size: 20px;
+    text-wrap: balance;
+    color: #302E2C;
+}
+
+.feauturesList{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feauture{
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.feautureName{
+    font-size: 18px;
+    font-weight: 300;
+    text-wrap: nowrap;
+}
+
+.feautureValue{
+    font-size: 18px;
+    text-wrap: nowrap;
+}
+
+.divider{
+    height: 1px;
+    background: #000000;
+    opacity: 0.2;
+    width: 100%;
+    display: flex;
+}
+
+.priceBlock{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.priceWrapper{
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.price{
+    font-size: 46px;
+    color: #3C5F3B;
+}
+
+.priceOld{
+    color: #1b2c1a;
+    font-size: 32px;
+    opacity: 0.6;
+    font-weight: 300;
+    text-decoration: line-through;
+}
+
+.buttonWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.addToCart{
+    padding: 16px 64px;
+    border-radius: 12px;
+    background: #3C5F3B;
+    color: #FFF;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
