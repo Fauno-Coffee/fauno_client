@@ -1,9 +1,14 @@
 import s from './page.module.css';
+import { Navbar } from '@/components/Navbar';
+import { BurgerNavbar } from '@/components/BurgerNavbar';
+import { Profile } from '@/blocks/Profile';
 
-export default function LoginPage() {
+export default function ProfilePage() {
   return (
     <div className={s.page}>
-      Я ГЕЙ
+      <Navbar black />
+      <BurgerNavbar />
+      <Profile />
     </div>
   );
 }
