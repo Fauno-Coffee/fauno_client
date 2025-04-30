@@ -9,6 +9,7 @@ import { SuisseIntl } from '@/shared/fonts';
 import { SessionLayout } from '@/layouts/SessionLayout';
 import { CartStoreProvider } from '@/shared/store/CartStoreProvider';
 import { CartLayout } from '@/layouts/CartLayout';
+import { UserStoreProvider } from '@/shared/stores/UserStore/UserStoreProvider';
 
 export const metadata: Metadata = {
   title: '☕ fauno',
@@ -19,13 +20,13 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang='en'>
       <body className={`${SuisseIntl.className}`}>
-        <CartStoreProvider>
-          <SessionLayout>
-            <CartLayout>
-              {children}
-            </CartLayout>
-          </SessionLayout>
-        </CartStoreProvider>
+        <UserStoreProvider>
+          <CartStoreProvider>
+            <SessionLayout>
+              <CartLayout>{children}</CartLayout>
+            </SessionLayout>
+          </CartStoreProvider>
+        </UserStoreProvider>
       </body>
     </html>
   );

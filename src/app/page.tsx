@@ -20,7 +20,7 @@ import Link from 'next/link';
 async function getCategories() {
   try {
     const res = await fetch(apiUrlBuilder('/category'));
-    console.log(res);
+    // console.log(res);
   } catch (error) {
     console.log(error);
   }

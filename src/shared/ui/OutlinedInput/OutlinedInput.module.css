@@ -1,0 +1,15 @@
+.outlined_input {
+  font-size: 16px;
+  padding: 20px 22px;
+  border-radius: 8px;
+  border: 1px solid #8E9EB5;
+  background: #FFFEF5;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.outlined_input::-webkit-outer-spin-button,
+.outlined_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

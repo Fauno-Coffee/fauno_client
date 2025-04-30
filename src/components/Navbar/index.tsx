@@ -1,50 +1,62 @@
-'use client'
+'use client';
 
 import { FaunoHeaderLogo } from '@/shared/assets/FaunoHeaderLogo';
 import s from './Navbar.module.css';
-import { PersonIcon, CartIcon, FaunoBigLogo } from '@/shared/assets';
+import { PersonIcon, CartIcon } from '@/shared/assets';
 import { useCartStore } from '@/shared/store/CartStoreProvider';
 import Link from 'next/link';
 import { FC } from 'react';
+import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 
 interface INavbarProps {
   black?: boolean;
 }
 
 export const Navbar: FC<INavbarProps> = ({ black }) => {
+  const { switchCart } = useCartStore(state => state);
 
-  const { switchCart } = useCartStore(
-    (state) => state,
-  )
+  const { token } = useUserStore(state => state);
 
   return (
     <header className={s.header} style={{ color: black ? '#000000' : '#FFFFFF' }}>
       <div className={s.wrapper}>
-        <Link className={s.logo} href='/'><FaunoHeaderLogo fill={black ? 'black' : 'white'} /></Link>
+        <Link className={s.logo} href='/'>
+          <FaunoHeaderLogo width='auto' fill={black ? 'black' : 'white'} />
+        </Link>
         <span>
-          <Link className={s.link_button} href='/catalog'>Каталог</Link>
+          <Link className={s.link_button} href='/catalog'>
+            Каталог
+          </Link>
         </span>
         <span>
-          <Link className={s.link_button} href='/recipes'>Рецепты</Link>
+          <Link className={s.link_button} href='/recipes'>
+            Рецепты
+          </Link>
         </span>
         <span>
-          <a className={s.link_button} href='#'>Доставка и оплата</a>
+          <a className={s.link_button} href='#'>
+            Доставка и оплата
+          </a>
         </span>
         <span>
-          <a className={s.link_button} href='#'>Для бизнеса</a>
+          <a className={s.link_button} href='#'>
+            Для бизнеса
+          </a>
         </span>
         <span>
-          <a className={s.link_button} href='#'>О нас</a>
+          <a className={s.link_button} href='#'>
+            О нас
+          </a>
         </span>
       </div>
       <div className={s.buttonsWrapper}>
-        <Link href='/profile' className={s.link_button}>
+        <Link href={token ? '/profile' : '/login'} className={s.link_button}>
           <PersonIcon color={black ? '#000000' : undefined} />
           <p>Личный кабинет</p>
         </Link>
         <button className={s.link_button} onClick={() => switchCart()}>
           <CartIcon color={black ? '#000000' : undefined} />
-          <p style={{color: black ? '#000000' : '#FFFFFF'}}>Корзина</p>
+          <p style={{ color: black ? '#000000' : '#FFFFFF' }}>Корзина</p>
         </button>
       </div>
     </header>
