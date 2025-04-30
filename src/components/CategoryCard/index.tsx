@@ -67,8 +67,9 @@ export const CategoryCard: FC<ICategoryCardProps> = ({ category, noButton, hardc
           }
           alt='Background'
           layout='fill'
+          style={{zIndex: 1}}
           objectFit='cover'
-          objectPosition='center top'
+          objectPosition='center center'
           priority
         />
       </div>

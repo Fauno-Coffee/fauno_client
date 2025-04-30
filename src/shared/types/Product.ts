@@ -1,4 +1,5 @@
 import { IImage } from '@/shared/types/Image';
+import { ICategory } from './Category';
 
 export interface IProduct {
   id: number;
@@ -10,6 +11,7 @@ export interface IProduct {
   old_price: number;
   categoryId: number;
   about: string;
+  recipe: object;
   weight: number;
   variation: string[];
   processing: string[];
@@ -21,4 +23,5 @@ export interface IProduct {
   updatedAt: string;
   images: IImage[];
   isDeleted?: boolean;
+  category?: ICategory;
 }

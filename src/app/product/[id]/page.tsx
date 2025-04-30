@@ -13,6 +13,10 @@ import { A11y, Autoplay, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import axios from 'axios';
 import { useCartStore } from '@/shared/store/CartStoreProvider';
+import { CategoryCard } from '@/components/CategoryCard';
+import { BurgerNavbar } from '@/components/BurgerNavbar';
+import { Clouds } from '@/blocks/Clouds';
+import { NotCoffee } from '@/blocks/NotCoffee';
 
 export default function CatalogPage() {
     const { id } = useParams();
@@ -52,6 +56,7 @@ export default function CatalogPage() {
     return (
         <div className={s.page}>
             <Navbar black />
+            <BurgerNavbar />
             <div className={s.productGridWrapper}>
                 <div className={s.productGrid}>
                     <div className={s.productImages}>
@@ -71,11 +76,11 @@ export default function CatalogPage() {
                                         <SwiperSlide key={image.imageUrl + index} className={s.image}>
                                             <Image
                                                 src={imageUrlBuilder(image.imageUrl as string)}
-                                                style={{transform: "scale(1.02)"}}
+                                                style={{transform: "scale(1.02)", objectFit: 'cover'}}
                                                 alt='Background'
                                                 layout='fill'
                                                 objectFit='cover'
-                                                objectPosition='center top'
+                                                objectPosition='center center'
                                                 priority
                                             />
                                         </SwiperSlide>
@@ -157,8 +162,49 @@ export default function CatalogPage() {
                             </div>
                         </div>
                     </div>
+                    {
+                        productInfo?.about &&
+                        <div className={s.pageBlock}>
+                            <p className={s.blockHeading}>Информация о лоте</p>
+                            <p className={s.productInfo}>{productInfo?.about}</p>
+                        </div>
+                    }
+                    {
+                        productInfo?.recipe &&
+                        <div className={s.pageBlock}>
+                            <p className={s.blockHeading}>Рецепт заваривания</p>
+                            <div className={s.recipe}>
+                                {
+                                    Object.entries(productInfo.recipe).map((data) => {
+                                        if(data[0] != "description"){
+                                            return (
+                                                <p className={s.recipeRow}key={data[0]}>{data[0]}: <span>{data[1]}</span></p>
+                                            )
+                                        }
+                                    })
+                                }
+                                {
+                                    Object.entries(productInfo.recipe).map((data) => {
+                                        if(data[0] == "description"){
+                                            return (
+                                                <p className={s.recipeRowFootnote}key={data[0]}>{data[1]}</p>
+                                            )
+                                        }
+                                    })
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
+                {
+                    productInfo?.category && 
+                    <div className={s.categoryWrapper}>
+                        <CategoryCard category={productInfo?.category} noButton />
+                    </div>
+                }
             </div>
+            <Clouds />
+            <NotCoffee />
             <Footer />
         </div>
     );

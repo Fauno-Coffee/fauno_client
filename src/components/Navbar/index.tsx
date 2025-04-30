@@ -1,7 +1,8 @@
 'use client'
 
+import { FaunoHeaderLogo } from '@/shared/assets/FaunoHeaderLogo';
 import s from './Navbar.module.css';
-import { PersonIcon, CartIcon } from '@/shared/assets';
+import { PersonIcon, CartIcon, FaunoBigLogo } from '@/shared/assets';
 import { useCartStore } from '@/shared/store/CartStoreProvider';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -19,20 +20,21 @@ export const Navbar: FC<INavbarProps> = ({ black }) => {
   return (
     <header className={s.header} style={{ color: black ? '#000000' : '#FFFFFF' }}>
       <div className={s.wrapper}>
+        <Link className={s.logo} href='/'><FaunoHeaderLogo fill={black ? 'black' : 'white'} /></Link>
         <span>
-          <a href='#'>Кофе</a>
+          <Link className={s.link_button} href='/catalog'>Каталог</Link>
         </span>
         <span>
-          <a href='#'>Не кофе</a>
+          <Link className={s.link_button} href='/recipes'>Рецепты</Link>
         </span>
         <span>
-          <a href='#'>Доставка и оплата</a>
+          <a className={s.link_button} href='#'>Доставка и оплата</a>
         </span>
         <span>
-          <a href='#'>Для бизнеса</a>
+          <a className={s.link_button} href='#'>Для бизнеса</a>
         </span>
         <span>
-          <a href='#'>О нас</a>
+          <a className={s.link_button} href='#'>О нас</a>
         </span>
       </div>
       <div className={s.buttonsWrapper}>

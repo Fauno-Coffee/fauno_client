@@ -1,0 +1,160 @@
+/* Recipes.module.css */
+
+.recipes_wrapper {
+  width: 100%;
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  box-sizing: border-box;
+}
+
+/* Header: заголовок + описание */
+.header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.title {
+  font-size: 86px;
+  line-height: 1;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #333;
+  max-width: 670px;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 32px;
+  /* минимум 280px, максимум 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Карточка рецепта */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  padding-bottom: 66.66%; /* соотношение 3:2 */
+  background: #f0f0f0;
+}
+
+.image {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.info {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cardTitle {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Кнопка-стрелка */
+.arrow {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.arrow span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+}
+
+.arrow:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .recipes_wrapper {
+    padding: 48px 32px;
+  }
+  .title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipes_wrapper {
+    padding: 32px 24px;
+    gap: 48px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 15px;
+  }
+  .grid {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipes_wrapper {
+    padding: 24px 16px;
+    gap: 32px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

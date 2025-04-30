@@ -9,14 +9,19 @@
 
 .wrapper {
   display: flex;
+  align-items: center;
   flex-direction: row;
-  gap: 30px;
+  gap: 8px;
 }
 
 .buttonsWrapper {
   display: flex;
   flex-direction: row;
   gap: 8px;
+}
+
+.logo{
+  padding-right: 16px;
 }
 
 .link_button {
