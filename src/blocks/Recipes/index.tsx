@@ -4,6 +4,8 @@ import { apiUrlBuilder, imageUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useEffect, useState } from 'react';
 import { IRecipe } from '@/shared/types/Recipe';
 import Image from 'next/image';
+import { NextButton } from '@/shared/ui';
+import Link from 'next/link';
 
 export const Recipes = () => {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
@@ -33,7 +35,7 @@ export const Recipes = () => {
 
       <div className={s.grid}>
         {recipes.map((r) => (
-          <a
+          <Link
             key={r.id}
             href={`/recipes/${r.link}`}
             className={s.card}
@@ -51,12 +53,12 @@ export const Recipes = () => {
             </div>
             <div className={s.info}>
               <h3 className={s.cardTitle}>{r.name}</h3>
-              <p className={s.cardDesc}>{r.steps[0]?.text}</p>
+              <p className={s.cardDesc}>{r.description}</p>
             </div>
-            <div className={s.arrow}>
-              <span />
+            <div className={s.button}>
+              <NextButton outlined />
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

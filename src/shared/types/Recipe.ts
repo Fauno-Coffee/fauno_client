@@ -1,6 +1,7 @@
 export interface IRecipe {
   id: number;
   imageUrl: string;
+  description: string;
   link: string;
   recipeCategoryId: number;
   name: string;

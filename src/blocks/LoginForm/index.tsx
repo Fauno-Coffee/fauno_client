@@ -7,10 +7,12 @@ import { ChangeEvent, CSSProperties, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export const LoginForm = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [phone, setPhone] = useState('');
   const [smsCode, setSmsCode] = useState(['', '', '', '']);
 
@@ -41,7 +43,7 @@ export const LoginForm = () => {
         localStorage.setItem('token', res.data.token);
         setUser(res.data.token, res.data.user);
         document.cookie = `token=${res.data.token}; path=/;`;
-        router.push('/profile');
+        router.push(searchParams?.get("backUrl") || "/profile");
       }
     } catch (error) {
       console.log(error);

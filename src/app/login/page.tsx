@@ -1,6 +1,7 @@
 import s from './page.module.css';
 import Image from 'next/image';
 import { LoginForm } from '@/blocks/LoginForm';
+import { Suspense } from 'react';
 
 export default function LoginPage() {
   return (
@@ -16,7 +17,9 @@ export default function LoginPage() {
         />
       </div>
       <div className={s.login_container}>
-        <LoginForm />
+        <Suspense>
+          <LoginForm />
+        </Suspense>
       </div>
     </div>
   );

@@ -57,6 +57,7 @@
   height: 0;
   padding-bottom: 66.66%; /* соотношение 3:2 */
   background: #f0f0f0;
+  cursor: pointer;
 }
 
 .image {
@@ -64,23 +65,49 @@
   top: 0; left: 0; right: 0; bottom: 0;
 }
 
+.image::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
 .info {
   position: absolute;
-  top: 24px;
-  left: 24px;
-  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  top: 32px;
+  left: 32px;
+  right: 32px;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.button{
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  z-index: 3;
 }
 
 .cardTitle {
-  font-size: 24px;
+  font-size: 46px;
+  font-weight: 300;
+  width: 50%;
   margin: 0 0 8px 0;
+  text-wrap: balance;
 }
 
 .cardDesc {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 22px;
+  font-weight: 300;
+  width: 50%;
+  text-wrap: balance;
+  line-height: 1.1;
   margin: 0;
 }
 
@@ -140,6 +167,33 @@
   .grid {
     gap: 24px;
   }
+
+  .info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    color: #fff;
+    z-index: 2;
+  }
+  
+  .button{
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 3;
+  }
+
+  .image::after {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 100%);
+  }
+
+  .button{
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -147,11 +201,13 @@
     padding: 24px 16px;
     gap: 32px;
   }
-  .title {
+  .cardTitle {
     font-size: 28px;
+    width: 100%;
   }
-  .subtitle {
+  .cardDesc {
     font-size: 14px;
+    width: 100%;
   }
   .grid {
     grid-template-columns: 1fr;

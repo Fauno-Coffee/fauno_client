@@ -1,0 +1,166 @@
+/* Recipes.module.css */
+
+.recipes_wrapper {
+  width: 100%;
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  box-sizing: border-box;
+}
+
+/* Header: заголовок + описание */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.title {
+  font-size: 86px;
+  text-wrap: balance;
+  line-height: 1;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.button{
+  font-size: 24px;
+  width: fit-content;
+  color: #3C5F3B;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+  border-radius: 32px;
+}
+
+.button:hover{
+  background: rgba(0,0,0,0.06);
+  text-decoration: none !important;
+}
+
+.step{
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 2fr;
+}
+
+.stepInfo{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepNumber{
+  font-size: 26px;
+  opacity: 0.6;
+}
+
+.stepText{
+  font-size: 26px;
+  text-wrap: balance;
+}
+
+.imageWrapper{
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.recipeSteps{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 56px;
+  padding-bottom: 120px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+@media (max-width: 1200px) {
+  .recipes_wrapper {
+    padding: 48px 32px;
+    gap: 48px;
+  }
+  .header {
+    padding-bottom: 48px;
+  }
+  .title {
+    font-size: 64px;
+  }
+  .stepText,
+  .stepNumber {
+    font-size: 22px;
+  }
+  .recipeSteps {
+    gap: 48px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Планшеты и крупные телефоны */
+@media (max-width: 768px) {
+  .recipes_wrapper {
+    padding: 32px 24px;
+    gap: 32px;
+  }
+  .header {
+    padding-bottom: 32px;
+  }
+  .title {
+    font-size: 48px;
+  }
+  .button {
+    font-size: 20px;
+    padding: 10px 18px;
+  }
+  .recipeSteps {
+    gap: 32px;
+    padding-bottom: 64px;
+  }
+  /* Шаги: один столбец */
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .stepText,
+  .stepNumber {
+    font-size: 20px;
+  }
+}
+
+/* Мобильные экраны */
+@media (max-width: 480px) {
+  .recipes_wrapper {
+    padding: 24px 16px;
+    gap: 32px;
+  }
+  .header {
+    padding-bottom: 24px;
+  }
+  .button {
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+  .title {
+    font-size: 42px;
+  }
+  .recipeSteps {
+    gap: 24px;
+    padding-bottom: 48px;
+  }
+  .step {
+    gap: 12px;
+  }
+  .stepText,
+  .stepNumber {
+    font-size: 18px;
+  }
+}

@@ -3,8 +3,12 @@
 import { FC, ReactNode, useEffect } from 'react';
 import s from './styles.module.css';
 import { useCartStore } from '@/shared/store/CartStoreProvider';
-import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
+import { apiUrlBuilder, imageUrlBuilder } from '@/shared/utils/urlBuilder';
 import axios from 'axios';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
+import { useRouter } from 'next/navigation';
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,18 +22,23 @@ export const CartLayout: FC<LayoutProps> = ({ children }) => {
         fetchCart
     } = useCartStore((state) => state);
 
+    const { user } = useUserStore(state => state);
+
+    const router = useRouter();
+
     useEffect(() => {
-        fetchCart?.();
-    }, [fetchCart]);
+        fetchCart?.(user.id);
+    }, [fetchCart, user.id]);
 
     async function incrementItem(id: number) {
         const url = `/user/plusCart`;
         try {
             await axios.post(apiUrlBuilder(url), {
                 session: localStorage.getItem("session"),
+                userId: user.id,
                 productId: id
             });
-            fetchCart()
+            fetchCart(user.id)
         } catch (error) {
           console.log(error);
         }
@@ -40,13 +49,22 @@ export const CartLayout: FC<LayoutProps> = ({ children }) => {
         try {
             await axios.post(apiUrlBuilder(url), {
                 session: localStorage.getItem("session"),
+                userId: user.id,
                 productId: id
             });
-            fetchCart()
+            fetchCart(user.id)
         } catch (error) {
           console.log(error);
         }
     }
+
+  const orderHandler = () => {
+    switchCart()
+    router.push(user.id ? "/order" : "/login?backUrl=/order");
+  }
+  
+  const cartPrices = cart.map((p) => p.product.price * p.count) 
+  const cartTotal = cartPrices.reduce((prev, curr) => prev + curr, 0);
 
   return (
     <>
@@ -79,11 +97,21 @@ export const CartLayout: FC<LayoutProps> = ({ children }) => {
 
               {cart.map((item) => (
                 <article key={item.id} className={s.cartItem}>
-                  <div className={s.itemInfo}>
-                    <p className={s.itemName}>{item.product.name}</p>
-                    <p className={s.itemPrice}>
-                      {(item.product.price * item.count).toLocaleString('ru-RU')} ₽
-                    </p>
+                  <div className={s.imageInfo}>
+                    <div className={s.imageWrapper}>
+                      <Image 
+                        src={imageUrlBuilder(item.product.images[0].imageUrl)}
+                        alt={item.product.name}
+                        style={{ objectFit: 'cover' }}
+                        fill
+                      />
+                    </div>
+                    <div className={s.itemInfo}>
+                      <p className={s.itemName}>{item.product.name}</p>
+                      <p className={s.itemPrice}>
+                        {(item.product.price * item.count).toLocaleString('ru-RU')} ₽
+                      </p>
+                    </div>
                   </div>
 
                   <div className={s.itemControls}>
@@ -105,6 +133,10 @@ export const CartLayout: FC<LayoutProps> = ({ children }) => {
                   </div>
                 </article>
               ))}
+              {
+                cart.length > 0 &&
+                <button onClick={orderHandler} className={s.orderButton}>Оформить заказ — {cartTotal.toLocaleString('ru-RU')} ₽</button>
+              }
             </section>
           </aside>
         </div>

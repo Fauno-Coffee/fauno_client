@@ -16,17 +16,18 @@ export type CartState = {
 
 export type CartActions = {
   switchCart: () => void
-  openCart: () => Promise<void>
-  fetchCart: () => Promise<void>
+  openCart: (userId?: number) => Promise<void>
+  fetchCart: (userId?: number) => Promise<void>
 }
 
 export type CartStore = CartState & CartActions
 
-const loadCartFromServer = async (): Promise<ICart[]> => {
+const loadCartFromServer = async (userId?: number): Promise<ICart[]> => {
   const session = localStorage.getItem('session')
+
   if (!session) return []
 
-  const url = `/user/cart?session=${session}`
+  const url = `/user/cart?session=${session}${userId ? "&userId="+userId : ''}`
   const res = await fetch(apiUrlBuilder(url))
   if (!res.ok) throw new Error(res.statusText)
 
@@ -46,13 +47,13 @@ export const createCartStore = (
   
       switchCart: () => set((s) => ({ show: !s.show })),
       
-      openCart: async () => {
-        const data = await loadCartFromServer()
+      openCart: async (userId?: number) => {
+        const data = await loadCartFromServer(userId)
         set({ show: true, cart: data })
       },
   
-      fetchCart: async () => {
-        const data = await loadCartFromServer()
+      fetchCart: async (userId?: number) => {
+        const data = await loadCartFromServer(userId)
         set({ cart: data })
       },
     }))

@@ -1,16 +1,18 @@
 import s from './page.module.css';
 
 import { Footer } from '@/blocks/Footer';
-import { Recipes } from '@/blocks/Recipes';
-import { Hero } from '@/blocks/Hero';
 import { NotCoffee } from '@/blocks/NotCoffee';
 import { Clouds } from '@/blocks/Clouds';
+import { Recipe } from '@/blocks/Recipe';
+import { Navbar } from '@/components/Navbar';
+import { BurgerNavbar } from '@/components/BurgerNavbar';
 
 export default async function RecipesPage() {
   return (
     <div className={s.page}>
-      <Hero />
-      <Recipes />
+      <Navbar black />
+      <BurgerNavbar />
+      <Recipe />
       <Clouds />
       <NotCoffee />
 

@@ -17,6 +17,7 @@ import { CategoryCard } from '@/components/CategoryCard';
 import { BurgerNavbar } from '@/components/BurgerNavbar';
 import { Clouds } from '@/blocks/Clouds';
 import { NotCoffee } from '@/blocks/NotCoffee';
+import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 
 export default function CatalogPage() {
     const { id } = useParams();
@@ -24,6 +25,7 @@ export default function CatalogPage() {
     const [productInfo, setProductInfo] = useState<IProduct>()
 
     const { openCart } = useCartStore((state) => state)
+    const { user } = useUserStore(state => state);
 
     async function getProduct() {
         const url = `/product/${id}`;
@@ -43,7 +45,7 @@ export default function CatalogPage() {
                 session: localStorage.getItem("session"),
                 productId: productInfo?.id
             });
-            openCart()
+            openCart(user.id)
         } catch (error) {
           console.log(error);
         }
@@ -155,7 +157,7 @@ export default function CatalogPage() {
                         <div className={s.priceBlock}>
                             <div className={s.priceWrapper}>
                                 <p className={s.price}>{productInfo?.price} ₽</p>
-                                {productInfo?.old_price && <p className={s.priceOld}>{productInfo?.old_price} ₽</p>}
+                                {(productInfo && productInfo.old_price > 0) && <p className={s.priceOld}>{productInfo?.old_price} ₽</p>}
                             </div>
                             <div className={s.buttonWrapper}>
                                 <button className={s.addToCart} onClick={addToCart}>Добавить в корзину</button>
