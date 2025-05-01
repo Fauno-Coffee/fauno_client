@@ -1,5 +1,5 @@
 export function numberWithSpaces(x: number | string | undefined): string {
-  if (!x) return '-';
+  if (!x) return '0';
 
   const str = x.toString();
   const [integerPart, decimalPart] = str.split('.');

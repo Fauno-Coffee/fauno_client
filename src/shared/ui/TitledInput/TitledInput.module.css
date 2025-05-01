@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
+  font-size: 12px;
+  padding-left: 12px;
+}
+
+.titled_input {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #FFFEF5;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.titled_input::-webkit-outer-spin-button,
+.titled_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

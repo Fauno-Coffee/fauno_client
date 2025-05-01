@@ -1,0 +1,27 @@
+.card_wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #F4F2E4;
+  border-radius: 8px;
+  padding: 30px;
+  gap: 30px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.subTitle {
+  font-size: 12px;
+  max-width: 320px;
+  text-wrap: balance;
+}
