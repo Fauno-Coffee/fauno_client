@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 
 export default function LoginPage() {
   return (
-    <div className={s.page}>
+    <div className={s.page}> 
       <div className={s.image}>
         <Image
           fill
