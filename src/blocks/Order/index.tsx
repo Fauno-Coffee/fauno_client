@@ -99,6 +99,28 @@ export const Order = () => {
                   onChange={(e: ChangeEvent<HTMLInputElement>) => setComment(e.target.value)}
                 />
             </div>
+            <div>
+              <div className={s.mobileDetailsInfoList}>
+                <div className={s.detailsRow}>
+                  <p className={s.detailsRowTitle}>Сумма товаров</p>
+                  <p className={s.detailsRowValue}>{cartTotal.toLocaleString('ru-RU')} ₽</p>
+                </div>
+                {
+                  (user.discount && user.discount > 0) ?
+                  <div className={s.detailsRow}>
+                    <p className={s.detailsRowTitle}>Персональная скидка {user.discount}%</p>
+                    <p className={s.detailsRowValue}>{(cartTotal * (user.discount / 100)).toLocaleString('ru-RU')} ₽</p>
+                  </div>
+                  : ''
+                }
+              </div>
+              <div className={s.mobileDetailsInfoList}>
+                <div className={s.detailsRow}>
+                  <p className={s.detailsRowTitle}>Итого</p>
+                  <p className={s.detailsRowValue}>{userTotal.toLocaleString('ru-RU')} ₽</p>
+                </div>
+              </div>
+            </div>
           </div>
           <button className={s.pay}>Оплатить — {userTotal.toLocaleString('ru-RU')} ₽</button>
         </div>

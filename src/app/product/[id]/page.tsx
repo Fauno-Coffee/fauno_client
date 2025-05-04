@@ -18,6 +18,7 @@ import { BurgerNavbar } from '@/components/BurgerNavbar';
 import { Clouds } from '@/blocks/Clouds';
 import { NotCoffee } from '@/blocks/NotCoffee';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
+import { StickyNavbar } from '@/components/StickyNavbar';
 
 export default function CatalogPage() {
     const { id } = useParams();
@@ -58,6 +59,7 @@ export default function CatalogPage() {
     return (
         <div className={s.page}>
             <Navbar black />
+            <StickyNavbar />
             <BurgerNavbar />
             <div className={s.productGridWrapper}>
                 <div className={s.productGrid}>

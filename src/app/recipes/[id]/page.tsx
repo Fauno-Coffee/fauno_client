@@ -6,12 +6,14 @@ import { Clouds } from '@/blocks/Clouds';
 import { Recipe } from '@/blocks/Recipe';
 import { Navbar } from '@/components/Navbar';
 import { BurgerNavbar } from '@/components/BurgerNavbar';
+import { StickyNavbar } from '@/components/StickyNavbar';
 
 export default async function RecipesPage() {
   return (
     <div className={s.page}>
-      <Navbar black />
       <BurgerNavbar />
+      <Navbar black />
+      <StickyNavbar />
       <Recipe />
       <Clouds />
       <NotCoffee />

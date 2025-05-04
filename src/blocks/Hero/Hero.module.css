@@ -35,6 +35,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero{
+    margin-top: 84px;
+  }
+  
   .hero_content svg{
     width: 70vw !important;
     height: auto;

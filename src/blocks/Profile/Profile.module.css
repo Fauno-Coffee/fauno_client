@@ -22,3 +22,9 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 768px) {
+  .profile_wrapper {
+    margin-top: 84px;
+  }
+}

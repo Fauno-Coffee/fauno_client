@@ -16,6 +16,7 @@ import { NotCoffee } from '@/blocks/NotCoffee';
 import { Feautures } from '@/blocks/Feautures';
 import { Button } from '@/shared/ui';
 import Link from 'next/link';
+import { StickyNavbar } from '@/components/StickyNavbar';
 
 async function getCategories() {
   try {
@@ -85,6 +86,7 @@ export default async function Home() {
   return (
     <div className={s.page}>
       <Hero />
+      <StickyNavbar />
       <Feautures />
       <MobileProductsList products={[filtro, drip, espresso, capsule]} />
       <div className={s.products_wrapper}>

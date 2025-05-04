@@ -223,6 +223,9 @@
 
 /* Tablet (≤768px) */
 @media (max-width: 768px) {
+    .page{
+      margin-top: 84px;
+    }
     .productGridWrapper {
       gap: 16px;
     }

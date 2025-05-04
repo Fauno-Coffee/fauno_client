@@ -17,6 +17,7 @@
 
 @media (max-width: 768px) {
   .catalog_wrapper {
+    padding-top: 84px;
     display: flex;
     flex-direction: column;
     gap: 20px;
