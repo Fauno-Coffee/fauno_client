@@ -42,7 +42,7 @@
   display: grid;
   gap: 32px;
   /* минимум 280px, максимум 1fr */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr;
 }
 
 /* Карточка рецепта */
