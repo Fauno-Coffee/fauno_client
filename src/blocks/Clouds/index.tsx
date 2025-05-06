@@ -43,7 +43,7 @@ export const Clouds = () => {
       <div className={s.company}>
         <FaunoGreenLogo />
         <Link href='/about' className={s.more}>
-          УЗНАТЬ БОЛЬШЕ О КОМПАНИ
+          Узнать больше о компании
         </Link>
       </div>
       <motion.div ref={secondRef} className={s.image} style={{ right: right }}>

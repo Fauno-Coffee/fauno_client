@@ -120,7 +120,7 @@ width: 32px;
 background-color: #575757;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .header{
     display: flex;
   }

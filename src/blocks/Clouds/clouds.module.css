@@ -37,11 +37,15 @@
 }
 
 .more{
-  text-decoration: underline;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
   color: #000000;
   cursor: pointer;
+  opacity: 0.7;
+}
+
+.more:hover{
+  text-decoration: none !important;
 }
 
 @media (max-width: 768px) {
