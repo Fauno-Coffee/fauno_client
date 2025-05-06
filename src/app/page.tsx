@@ -4,11 +4,16 @@ import s from './page.module.css';
 import { Footer } from '@/blocks/Footer';
 import { Hero } from '@/blocks/Hero';
 import {
+  BigLeftVideoProductsList,
   CapsulesProductsList,
+  CenterImageProductsList,
   DripProductsList,
   EspressoProductsList,
   FiltroProductsList,
+  LeftImageProductsList,
   MobileProductsList,
+  NoImageProductsList,
+  RightImageProductsList,
 } from '@/blocks/ProductsList';
 import { IProduct } from '@/shared/types/Product';
 import {apiUrlBuilder, serverQueryUrlBuilder} from '@/shared/utils/urlBuilder';
@@ -18,84 +23,77 @@ import { Button } from '@/shared/ui';
 import Link from 'next/link';
 import { StickyNavbar } from '@/components/StickyNavbar';
 import { ICategory } from '@/shared/types/Category';
+import { ReactElement, ReactNode } from 'react';
+
+async function getProductsByCategory(categoryId: number) {
+  try {
+    const res = await fetch(serverQueryUrlBuilder(`/product?categoryId=${categoryId}&limit=6`));
+    const data = await res.json();
+    if (data?.rows && !!data?.rows?.length) {
+      return {category: data?.category, products: data?.rows};
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function getCategories() {
   try {
-    const res = await fetch(apiUrlBuilder('/category'));
-    // console.log(res);
+    const res = await fetch(serverQueryUrlBuilder('/block?name=products'));
+    const data = await res.json();
+    const result = await Promise.all(data.data.categories.map(async (category) => {
+      const products = await getProductsByCategory(category.id)
+      return({
+        id: category.id,
+        layout: category.layout,
+        products: products?.products,
+        category: products?.category,
+      })
+    }))
+    return result;
   } catch (error) {
     console.log(error);
   }
 }
 
-async function getProductsFiltro() {
-  try {
-    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=1&limit=4'));
-    const data = await res.json();
-    if (data?.rows && !!data?.rows?.length) {
-      console.log(data)
-      return data?.rows;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
 
-async function getProductsDrip() {
-  try {
-    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=2&limit=6'));
-    const data = await res.json();
-    if (data?.rows && !!data?.rows?.length) {
-      return {products: data?.rows, category: data?.category};
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+export type Layouts = "bigLeftVideo" | "rightImage" | "leftImage" | "centerImage" | "noImage"
 
-async function getProductsEspresso() {
-  try {
-    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=3&limit=6'));
-    const data = await res.json();
-    if (data?.rows && !!data?.rows?.length) {
-      return {products: data?.rows, category: data?.category};
-    }
-  } catch (error) {
-    console.log(error);
+const getComponentByLayout = (layout: Layouts, products: IProduct[], category: ICategory) => {
+  if(!category){
+    return null
   }
-}
+  const Layouts: Record<Layouts, ReactElement> = {
+    "bigLeftVideo": <BigLeftVideoProductsList key={category.id} products={products} category={category} />,
+    "rightImage": <RightImageProductsList key={category.id} products={products} category={category} />,
+    "leftImage": <LeftImageProductsList key={category.id} products={products} category={category} />,
+    "centerImage": <CenterImageProductsList key={category.id} products={products} category={category} />,
+    "noImage": <NoImageProductsList key={category.id} products={products} category={category} />,
+  }  
 
-async function getProductsCapsule() {
-  try {
-    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=4&limit=6'));
-    const data = await res.json();
-    if (data?.rows && !!data?.rows?.length) {
-      return {products: data?.rows, category: data?.category};
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  return Layouts[layout]
 }
 
 export default async function Home() {
-  const filtro: IProduct[] = await getProductsFiltro();
-  const drip: {products: IProduct[], category: ICategory} | undefined = await getProductsDrip();
-  const espresso: {products: IProduct[], category: ICategory} | undefined = await getProductsEspresso();
-  const capsule: {products: IProduct[], category: ICategory} | undefined = await getProductsCapsule();
-  
   const categories = await getCategories();
+
+  if(!categories) return null
 
   return (
     <div className={s.page}>
       <Hero />
       <StickyNavbar />
       <Feautures />
-      <MobileProductsList products={[filtro, drip?.products || [], espresso?.products || [], capsule?.products || []]} />
+      <MobileProductsList products={categories?.map((c) => c.products || [])} />
       <div className={s.products_wrapper}>
-        {filtro && <FiltroProductsList products={filtro} />}
+        {
+          categories.map((c: any) => getComponentByLayout(c.layout, c.products, c.category))
+        }
+
+        {/* {filtro && <FiltroProductsList products={filtro} />}
         {drip && <DripProductsList category={drip.category} products={drip.products} />}
         {espresso && <EspressoProductsList category={espresso.category} products={espresso.products} />}
-        {capsule && <CapsulesProductsList category={capsule.category} products={capsule.products} />}
+        {capsule && <CapsulesProductsList category={capsule.category} products={capsule.products} />} */}
       </div>
 
       <div className={s.catalog}>

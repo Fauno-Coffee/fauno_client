@@ -15,7 +15,7 @@ interface IAllProductsListProps {
   products: IProduct[][];
 }
 
-export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
+export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
     <div className={s.wrapper}>
       <div className={s.big_2x2}>
@@ -33,7 +33,7 @@ export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
   );
 };
 
-export const DripProductsList: FC<IProductsListProps> = ({ products, category }) => {
+export const RightImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   return (
     <div className={s.wrapper}>
       {products?.map((product, index) => {
@@ -59,7 +59,7 @@ export const DripProductsList: FC<IProductsListProps> = ({ products, category })
   );
 };
 
-export const EspressoProductsList: FC<IProductsListProps> = ({ products, category }) => {
+export const LeftImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 4), products.slice(4)];
   return (
     <div className={s.wrapper}>
@@ -102,7 +102,7 @@ export const EspressoProductsList: FC<IProductsListProps> = ({ products, categor
   );
 };
 
-export const CapsulesProductsList: FC<IProductsListProps> = ({ products, category }) => {
+export const CenterImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 5), products.slice(5)];
   return (
     <div className={s.wrapper}>
@@ -124,6 +124,16 @@ export const CapsulesProductsList: FC<IProductsListProps> = ({ products, categor
       {products &&
         !!products?.length &&
         productsSliced[1]?.map(product => <ProductCard key={product?.id} product={product} />)}
+    </div>
+  );
+};
+
+export const NoImageProductsList: FC<IProductsListProps> = ({ products }) => {
+  return (
+    <div className={s.wrapper}>
+      {products &&
+        !!products?.length &&
+        products.map(product => <ProductCard key={product?.id} product={product} />)}
     </div>
   );
 };
