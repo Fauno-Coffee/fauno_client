@@ -83,6 +83,8 @@ export default async function Home() {
 
   const categories = await getCategories();
 
+  console.log(filtro)
+
   return (
     <div className={s.page}>
       <Hero />
