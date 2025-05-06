@@ -11,7 +11,7 @@ import {
   MobileProductsList,
 } from '@/blocks/ProductsList';
 import { IProduct } from '@/shared/types/Product';
-import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
+import {apiUrlBuilder, serverQueryUrlBuilder} from '@/shared/utils/urlBuilder';
 import { NotCoffee } from '@/blocks/NotCoffee';
 import { Feautures } from '@/blocks/Feautures';
 import { Button } from '@/shared/ui';
@@ -29,7 +29,7 @@ async function getCategories() {
 
 async function getProductsFiltro() {
   try {
-    const res = await fetch(apiUrlBuilder('/product?categoryId=1&limit=4'));
+    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=1&limit=4'));
     const data = await res.json();
     if (data?.rows && !!data?.rows?.length) {
       return data?.rows;
@@ -41,7 +41,7 @@ async function getProductsFiltro() {
 
 async function getProductsDrip() {
   try {
-    const res = await fetch(apiUrlBuilder('/product?categoryId=2&limit=6'));
+    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=2&limit=6'));
     const data = await res.json();
     if (data?.rows && !!data?.rows?.length) {
       return data?.rows;
@@ -53,7 +53,7 @@ async function getProductsDrip() {
 
 async function getProductsEspresso() {
   try {
-    const res = await fetch(apiUrlBuilder('/product?categoryId=3&limit=6'));
+    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=3&limit=6'));
     const data = await res.json();
     if (data?.rows && !!data?.rows?.length) {
       return data?.rows;
@@ -65,7 +65,7 @@ async function getProductsEspresso() {
 
 async function getProductsCapsule() {
   try {
-    const res = await fetch(apiUrlBuilder('/product?categoryId=4&limit=6'));
+    const res = await fetch(serverQueryUrlBuilder('/product?categoryId=4&limit=6'));
     const data = await res.json();
     if (data?.rows && !!data?.rows?.length) {
       return data?.rows;
