@@ -4,9 +4,11 @@ import { IProduct } from '@/shared/types/Product';
 import { ProductCard } from '@/components/ProductCard';
 import { AllCategoriesCard, CategoryCard } from '@/components/CategoryCard';
 import { Reveal } from '@/shared/ui/Reveal';
+import { ICategory } from '@/shared/types/Category';
 
 interface IProductsListProps {
   products: IProduct[];
+  category?: ICategory
 }
 
 interface IAllProductsListProps {
@@ -31,7 +33,7 @@ export const FiltroProductsList: FC<IProductsListProps> = ({ products }) => {
   );
 };
 
-export const DripProductsList: FC<IProductsListProps> = ({ products }) => {
+export const DripProductsList: FC<IProductsListProps> = ({ products, category }) => {
   return (
     <div className={s.wrapper}>
       {products?.map((product, index) => {
@@ -45,20 +47,19 @@ export const DripProductsList: FC<IProductsListProps> = ({ products }) => {
       <div className={s.big_2x1}>
         <CategoryCard
           category={{
-            id: 6,
-            name: 'Drip',
-            description:
-              'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
-            imageUrl: '/drip.png',
+            id: category?.id || 0,
+            name: category?.name || '',
+            description: category?.description || '',
+            imageUrl: category?.imageUrl || '',
           }}
-          hardcodeImage
+          // hardcodeImage
         />
       </div>
     </div>
   );
 };
 
-export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
+export const EspressoProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 4), products.slice(4)];
   return (
     <div className={s.wrapper}>
@@ -76,14 +77,11 @@ export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
       <div className={s.big_2x1}>
         <CategoryCard
           category={{
-            id: 6,
-            name: 'Espresso',
-            description:
-              'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
-            imageUrl: '/espresso.png',
-          }}
-          hardcodeImage
-        />
+            id: category?.id || 0,
+            name: category?.name || '',
+            description: category?.description || '',
+            imageUrl: category?.imageUrl || '',
+          }} />
       </div>
 
       {products &&
@@ -104,7 +102,7 @@ export const EspressoProductsList: FC<IProductsListProps> = ({ products }) => {
   );
 };
 
-export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
+export const CapsulesProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 5), products.slice(5)];
   return (
     <div className={s.wrapper}>
@@ -115,13 +113,11 @@ export const CapsulesProductsList: FC<IProductsListProps> = ({ products }) => {
       <div className={s.big_2x1}>
         <CategoryCard
           category={{
-            id: 6,
-            name: 'Capsules',
-            description:
-              'Редкий и необычный эксперимент с добавлением розмарина в ходе анаэробной кофе натурального кофе',
-            imageUrl: '/capsules.png',
+            id: category?.id || 0,
+            name: category?.name || '',
+            description: category?.description || '',
+            imageUrl: category?.imageUrl || '',
           }}
-          hardcodeImage
         />
       </div>
 
