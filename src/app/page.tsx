@@ -5,25 +5,21 @@ import { Footer } from '@/blocks/Footer';
 import { Hero } from '@/blocks/Hero';
 import {
   BigLeftVideoProductsList,
-  CapsulesProductsList,
   CenterImageProductsList,
-  DripProductsList,
-  EspressoProductsList,
-  FiltroProductsList,
   LeftImageProductsList,
   MobileProductsList,
   NoImageProductsList,
   RightImageProductsList,
 } from '@/blocks/ProductsList';
 import { IProduct } from '@/shared/types/Product';
-import {apiUrlBuilder, serverQueryUrlBuilder} from '@/shared/utils/urlBuilder';
+import {serverQueryUrlBuilder} from '@/shared/utils/urlBuilder';
 import { NotCoffee } from '@/blocks/NotCoffee';
 import { Feautures } from '@/blocks/Feautures';
 import { Button } from '@/shared/ui';
 import Link from 'next/link';
 import { StickyNavbar } from '@/components/StickyNavbar';
 import { ICategory } from '@/shared/types/Category';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 
 async function getProductsByCategory(categoryId: number) {
   try {
@@ -41,7 +37,7 @@ async function getCategories() {
   try {
     const res = await fetch(serverQueryUrlBuilder('/block?name=products'));
     const data = await res.json();
-    const result = await Promise.all(data.data.categories.map(async (category) => {
+    const result = await Promise.all(data.data.categories.map(async (category: any) => {
       const products = await getProductsByCategory(category.id)
       return({
         id: category.id,
