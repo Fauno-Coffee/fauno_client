@@ -17,10 +17,12 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
           NEXT_PUBLIC_S3_URL: ${{ secrets.NEXT_PUBLIC_S3_URL }}
+          NEXT_PUBLIC_CP_PUBLIC_ID: ${{ secrets.NEXT_PUBLIC_CP_PUBLIC_ID }}
         run: |
           cat <<EOF > .env
           NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
           NEXT_PUBLIC_S3_URL=$NEXT_PUBLIC_S3_URL
+          NEXT_PUBLIC_CP_PUBLIC_ID=$NEXT_PUBLIC_CP_PUBLIC_ID
           
           EOF
         shell: bash
