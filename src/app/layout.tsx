@@ -10,6 +10,7 @@ import { SessionLayout } from '@/layouts/SessionLayout';
 import { CartStoreProvider } from '@/shared/store/CartStoreProvider';
 import { CartLayout } from '@/layouts/CartLayout';
 import { UserStoreProvider } from '@/shared/stores/UserStore/UserStoreProvider';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: '☕ fauno',
@@ -19,6 +20,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang='en'>
+      <Script
+          id="cloudpayments-config"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.cp_publicId = "${process.env.NEXT_PUBLIC_CP_PUBLIC_ID}";
+              window.cp_currency = "RUB";
+              window.cp_lang = "ru-RU";
+            `,
+          }}
+      />
+      <Script src="https://widget.cloudpayments.ru/bundles/cloudpayments.js" />
+      
       <body className={`${SuisseIntl.className}`}>
         <UserStoreProvider>
           <CartStoreProvider>

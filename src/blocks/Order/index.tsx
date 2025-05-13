@@ -2,10 +2,11 @@
 import { useCartStore } from '@/shared/store/CartStoreProvider';
 import s from './Order.module.css';
 import Image from 'next/image';
-import { imageUrlBuilder } from '@/shared/utils/urlBuilder';
+import { apiUrlBuilder, imageUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 import { TitledInput } from '@/shared/ui/TitledInput';
 import { ChangeEvent, useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const Order = () => {
 
@@ -35,6 +36,46 @@ export const Order = () => {
   if(user.discount && user.discount > 0){
     userTotal = cartTotal * (1 - user.discount / 100)
   }
+
+   const handlePay = async () => {
+    // 1. Создаём заказ
+    const url = `/order`;
+
+    const response = await axios.post(apiUrlBuilder(url), {
+        userId: user.id,
+        name, phone: user.phone, mail, address, flat,
+        building, floor, intercom, comment,
+        products: cart.map(p=>({productId:p.product.id, count:p.count}))
+    });
+
+    // console.log(response)
+
+    const { invoiceId, amount, currency } = response.data;
+    const { cp } = window as any
+
+    // // 2. Инициализируем виджет
+    const widget = new cp.CloudPayments();
+    widget.pay('charge', {
+      publicId: process.env.NEXT_PUBLIC_CP_PUBLIC_ID,
+      description: `Заказ №${invoiceId}`,
+      amount,               // сумма заказа
+      currency,             // валюта (RUB)
+      invoiceId,            // номер заказа
+      accountId: user?.id,  // ваш ID плательщика (опционально)
+      data: { orderId: invoiceId }
+    }, {
+      onSuccess: () => {
+        // например, редирект на страницу успешной оплаты
+        window.location.href = `/success?orderId=${invoiceId}`;
+      },
+      onFail: () => {
+        alert('Платёж не прошёл, попробуйте ещё раз');
+      },
+      onComplete: (paymentResult: any) => {
+        console.log('Платёж завершён:', paymentResult);
+      }
+    });
+  };
 
   return (
     <div className={s.blockWrapper}>
@@ -122,7 +163,7 @@ export const Order = () => {
               </div>
             </div>
           </div>
-          <button className={s.pay}>Оплатить — {userTotal.toLocaleString('ru-RU')} ₽</button>
+          <button className={s.pay} onClick={handlePay}>Оплатить — {userTotal.toLocaleString('ru-RU')} ₽</button>
         </div>
         <div className={s.orderDetails}>
           <div className={s.cartItemsList}>
