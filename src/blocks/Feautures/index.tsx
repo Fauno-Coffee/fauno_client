@@ -1,4 +1,3 @@
-'use client'
 import { Delivery } from '@/shared/assets/Delivery';
 import s from './feautures.module.css';
 import { Touring } from '@/shared/assets/Touring';

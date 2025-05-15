@@ -59,7 +59,7 @@ export const BurgerNavbar = () => {
               </a>
             </span>
             <span>
-              <a className={s.link_button} href='#'>
+              <a className={s.link_button} href='/business'>
                 Для бизнеса
               </a>
             </span>

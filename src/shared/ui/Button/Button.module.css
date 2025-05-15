@@ -4,6 +4,7 @@
   border-radius: 50px;
   text-align: center;
   padding-block: 36px;
+  font-size: 22px;
 }
 
 .button_outlined:hover {

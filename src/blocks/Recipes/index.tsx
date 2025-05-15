@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { NextButton } from '@/shared/ui';
 import Link from 'next/link';
 
+// TODO: СДЕЛАТЬ СЕРВЕРНЫЙ ЗАПРОС
+
 export const Recipes = () => {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
 
