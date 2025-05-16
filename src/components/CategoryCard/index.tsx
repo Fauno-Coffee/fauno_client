@@ -4,14 +4,17 @@ import { FC } from 'react';
 import { NextButton } from '@/shared/ui';
 import Image from 'next/image';
 import { imageUrlBuilder } from '@/shared/utils/urlBuilder';
+import Link from 'next/link';
+import { ArrowIcon } from '@/shared/assets';
 
 interface ICategoryCardProps {
-  category: ICategory;
+  category?: ICategory;
   noButton?: boolean;
   hardcodeImage?: boolean;
 }
 
 export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
+  console.log(category)
   return (
     <div className={s.all_wrapper}>
       <div className={s.background}>
@@ -33,22 +36,24 @@ export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
       <div className={s.content}>
         <div className={s.category_name}>{category?.name}</div>
         <div className={s.categories}>
-          <div className={s.subcategory}>
-            <span className={s.subcategory_name}>Integrale</span>
-            <NextButton />
-          </div>
-          <div className={s.subcategory}>
+          <Link href={`/catalog?category=${category?.id}&subcategory=5`} className={s.subcategory}>
             <span className={s.subcategory_name}>Classico</span>
-            <NextButton />
-          </div>
-          <div className={s.subcategory}>
-            <span className={s.subcategory_name}>Issimo</span>
-            <NextButton />
-          </div>
-          <div className={s.subcategory}>
+            <div className={s.button_outlined}>
+              <ArrowIcon />
+            </div>
+          </Link>
+          <Link href={`/catalog?category=${category?.id}&subcategory=9`} className={s.subcategory}>
+            <span className={s.subcategory_name}>Integrale</span>
+            <div className={s.button_outlined}>
+              <ArrowIcon />
+            </div>
+          </Link>
+          <Link href={`/catalog?category=${category?.id}&subcategory=6`} className={s.subcategory}>
             <span className={s.subcategory_name}>Speciale</span>
-            <NextButton />
-          </div>
+            <div className={s.button_outlined}>
+              <ArrowIcon />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

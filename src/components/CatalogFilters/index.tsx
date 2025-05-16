@@ -4,6 +4,7 @@ import s from './CatalogFilters.module.css';
 import { FC, useEffect, useState } from 'react';
 import { ICategory } from '@/shared/types/Category';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
+import { useSearchParams } from 'next/navigation';
 
 interface ICatalogFiltersProps {
   selectedCategory: ICategory | null;
@@ -20,10 +21,22 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [subCategories, setSubCategories] = useState<ICategory[]>([]);
 
+  const searchParams = useSearchParams();
+
   async function getCategories() {
     try {
       const res = await fetch(apiUrlBuilder('/category/main'));
-      setCategories(await res.json());
+      const categories = await res.json()
+      setCategories(categories);
+      const categoryId = searchParams?.get("category")
+      const subcategoryId = searchParams?.get("subcategory")
+
+      if(categoryId){
+        setSelectedCategory(categories.find((x: any) => x.id === Number(categoryId)) || null)
+      }
+      if(subcategoryId){
+        setSelectedCategory(categories.find((x: any) => x.id === Number(subcategoryId)) || null)
+      }
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +89,7 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
         <div className={s.paper}>
           <div
             className={`${s.button} ${selectedSubCategory === null && s.selected}`}
-            onClick={() => setSelectedCategory(null)}
+            onClick={() => setSelectedSubCategory(null)}
           >
             Все коллекции
           </div>

@@ -9,21 +9,23 @@ import { useEffect, useState } from 'react';
 import { IProduct } from '@/shared/types/Product';
 import { CategoryCard } from '@/components/CategoryCard';
 import { ICategory } from '@/shared/types/Category';
+import { useSearchParams } from 'next/navigation';
 
 export const Catalog = () => {
   const [isMobile, setIsMobile] = useState(false);
 
+  
+  const [products, setProducts] = useState<IProduct[]>();
+  const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<ICategory | null>(null);
+  
+  const [category, setCategory] = useState<ICategory | null>(null);
+  
   useEffect(() => {
     if (window !== undefined) {
       setIsMobile(window?.innerWidth <= 768);
     }
   }, []);
-
-  const [products, setProducts] = useState<IProduct[]>();
-  const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(null);
-  const [selectedSubCategory, setSelectedSubCategory] = useState<ICategory | null>(null);
-
-  const [category, setCategory] = useState<ICategory | null>(null);
 
   async function getProducts() {
     const url = category?.id ? `/product?categoryId=${category?.id}` : '/product';

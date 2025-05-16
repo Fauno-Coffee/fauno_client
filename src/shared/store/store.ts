@@ -29,7 +29,7 @@ const loadCartFromServer = async (userId?: number): Promise<ICart[]> => {
 
   const url = `/user/cart?session=${session}${userId ? "&userId="+userId : ''}`
   const res = await fetch(apiUrlBuilder(url))
-  if (!res.ok) throw new Error(res.statusText)
+  if (!res.ok) console.log(res.body)
 
   return res.json()
 }

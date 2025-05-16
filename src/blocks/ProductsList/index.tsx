@@ -5,6 +5,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { AllCategoriesCard, CategoryCard } from '@/components/CategoryCard';
 import { Reveal } from '@/shared/ui/Reveal';
 import { ICategory } from '@/shared/types/Category';
+import Link from 'next/link';
 
 interface IProductsListProps {
   products: IProduct[];
@@ -15,12 +16,12 @@ interface IAllProductsListProps {
   products: IProduct[][];
 }
 
-export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products }) => {
+export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsToShow = products.slice(0, 4)
   return (
     <div className={s.wrapper}>
       <div className={s.big_2x2}>
-        <AllCategoriesCard category={{ id: 5, name: 'Filtro' }} />
+        <AllCategoriesCard category={category} />
       </div>
       {productsToShow?.map((product, index) => {
             return(
@@ -36,7 +37,7 @@ export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products }) =
 
 export const RightImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   return (
-    <div className={s.wrapper}>
+    <Link href={"/catalog?category="+category?.id} className={s.wrapper}>
       {products?.map((product, index) => {
             return(
               <Reveal key={product.id} delay={index * 0.1} height='100%'>
@@ -56,14 +57,14 @@ export const RightImageProductsList: FC<IProductsListProps> = ({ products, categ
           // hardcodeImage
         />
       </div>
-    </div>
+    </Link>
   );
 };
 
 export const LeftImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 4), products.slice(4)];
   return (
-    <div className={s.wrapper}>
+    <Link href={"/catalog?category="+category?.id} className={s.wrapper}>
       {products &&
         !!products?.length &&
         productsSliced[0]?.map((product, index) => {
@@ -95,22 +96,17 @@ export const LeftImageProductsList: FC<IProductsListProps> = ({ products, catego
           )
         })
       }
-
-        
-
-        
-    </div>
+    </Link>
   );
 };
 
 export const CenterImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 5), products.slice(5)];
   return (
-    <div className={s.wrapper}>
+    <Link href={"/catalog?category="+category?.id} className={s.wrapper}>
       {products &&
         !!products?.length &&
         productsSliced[0]?.map(product => <ProductCard key={product?.id} product={product} />)}
-
       <div className={s.big_2x1}>
         <CategoryCard
           category={{
@@ -121,11 +117,10 @@ export const CenterImageProductsList: FC<IProductsListProps> = ({ products, cate
           }}
         />
       </div>
-
       {products &&
         !!products?.length &&
         productsSliced[1]?.map(product => <ProductCard key={product?.id} product={product} />)}
-    </div>
+    </Link>
   );
 };
 

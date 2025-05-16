@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { FaunoGreenLogo } from '@/shared/assets/FaunoGreenLogo';
 import Link from 'next/link';
+import { FaunoHeaderLogo } from '@/shared/assets/FaunoHeaderLogo';
 
 export const Clouds = () => {
   const secondRef = useRef<HTMLDivElement>(null);
@@ -41,8 +42,8 @@ export const Clouds = () => {
         <br /> в ежедневный ритуал“
       </h1>
       <div className={s.company}>
-        <FaunoGreenLogo />
-        <Link href='/about' className={s.more}>
+        <FaunoHeaderLogo width='auto' fill='black' />
+        <Link href='/business' className={s.more}>
           Узнать больше о компании
         </Link>
       </div>

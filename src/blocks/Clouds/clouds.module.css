@@ -1,4 +1,5 @@
 .clouds_block{
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 32px;
