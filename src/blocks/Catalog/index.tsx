@@ -5,11 +5,10 @@ import s from './Catalog.module.css';
 import { CatalogFilters } from '@/components/CatalogFilters';
 import { ProductsList } from '@/blocks/ProductsList';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { IProduct } from '@/shared/types/Product';
 import { CategoryCard } from '@/components/CategoryCard';
 import { ICategory } from '@/shared/types/Category';
-import { useSearchParams } from 'next/navigation';
 
 export const Catalog = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -63,12 +62,14 @@ export const Catalog = () => {
 
   return (
     <div className={s.catalog_wrapper}>
-      <CatalogFilters
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        selectedSubCategory={selectedSubCategory}
-        setSelectedSubCategory={setSelectedSubCategory}
-      />
+      <Suspense>
+        <CatalogFilters
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedSubCategory={selectedSubCategory}
+          setSelectedSubCategory={setSelectedSubCategory}
+        />
+      </Suspense>
       <div className={s.products}>
         {category && !isMobile && <CategoryCard category={category} noButton />}
         {products && !!products?.length && <ProductsList products={products} />}
