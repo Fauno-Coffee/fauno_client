@@ -16,12 +16,12 @@ interface IAllProductsListProps {
   products: IProduct[][];
 }
 
-export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products, category }) => {
+export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products }) => {
   const productsToShow = products.slice(0, 4)
   return (
     <div className={s.wrapper}>
       <div className={s.big_2x2}>
-        <AllCategoriesCard category={category} />
+        <AllCategoriesCard category={{ id: 5, name: 'Filtro' }} />
       </div>
       {productsToShow?.map((product, index) => {
             return(
@@ -37,7 +37,7 @@ export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products, cat
 
 export const RightImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   return (
-    <Link href={"/catalog?category="+category?.id} className={s.wrapper}>
+    <div className={s.wrapper}>
       {products?.map((product, index) => {
             return(
               <Reveal key={product.id} delay={index * 0.1} height='100%'>
@@ -46,7 +46,7 @@ export const RightImageProductsList: FC<IProductsListProps> = ({ products, categ
             )
           })
         }
-      <div className={s.big_2x1}>
+      <Link href={"/catalog?category="+category?.id} className={s.big_2x1}>
         <CategoryCard
           category={{
             id: category?.id || 0,
@@ -56,15 +56,15 @@ export const RightImageProductsList: FC<IProductsListProps> = ({ products, categ
           }}
           // hardcodeImage
         />
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
 export const LeftImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 4), products.slice(4)];
   return (
-    <Link href={"/catalog?category="+category?.id} className={s.wrapper}>
+    <div className={s.wrapper}>
       {products &&
         !!products?.length &&
         productsSliced[0]?.map((product, index) => {
@@ -76,7 +76,7 @@ export const LeftImageProductsList: FC<IProductsListProps> = ({ products, catego
         })
         }
 
-      <div className={s.big_2x1}>
+      <Link href={"/catalog?category="+category?.id} className={s.big_2x1}>
         <CategoryCard
           category={{
             id: category?.id || 0,
@@ -84,7 +84,7 @@ export const LeftImageProductsList: FC<IProductsListProps> = ({ products, catego
             description: category?.description || '',
             imageUrl: category?.imageUrl || '',
           }} />
-      </div>
+      </Link>
 
       {products &&
         !!products?.length &&
@@ -96,18 +96,19 @@ export const LeftImageProductsList: FC<IProductsListProps> = ({ products, catego
           )
         })
       }
-    </Link>
+    </div>
   );
 };
 
 export const CenterImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsSliced = [products.slice(0, 5), products.slice(5)];
   return (
-    <Link href={"/catalog?category="+category?.id} className={s.wrapper}>
+    <div className={s.wrapper}>
       {products &&
         !!products?.length &&
         productsSliced[0]?.map(product => <ProductCard key={product?.id} product={product} />)}
-      <div className={s.big_2x1}>
+
+      <Link href={"/catalog?category="+category?.id} className={s.big_2x1}>
         <CategoryCard
           category={{
             id: category?.id || 0,
@@ -116,11 +117,12 @@ export const CenterImageProductsList: FC<IProductsListProps> = ({ products, cate
             imageUrl: category?.imageUrl || '',
           }}
         />
-      </div>
+      </Link>
+
       {products &&
         !!products?.length &&
         productsSliced[1]?.map(product => <ProductCard key={product?.id} product={product} />)}
-    </Link>
+    </div>
   );
 };
 
