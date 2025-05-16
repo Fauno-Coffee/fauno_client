@@ -30,12 +30,16 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
       setCategories(categories);
       const categoryId = searchParams?.get("category")
       const subcategoryId = searchParams?.get("subcategory")
+      const selectedCategory = categories.find((x: any) => x.id === Number(categoryId)) || null
 
       if(categoryId){
-        setSelectedCategory(categories.find((x: any) => x.id === Number(categoryId)) || null)
+        setSelectedCategory(selectedCategory)
       }
-      if(subcategoryId){
-        setSelectedCategory(categories.find((x: any) => x.id === Number(subcategoryId)) || null)
+      if(selectedCategory && subcategoryId){
+        const res = await fetch(apiUrlBuilder(`/category/by/parent/${selectedCategory.id}`));
+        const subCategories = await res.json()
+
+        setSelectedSubCategory(subCategories.find((x: any) => x.id === Number(subcategoryId)) || null)
       }
     } catch (error) {
       console.log(error);

@@ -68,7 +68,7 @@ export const CategoryCard: FC<ICategoryCardProps> = ({ category, noButton, hardc
           src={
             hardcodeImage
               ? (category?.imageUrl as string)
-              : imageUrlBuilder(category?.imageUrl as string)
+              : imageUrlBuilder((category?.horizontalImageUrl || category?.imageUrl) as string)
           }
           alt='Background'
           layout='fill'

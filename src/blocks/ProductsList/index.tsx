@@ -16,12 +16,12 @@ interface IAllProductsListProps {
   products: IProduct[][];
 }
 
-export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products }) => {
+export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products, category }) => {
   const productsToShow = products.slice(0, 4)
   return (
     <div className={s.wrapper}>
       <div className={s.big_2x2}>
-        <AllCategoriesCard category={{ id: 5, name: 'Filtro' }} />
+        <AllCategoriesCard category={category} />
       </div>
       {productsToShow?.map((product, index) => {
             return(
