@@ -8,6 +8,7 @@ import axios from 'axios';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { PhoneInput } from '@/shared/ui/PhoneInput';
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ export const LoginForm = () => {
 
   const refInputCode = useRef<Array<HTMLInputElement>>([]);
 
-  const [codeHasGenerated, setCodeHasGenerated] = useState(false);
+  const [codeHasGenerated, setCodeHasGenerated] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const { setUser } = useUserStore(state => state);
@@ -43,7 +44,7 @@ export const LoginForm = () => {
         localStorage.setItem('token', res.data.token);
         setUser(res.data.token, res.data.user);
         document.cookie = `token=${res.data.token}; path=/;`;
-        router.push(searchParams?.get("backUrl") || "/profile");
+        router.push(searchParams?.get('backUrl') || '/profile');
       }
     } catch (error) {
       console.log(error);
@@ -89,12 +90,7 @@ export const LoginForm = () => {
       <FaunoHeaderLogo fill='black' />
       {!codeHasGenerated ? (
         <>
-          <OutlinedInput
-            style={{ marginTop: '10px' }}
-            placeholder='Ваш телефон'
-            value={phone}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
-          />
+          <PhoneInput value={phone} onChange={setPhone} />
           <button className={s.submit_button} onClick={onSubmit} disabled={isLoading}>
             Отправить код
           </button>
