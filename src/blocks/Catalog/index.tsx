@@ -13,13 +13,13 @@ import { ICategory } from '@/shared/types/Category';
 export const Catalog = () => {
   const [isMobile, setIsMobile] = useState(false);
 
-  
   const [products, setProducts] = useState<IProduct[]>();
   const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState<ICategory | null>(null);
-  
+
   const [category, setCategory] = useState<ICategory | null>(null);
-  
+  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+
   useEffect(() => {
     if (window !== undefined) {
       setIsMobile(window?.innerWidth <= 768);
@@ -27,7 +27,7 @@ export const Catalog = () => {
   }, []);
 
   async function getProducts() {
-    const url = category?.id ? `/product?categoryId=${category?.id}` : '/product';
+    const url = `/product?categoryId=${category?.id || ''}&regions=${selectedRegions}`;
     try {
       const res = await fetch(apiUrlBuilder(url));
       const data = await res.json();
@@ -58,7 +58,7 @@ export const Catalog = () => {
 
   useEffect(() => {
     getProducts();
-  }, [category?.id]);
+  }, [category?.id, selectedRegions]);
 
   return (
     <div className={s.catalog_wrapper}>
@@ -68,6 +68,8 @@ export const Catalog = () => {
           setSelectedCategory={setSelectedCategory}
           selectedSubCategory={selectedSubCategory}
           setSelectedSubCategory={setSelectedSubCategory}
+          selectedRegions={selectedRegions}
+          setSelectedRegions={setSelectedRegions}
         />
       </Suspense>
       <div className={s.products}>

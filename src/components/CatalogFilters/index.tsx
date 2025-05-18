@@ -5,6 +5,8 @@ import { FC, useEffect, useState } from 'react';
 import { ICategory } from '@/shared/types/Category';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useSearchParams } from 'next/navigation';
+import { ArrowIcon } from '@/shared/assets';
+import { LeftArrow } from '@/shared/assets/LeftArrow';
 
 interface ICatalogFiltersProps {
   selectedCategory: ICategory | null;
@@ -12,34 +14,55 @@ interface ICatalogFiltersProps {
 
   selectedSubCategory: ICategory | null;
   setSelectedSubCategory: (category: ICategory | null) => void;
+
+  selectedRegions: string[];
+  setSelectedRegions: (regions: string[]) => void;
 }
 
 export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
-  const { selectedCategory, setSelectedCategory, selectedSubCategory, setSelectedSubCategory } =
-    props;
+  const {
+    selectedCategory,
+    setSelectedCategory,
+    selectedSubCategory,
+    setSelectedSubCategory,
+    selectedRegions,
+    setSelectedRegions,
+  } = props;
+
+  const [regionsIsVisible, setRegionsIsVisible] = useState(false);
 
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [subCategories, setSubCategories] = useState<ICategory[]>([]);
+
+  const [regions, setRegions] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.log(regions);
+  }, [regions]);
 
   const searchParams = useSearchParams();
 
   async function getCategories() {
     try {
       const res = await fetch(apiUrlBuilder('/category/main'));
-      const categories = await res.json()
+      const { categories, regions } = await res.json();
+
       setCategories(categories);
-      const categoryId = searchParams?.get("category")
-      const subcategoryId = searchParams?.get("subcategory")
-      const selectedCategory = categories.find((x: any) => x.id === Number(categoryId)) || null
+      setRegions(regions);
+      const categoryId = searchParams?.get('category');
+      const subcategoryId = searchParams?.get('subcategory');
+      const selectedCategory = categories.find((x: any) => x.id === Number(categoryId)) || null;
 
-      if(categoryId){
-        setSelectedCategory(selectedCategory)
+      if (categoryId) {
+        setSelectedCategory(selectedCategory);
       }
-      if(selectedCategory && subcategoryId){
+      if (selectedCategory && subcategoryId) {
         const res = await fetch(apiUrlBuilder(`/category/by/parent/${selectedCategory.id}`));
-        const subCategories = await res.json()
+        const subCategories = await res.json();
 
-        setSelectedSubCategory(subCategories.find((x: any) => x.id === Number(subcategoryId)) || null)
+        setSelectedSubCategory(
+          subCategories.find((x: any) => x.id === Number(subcategoryId)) || null,
+        );
       }
     } catch (error) {
       console.log(error);
@@ -54,6 +77,14 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
       console.log(error);
     }
   }
+
+  const selectRegion = (region: string) => {
+    if (selectedRegions.includes(region)) {
+      setSelectedRegions(selectedRegions.filter(reg => reg !== region));
+    } else {
+      setSelectedRegions([...selectedRegions, region]);
+    }
+  };
 
   useEffect(() => {
     getCategories();
@@ -108,6 +139,28 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
           ))}
         </div>
       )}
+
+      <div className={s.paper}>
+        <div className={`${s.button_folding}`} onClick={() => setRegionsIsVisible(prev => !prev)}>
+          <span>Регион</span>
+          <div className={`${s.arrow} ${regionsIsVisible ? s.visible : ''}`}>
+            <LeftArrow />
+          </div>
+        </div>
+        {regionsIsVisible && (
+          <>
+            {regions?.map(region => (
+              <div
+                key={region}
+                className={`${s.button} ${selectedRegions.includes(region) && s.selected}`}
+                onClick={() => selectRegion(region)}
+              >
+                {region}
+              </div>
+            ))}
+          </>
+        )}
+      </div>
     </div>
   );
 };
