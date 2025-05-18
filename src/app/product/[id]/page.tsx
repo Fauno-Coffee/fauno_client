@@ -154,6 +154,15 @@ export default function CatalogPage() {
                   <p className={s.feautureValue}>{cut(productInfo?.keyDescriptor)}</p>
                 </div>
               )}
+              {productInfo && Object.entries(productInfo?.additionalFields).map(data => {
+                  return (
+                    <div className={s.feauture} key={data[0]}>
+                      <p className={s.feautureName}>{data[0]}</p>
+                        <div className={s.divider}></div>
+                      <p className={s.feautureValue}>{cut(data[1])}</p>
+                    </div>
+                  );
+                })}
             </div>
             <div className={s.priceBlock}>
               <div className={s.priceWrapper}>

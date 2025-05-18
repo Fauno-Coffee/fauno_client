@@ -12,6 +12,7 @@ export interface IProduct {
   categoryId: number;
   about: string;
   recipe: object;
+  additionalFields: object;
   weight: number;
   variation: string[];
   processing: string[];
