@@ -51,6 +51,14 @@ export default function CatalogPage() {
       console.log(error);
     }
   }
+  
+  const cut = (s: string) => {
+    if(s.length > 40){
+      return s.slice(0, 40) + "..."
+    } else {
+      return s
+    }
+  }
 
   useEffect(() => {
     getProduct();
@@ -108,42 +116,42 @@ export default function CatalogPage() {
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Разновидность</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{productInfo.variation.join(', ')}</p>
+                  <p className={s.feautureValue}>{cut(productInfo.variation.join(', '))}</p>
                 </div>
               )}
               {productInfo?.processing && productInfo.processing.length > 0 && (
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Обработка</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{productInfo.processing.join(', ')}</p>
+                  <p className={s.feautureValue}>{cut(productInfo.processing.join(', '))}</p>
                 </div>
               )}
               {productInfo?.fermentation && productInfo.fermentation.length > 0 && (
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Ферментация</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{productInfo.fermentation.join(', ')}</p>
+                  <p className={s.feautureValue}>{cut(productInfo.fermentation.join(', '))}</p>
                 </div>
               )}
               {productInfo?.region && (
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Регион</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{productInfo?.region}</p>
+                  <p className={s.feautureValue}>{cut(productInfo?.region)}</p>
                 </div>
               )}
               {productInfo?.farmer && (
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Фермер</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{productInfo?.farmer}</p>
+                  <p className={s.feautureValue}>{cut(productInfo?.farmer)}</p>
                 </div>
               )}
               {productInfo?.keyDescriptor && (
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Ключевой дескриптор</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{productInfo?.keyDescriptor}</p>
+                  <p className={s.feautureValue}>{cut(productInfo?.keyDescriptor)}</p>
                 </div>
               )}
             </div>

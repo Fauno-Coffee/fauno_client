@@ -4,6 +4,7 @@ import s from './Profile.module.css';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 import { ProfileContacts } from '@/components/Profile/ProfileContacts';
 import { ProfileSale } from '@/components/Profile/ProfileSale';
+import { ProfileOrders } from '@/components/Profile/ProfileOrders';
 
 export const Profile = () => {
   const { user } = useUserStore(state => state);
@@ -15,8 +16,8 @@ export const Profile = () => {
       </div>
       <div className={s.cards_wrapper}>
         <ProfileSale />
-
         <ProfileContacts />
+        <ProfileOrders />
       </div>
     </div>
   );

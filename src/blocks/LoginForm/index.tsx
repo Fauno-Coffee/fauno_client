@@ -19,7 +19,7 @@ export const LoginForm = () => {
 
   const refInputCode = useRef<Array<HTMLInputElement>>([]);
 
-  const [codeHasGenerated, setCodeHasGenerated] = useState(true);
+  const [codeHasGenerated, setCodeHasGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const { setUser } = useUserStore(state => state);

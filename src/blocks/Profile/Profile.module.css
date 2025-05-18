@@ -12,13 +12,16 @@
 }
 
 .cards_wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* display: flex; */
   flex-direction: row;
   gap: 10px;
 }
 
 @media (max-width: 1024px) {
   .cards_wrapper {
+    display: flex;
     flex-direction: column;
   }
 }

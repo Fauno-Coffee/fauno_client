@@ -3,7 +3,7 @@ import { IIcon } from '@/shared/assets/types';
 
 export const AddToCartIcon: FC<IIcon> = ({ color }) => {
   return (
-    <svg width='33' height='32' viewBox='0 0 33 32' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg width='28' height='28' viewBox='0 0 33 32' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <g clip-path='url(#clip0_721_3383)'>
         <path
           d='M11.1699 25.2734C12.2661 25.2736 13.1543 26.1625 13.1543 27.2588C13.1541 28.3549 12.266 29.243 11.1699 29.2432C10.0737 29.2432 9.18477 28.355 9.18457 27.2588C9.18457 26.1624 10.0735 25.2734 11.1699 25.2734Z'

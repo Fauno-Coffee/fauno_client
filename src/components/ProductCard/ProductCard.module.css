@@ -5,6 +5,10 @@
   gap: 16px;
 }
 
+.card_wrapper:hover{
+  text-decoration: none !important;
+}
+
 .card_wrapper:hover .brightness {
   opacity: 1 !important;
 }
@@ -88,6 +92,10 @@
 }
 
 @media (max-width: 768px) {
+  .buttonWrapper{
+    display: none;
+  }
+
   .card_wrapper {
     gap: 12px;
   }

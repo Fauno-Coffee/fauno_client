@@ -1,3 +1,4 @@
+'use client'
 import s from './ProductCard.module.css';
 
 import Image from 'next/image';
