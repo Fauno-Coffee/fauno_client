@@ -66,7 +66,7 @@ export const Order = () => {
     }, {
       onSuccess: () => {
         // например, редирект на страницу успешной оплаты
-        window.location.href = `/success?orderId=${invoiceId}`;
+        window.location.href = `/profile`;
       },
       onComplete: (paymentResult: any) => {
         console.log('Платёж завершён:', paymentResult);

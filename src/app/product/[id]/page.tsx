@@ -186,7 +186,7 @@ export default function CatalogPage() {
           )}
           {productInfo?.recipe && (
             <div className={s.pageBlock}>
-              <p className={s.blockHeading}>Рецепт заваривания</p>
+              <p className={s.blockHeading}>Рекомендации по завариванию</p>
               <div className={s.recipe}>
                 {Object.entries(productInfo.recipe).map(data => {
                   if (data[0] != 'description') {

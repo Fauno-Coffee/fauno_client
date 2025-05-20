@@ -74,6 +74,7 @@ export const Catalog = () => {
       </Suspense>
       <div className={s.products}>
         {category && !isMobile && <CategoryCard category={category} noButton />}
+        {!category && !isMobile && <CategoryCard category={{imageUrl: "/categorybg.jpeg", name: "Кофейные лоты, спешалти кофе, чай"} as ICategory} hardcodeImage noButton />}
         {products && !!products?.length && <ProductsList products={products} />}
       </div>
     </div>

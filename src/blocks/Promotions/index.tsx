@@ -29,9 +29,9 @@ export const Promotions = () => {
   return (
     <div className={s.recipes_wrapper}>
       <div className={s.header}>
-        <h2 className={s.title}>Акции и спецпредложения</h2>
+        <h2 className={s.title}>Акции</h2>
         <p className={s.subtitle}>
-        Ваши преимущества от fauno. Узнайте больше о выгоде и программе лояльности
+        Ваши преимущества от fauno.<br/>Узнайте больше о выгоде и программе лояльности
         </p>
       </div>
 

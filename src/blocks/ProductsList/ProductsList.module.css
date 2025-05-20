@@ -20,6 +20,10 @@
   height: 100%;
 }
 
+.big_2x1:hover {
+  text-decoration: none !important;
+}
+
 .mobileWrapper {
   display: none;
 }
