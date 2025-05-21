@@ -27,7 +27,8 @@ export const Catalog = () => {
   }, []);
 
   async function getProducts() {
-    const url = `/product?categoryId=${category?.id || ''}&regions=${selectedRegions}`;
+    const regionsParam = encodeURIComponent(JSON.stringify(selectedRegions));
+    const url = `/product?categoryId=${category?.id || ''}&regions=${regionsParam}`;
     try {
       const res = await fetch(apiUrlBuilder(url));
       const data = await res.json();
@@ -74,7 +75,18 @@ export const Catalog = () => {
       </Suspense>
       <div className={s.products}>
         {category && !isMobile && <CategoryCard category={category} noButton />}
-        {!category && !isMobile && <CategoryCard category={{imageUrl: "/categorybg.jpeg", name: "Кофейные лоты, спешалти кофе, чай"} as ICategory} hardcodeImage noButton />}
+        {!category && !isMobile && (
+          <CategoryCard
+            category={
+              {
+                imageUrl: '/categorybg.jpeg',
+                name: 'Кофейные лоты, спешалти кофе, чай',
+              } as ICategory
+            }
+            hardcodeImage
+            noButton
+          />
+        )}
         {products && !!products?.length && <ProductsList products={products} />}
       </div>
     </div>

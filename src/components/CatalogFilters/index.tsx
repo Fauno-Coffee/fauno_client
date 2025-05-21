@@ -5,7 +5,6 @@ import { FC, useEffect, useState } from 'react';
 import { ICategory } from '@/shared/types/Category';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
 import { useSearchParams } from 'next/navigation';
-import { ArrowIcon } from '@/shared/assets';
 import { LeftArrow } from '@/shared/assets/LeftArrow';
 
 interface ICatalogFiltersProps {
@@ -35,10 +34,6 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
   const [subCategories, setSubCategories] = useState<ICategory[]>([]);
 
   const [regions, setRegions] = useState<string[]>([]);
-
-  useEffect(() => {
-    console.log(regions);
-  }, [regions]);
 
   const searchParams = useSearchParams();
 
