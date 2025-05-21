@@ -15,9 +15,10 @@ import { AddToCartIcon } from '@/shared/assets/AddToCartIcon';
 interface IProductCardProps {
   product: IProduct;
   cartButton?: boolean;
+  isAddToCart?: boolean;
 }
 
-export const ProductCard: FC<IProductCardProps> = ({ product }) => {
+export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = false }) => {
   const { openCart } = useCartStore(state => state);
   const { user } = useUserStore(state => state);
 
@@ -70,11 +71,13 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
           <span>{numberWithSpaces(product?.price)} ₽</span>
         </div>
 
-        <div className={s.buttonWrapper}>
-          <button className={s.addToCart} onClick={addToCart}>
-            <AddToCartIcon />
-          </button>
-        </div>
+        { isAddToCart &&
+          <div className={s.buttonWrapper}>
+            <button className={s.addToCart} onClick={addToCart}>
+              <AddToCartIcon />
+            </button>
+          </div>
+        }
       </div>
     </Link>
   );

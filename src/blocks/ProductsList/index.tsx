@@ -140,7 +140,7 @@ export const ProductsList: FC<IProductsListProps> = ({ products }) => {
       {products?.map((product, index) => {
         return (
           <Reveal key={product.id} delay={index * 0.1} height='100%'>
-            <ProductCard key={product?.id} product={product} cartButton />
+            <ProductCard key={product?.id} product={product} cartButton isAddToCart />
           </Reveal>
         );
       })}
