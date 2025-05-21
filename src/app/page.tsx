@@ -12,7 +12,7 @@ import {
   RightImageProductsList,
 } from '@/blocks/ProductsList';
 import { IProduct } from '@/shared/types/Product';
-import {serverQueryUrlBuilder} from '@/shared/utils/urlBuilder';
+import {apiUrlBuilder, serverQueryUrlBuilder} from '@/shared/utils/urlBuilder';
 import { NotCoffee } from '@/blocks/NotCoffee';
 import { Feautures } from '@/blocks/Feautures';
 import { Button } from '@/shared/ui';
@@ -23,7 +23,7 @@ import { ReactElement } from 'react';
 
 async function getProductsByCategory(categoryId: number) {
   try {
-    const res = await fetch(serverQueryUrlBuilder(`/product?categoryId=${categoryId}&limit=6`));
+    const res = await fetch(apiUrlBuilder(`/product?categoryId=${categoryId}&limit=6`));
     const data = await res.json();
     if (data?.rows && !!data?.rows?.length) {
       return {category: data?.category, products: data?.rows};
@@ -35,7 +35,7 @@ async function getProductsByCategory(categoryId: number) {
 
 async function getCategories() {
   try {
-    const res = await fetch(serverQueryUrlBuilder('/block?name=products'));
+    const res = await fetch(apiUrlBuilder('/block?name=products'));
     const data = await res.json();
     const result = await Promise.all(data.data.categories.map(async (category: any) => {
       const products = await getProductsByCategory(category.id)
@@ -65,7 +65,7 @@ const getComponentByLayout = (layout: Layouts, products: IProduct[], category: I
     "leftImage": <LeftImageProductsList key={category.id} products={products} category={category} />,
     "centerImage": <CenterImageProductsList key={category.id} products={products} category={category} />,
     "noImage": <NoImageProductsList key={category.id} products={products} category={category} />,
-  }  
+  }
 
   return Layouts[layout]
 }
