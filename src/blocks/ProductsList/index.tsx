@@ -139,7 +139,7 @@ export const ProductsList: FC<IProductsListProps> = ({ products }) => {
     <div className={s.catalog_wrapper}>
       {products?.map((product, index) => {
         return (
-          <Reveal key={product.id} delay={index * 0.1} height='100%'>
+          <Reveal key={product.id} delay={(index % 4) * 0.1} height='100%'>
             <ProductCard key={product?.id} product={product} cartButton isAddToCart />
           </Reveal>
         );
@@ -159,7 +159,7 @@ export const MobileProductsList: FC<IAllProductsListProps> = ({ products }) => {
     <div className={s.mobileWrapper}>
       {allProducts?.map((product, index) => {
         return (
-          <Reveal key={product.id} delay={index * 0.1} height='100%'>
+          <Reveal key={product.id} delay={(index % 2) * 0.1} height='100%'>
             <ProductCard key={product?.id} product={product} />
           </Reveal>
         );

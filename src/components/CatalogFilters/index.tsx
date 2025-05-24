@@ -108,7 +108,7 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
             <div
               key={category?.id}
               className={`${s.button} ${selectedCategory?.id === category?.id && s.selected}`}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {setSelectedCategory(category); setSelectedRegions([])}}
             >
               {category?.name}
             </div>
