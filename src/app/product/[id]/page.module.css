@@ -117,6 +117,11 @@
   overflow-wrap: break-word;
 }
 
+.selector {
+  padding: 5px 10px;
+  min-width: 200px;
+}
+
 .priceBlock{
     display: flex;
     align-items: end;
@@ -168,7 +173,7 @@
 
 .productInfo{
     font-size: 18px;
-    text-wrap: balance; 
+    text-wrap: balance;
     white-space: pre-wrap;
 }
 
@@ -181,13 +186,13 @@
 
 .recipeRow{
     font-size: 18px;
-    text-wrap: balance; 
+    text-wrap: balance;
     white-space: pre-wrap;
 }
 
 .recipeRowFootnote{
     font-size: 18px;
-    text-wrap: balance; 
+    text-wrap: balance;
     white-space: pre-wrap;
     opacity: 0.5;
 }
@@ -200,11 +205,11 @@
   .productImages{
     aspect-ratio: unset;
   }
-  
+
   .productGrid{
     padding: 12px 24px;
   }
-  
+
   .categoryWrapper{
     padding: 0 24px;
   }
@@ -232,44 +237,44 @@
     .productGridWrapper {
       gap: 16px;
     }
-  
+
     .categoryWrapper {
       padding: 0 40px;
     }
-  
+
     .productImages {
       aspect-ratio: 4/3;
     }
-  
+
     .aboutProduct,
     .pageBlock {
       padding: 40px;
     }
-  
+
     .name {
       font-size: 48px;
     }
-  
+
     .description {
       font-size: 18px;
     }
-  
+
     .feautureName,
     .feautureValue {
       font-size: 16px;
     }
-  
+
     .priceBlock {
       flex-direction: column;
       align-items: flex-start;
       gap: 22px;
       padding-top: 12px;
     }
-  
+
     .price {
       font-size: 46px;
     }
-  
+
     .priceOld {
       font-size: 36px;
     }
@@ -277,76 +282,79 @@
     .buttonWrapper{
       width: 100%;
     }
-  
+
     .addToCart {
       width: 100%;
       padding: 22px !important;
       font-size: 16px;
     }
-  
+
     .blockHeading {
       font-size: 28px;
     }
-  
+
     .productInfo,
     .recipeRow,
     .recipeRowFootnote {
       font-size: 16px;
     }
   }
-  
+
   /* Mobile (≤480px) */
   @media (max-width: 480px) {
+    .selector {
+      min-width: 150px;
+    }
     .productGrid {
       padding: 8px 20px;
       gap: 12px;
     }
-  
+
     .categoryWrapper {
       padding: 0 20px;
     }
-  
+
     .aboutProduct,
     .pageBlock {
       padding: 24px;
     }
-  
+
     .name {
       font-size: 32px;
     }
-  
+
     .description {
       font-size: 16px;
     }
-  
+
     .feautureName,
     .feautureValue {
       font-size: 14px;
     }
-  
+
     .priceBlock {
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
     }
-  
+
     .price {
       font-size: 28px;
     }
-  
+
     .priceOld {
       font-size: 24px;
     }
-  
+
     .addToCart {
       padding: 12px 32px;
       font-size: 14px;
     }
-  
+
     .blockHeading {
       font-size: 24px;
     }
-  
+
     .productInfo,
     .recipeRow,
     .recipeRowFootnote {

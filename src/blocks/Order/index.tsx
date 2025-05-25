@@ -13,8 +13,6 @@ import { normalizeCountForm } from '@/shared/utils/normalizeCountForm';
 import { CitySearch } from './citySearch';
 import { toast } from 'react-toastify';
 
-
-
 interface ICDEKCity {
   full_name: string;
   code: number;
@@ -52,10 +50,31 @@ interface IForm {
 }
 
 const FAUNO_OPTIONS: IDelivery[] = [
-  { name: 'Курьером по Москве (центр)', days: 1, price: 450, addressRequired: true, cdekOfficeRequired: false },
-  { name: 'Доставка курьером (в пределах МКАД)', days: 1, price: 500, addressRequired: true, cdekOfficeRequired: false },
-  { name: 'Самовывоз из кофейни fauno (ул. Самокатная 3, стр.13)', addressRequired: false, cdekOfficeRequired: false },
-  { name: 'Доставка курьером Яндекс, день в день', price: 1200, addressRequired: true, cdekOfficeRequired: false },
+  {
+    name: 'Курьером по Москве (центр)',
+    days: 1,
+    price: 450,
+    addressRequired: true,
+    cdekOfficeRequired: false,
+  },
+  {
+    name: 'Доставка курьером (в пределах МКАД)',
+    days: 1,
+    price: 500,
+    addressRequired: true,
+    cdekOfficeRequired: false,
+  },
+  {
+    name: 'Самовывоз из кофейни fauno (ул. Самокатная 3, стр.13)',
+    addressRequired: false,
+    cdekOfficeRequired: false,
+  },
+  {
+    name: 'Доставка курьером Яндекс, день в день',
+    price: 1200,
+    addressRequired: true,
+    cdekOfficeRequired: false,
+  },
 ];
 
 export const Order = () => {
@@ -66,17 +85,17 @@ export const Order = () => {
   const [form, setForm] = useState<IForm>({
     name: user.name || '',
     mail: user.mail || '',
-    city: '', 
+    city: '',
     cityId: undefined,
     selectedDelivery: undefined,
-    officeName: '', 
+    officeName: '',
     officeId: '',
-    address: '', 
-    flat: '', 
-    building: '', 
-    floor: '', 
-    intercom: '', 
-    comment: ''
+    address: '',
+    flat: '',
+    building: '',
+    floor: '',
+    intercom: '',
+    comment: '',
   });
 
   // Synchronized user defaults
@@ -87,21 +106,18 @@ export const Order = () => {
   // Cart totals
   const cartTotal = useMemo(
     () => cart.reduce((sum, { product, count }) => sum + product.price * count, 0),
-    [cart]
+    [cart],
   );
-  const userTotal = useMemo(
-    () => {
-      let base = (user.discount && user.discount > 0)
-      ? cartTotal * (1 - user.discount / 100)
-      : cartTotal
+  const userTotal = useMemo(() => {
+    let base =
+      user.discount && user.discount > 0 ? cartTotal * (1 - user.discount / 100) : cartTotal;
 
-      if(form.selectedDelivery){
-        base += form.selectedDelivery.price || 0
-      }
+    if (form.selectedDelivery) {
+      base += form.selectedDelivery.price || 0;
+    }
 
-      return base
-    }, [cartTotal, user.discount, form.selectedDelivery]
-  );
+    return base;
+  }, [cartTotal, user.discount, form.selectedDelivery]);
 
   // City search
   const [cityOptions, setCityOptions] = useState<ICDEKCity[]>([]);
@@ -121,12 +137,12 @@ export const Order = () => {
       // Fetch tariffs
       const weight = cart.reduce((sum, { product, count }) => sum + product.weight * count, 0);
       const tariffRes = await fetch(
-        apiUrlBuilder(`/order/tariffs?cityCode=${form.cityId}&weight=${weight}`)
+        apiUrlBuilder(`/order/tariffs?cityCode=${form.cityId}&weight=${weight}`),
       );
-      
+
       const data = await tariffRes.json();
-      const options = [...data, ...(form.cityId === 44 ? FAUNO_OPTIONS : [])]
-      
+      const options = [...data, ...(form.cityId === 44 ? FAUNO_OPTIONS : [])];
+
       setDeliveryOptions(options);
     };
     loadCdek();
@@ -134,12 +150,15 @@ export const Order = () => {
 
   // Office search
   const [officeOptions, setOfficeOptions] = useState<ICDEKOffice[]>([]);
-  const searchOffice = useCallback((str: string) => {
-    setForm(f => ({ ...f, officeName: str }));
-    if (!str) return setOfficeOptions([]);
-    const fuse = new Fuse(offices, { keys: ['name'], threshold: 0.4 });
-    setOfficeOptions(fuse.search(str).map(r => r.item));
-  }, [offices]);
+  const searchOffice = useCallback(
+    (str: string) => {
+      setForm(f => ({ ...f, officeName: str }));
+      if (!str) return setOfficeOptions([]);
+      const fuse = new Fuse(offices, { keys: ['name'], threshold: 0.4 });
+      setOfficeOptions(fuse.search(str).map(r => r.item));
+    },
+    [offices],
+  );
 
   // Handlers
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -159,54 +178,63 @@ export const Order = () => {
 
   // Payment
   const handlePay = async () => {
-    
-    if(!form.name || !form.mail ){
-      return toast.error("Заполните обязательные поля")
+    if (!form.name || !form.mail) {
+      return toast.error('Заполните обязательные поля');
     }
-    
-    if(!form.city){
-      return toast.error("Введите город")
+
+    if (!form.city) {
+      return toast.error('Введите город');
     }
-    
-    if(!form.cityId){
-      return toast.error("Выберите город из списка")
+
+    if (!form.cityId) {
+      return toast.error('Выберите город из списка');
     }
-    
-    if(!form.selectedDelivery){
-      return toast.error("Выберите способ доставки")
+
+    if (!form.selectedDelivery) {
+      return toast.error('Выберите способ доставки');
     }
-    
-    if(form.selectedDelivery.cdekOfficeRequired && !form.officeId){
-      return toast.error("Выберите пункт выдачи CDEK")
+
+    if (form.selectedDelivery.cdekOfficeRequired && !form.officeId) {
+      return toast.error('Выберите пункт выдачи CDEK');
     }
-    
-    if(form.selectedDelivery.addressRequired){
-      if(!form.address){
-        return toast.error("Укажите адрес доставки")
+
+    if (form.selectedDelivery.addressRequired) {
+      if (!form.address) {
+        return toast.error('Укажите адрес доставки');
       }
     }
-    
+
     const { data } = await axios.post(apiUrlBuilder('/order'), {
       ...form,
       userId: user.id,
       phone: user.phone,
-      products: cart.map(p => ({ productId: p.product.id, count: p.count }))
+      products: cart.map(p => ({
+        productId: p.product.id,
+        count: p.count,
+        selectorValue: p.selectorValue,
+      })),
     });
 
     const { invoiceId, amount, currency } = data;
     const widget = new (window as any).cp.CloudPayments();
-    widget.pay('charge', {
-      publicId: process.env.NEXT_PUBLIC_CP_PUBLIC_ID,
-      description: `Заказ №${invoiceId}`,
-      amount,
-      currency,
-      invoiceId,
-      accountId: user.id,
-      data: { orderId: invoiceId }
-    }, {
-      onSuccess: () => { window.location.href = '/profile'; },
-      onComplete: (res: string) => console.log('Платёж завершён:', res)
-    });
+    widget.pay(
+      'charge',
+      {
+        publicId: process.env.NEXT_PUBLIC_CP_PUBLIC_ID,
+        description: `Заказ №${invoiceId}`,
+        amount,
+        currency,
+        invoiceId,
+        accountId: user.id,
+        data: { orderId: invoiceId },
+      },
+      {
+        onSuccess: () => {
+          window.location.href = '/profile';
+        },
+        onComplete: (res: string) => console.log('Платёж завершён:', res),
+      },
+    );
   };
 
   return (
@@ -214,17 +242,34 @@ export const Order = () => {
       <p className={s.title}>Оформление заказа</p>
       <div className={s.order_wrapper}>
         <div className={s.orderInfo}>
-          {/* Контакты */} 
+          {/* Контакты */}
           <div className={s.fieldsList}>
-            <TitledInput title='ФИО' required name='name' value={form.name} onChange={handleChange} />
+            <TitledInput
+              title='ФИО'
+              required
+              name='name'
+              value={form.name}
+              onChange={handleChange}
+            />
             <div className={s.fieldsRow}>
               <TitledInput title='Телефон' required disabled value={user.phone} />
-              <TitledInput title='Почта' required name='mail' value={form.mail} onChange={handleChange} />
+              <TitledInput
+                title='Почта'
+                required
+                name='mail'
+                value={form.mail}
+                onChange={handleChange}
+              />
             </div>
           </div>
           {/* Город */}
           <div className={s.cityInput}>
-            <CitySearch city={form.city} cityId={form.cityId} setCityOptions={setCityOptions} setForm={setForm} />
+            <CitySearch
+              city={form.city}
+              cityId={form.cityId}
+              setCityOptions={setCityOptions}
+              setForm={setForm}
+            />
             {cityOptions.length > 0 && (
               <div className={s.search_results}>
                 <div className={s.outside_click_handler} onClick={() => setCityOptions([])} />
@@ -246,7 +291,12 @@ export const Order = () => {
                   className={`${s.delivery} ${opt.name === form.selectedDelivery?.name ? s.selected : ''}`}
                   onClick={() => setForm(f => ({ ...f, selectedDelivery: opt }))}
                 >
-                  {opt.name}{opt.days ? `, от ${opt.days} ${normalizeCountForm(opt.days, ['дня', 'дней', 'дней'])}` : ''}{opt.price ? `, ${opt.price} ₽` : ''}{opt.comment ? `, ${opt.comment}` : ''}
+                  {opt.name}
+                  {opt.days
+                    ? `, от ${opt.days} ${normalizeCountForm(opt.days, ['дня', 'дней', 'дней'])}`
+                    : ''}
+                  {opt.price ? `, ${opt.price} ₽` : ''}
+                  {opt.comment ? `, ${opt.comment}` : ''}
                 </div>
               ))}
             </div>
@@ -254,31 +304,51 @@ export const Order = () => {
           {/* Адрес или пункт выдачи */}
           {form.selectedDelivery?.addressRequired && (
             <>
-              <TitledInput title='Адрес (улица, дом)' required name='address' value={form.address} onChange={handleChange} />
+              <TitledInput
+                title='Адрес (улица, дом)'
+                required
+                name='address'
+                value={form.address}
+                onChange={handleChange}
+              />
               <TitledInput title='Кв./офис' name='flat' value={form.flat} onChange={handleChange} />
               <div className={s.fieldsRow}>
-                <TitledInput title='Подъезд' name='building' value={form.building} onChange={handleChange} />
+                <TitledInput
+                  title='Подъезд'
+                  name='building'
+                  value={form.building}
+                  onChange={handleChange}
+                />
                 <TitledInput title='Этаж' name='floor' value={form.floor} onChange={handleChange} />
-                <TitledInput title='Домофон' name='intercom' value={form.intercom} onChange={handleChange} />
+                <TitledInput
+                  title='Домофон'
+                  name='intercom'
+                  value={form.intercom}
+                  onChange={handleChange}
+                />
               </div>
             </>
-          )} 
+          )}
           {form.selectedDelivery?.cdekOfficeRequired && (
             <div className={s.cityInput}>
-              <TitledInput 
-                autoComplete='none' 
+              <TitledInput
+                autoComplete='none'
                 required
-                onFocus={(e) => e.target.setAttribute("autoComplete", "none")} 
-                title='Пункт выдачи CDEK' 
-                name='officeName' 
-                value={form.officeName} 
-                onChange={(e: any) => searchOffice(e.target.value)} 
+                onFocus={e => e.target.setAttribute('autoComplete', 'none')}
+                title='Пункт выдачи CDEK'
+                name='officeName'
+                value={form.officeName}
+                onChange={(e: any) => searchOffice(e.target.value)}
               />
               {officeOptions.length > 0 && (
                 <div className={s.search_results}>
                   <div className={s.outside_click_handler} onClick={() => setOfficeOptions([])} />
                   {officeOptions.map(o => (
-                    <div key={o.code} className={s.search_result} onClick={() => handleSelectOffice(o)}>
+                    <div
+                      key={o.code}
+                      className={s.search_result}
+                      onClick={() => handleSelectOffice(o)}
+                    >
                       <p className={s.search_name}>{o.name}</p>
                     </div>
                   ))}
@@ -287,20 +357,29 @@ export const Order = () => {
             </div>
           )}
           {/* Комментарий */}
-          <TitledInput title='Комментарий' name='comment' value={form.comment} onChange={handleChange} />
+          <TitledInput
+            title='Комментарий'
+            name='comment'
+            value={form.comment}
+            onChange={handleChange}
+          />
           {/* Суммы */}
           <div className={s.mobileDetailsInfoList}>
             <div className={s.detailsRow}>
               <p className={s.detailsRowTitle}>Сумма товаров</p>
               <p className={s.detailsRowValue}>{cartTotal.toLocaleString('ru-RU')} ₽</p>
             </div>
-            {(user.discount && user.discount > 0) ? (
+            {user.discount && user.discount > 0 ? (
               <div className={s.detailsRow}>
                 <p className={s.detailsRowTitle}>Скидка {user.discount}%</p>
-                <p className={s.detailsRowValue}>{(cartTotal * (user.discount/100)).toLocaleString('ru-RU')} ₽</p>
+                <p className={s.detailsRowValue}>
+                  {(cartTotal * (user.discount / 100)).toLocaleString('ru-RU')} ₽
+                </p>
               </div>
-            ) : <></>}
-             {form.selectedDelivery && (
+            ) : (
+              <></>
+            )}
+            {form.selectedDelivery && (
               <div className={s.detailsRow}>
                 <p className={s.detailsRowTitle}>Доставка</p>
                 <p className={s.detailsRowValue}>{form.selectedDelivery.price || 0} ₽</p>
@@ -335,10 +414,16 @@ export const Order = () => {
                   <div className={s.itemInfo}>
                     <p className={s.itemName}>{item.product.name}</p>
                     <p className={s.itemPrice}>{item.product.price.toLocaleString('ru-RU')} ₽</p>
+                    {item?.product?.selector && item.selectorValue && (
+                      <p className={s.itemPrice}>
+                        {item.product?.selector?.name} - {item.selectorValue}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <p className={s.itemPrice}>
-                  {item.count} x <span>{(item.product.price * item.count).toLocaleString('ru-RU')} ₽</span>
+                  {item.count} x{' '}
+                  <span>{(item.product.price * item.count).toLocaleString('ru-RU')} ₽</span>
                 </p>
               </article>
             ))}
@@ -348,12 +433,16 @@ export const Order = () => {
               <p className={s.detailsRowTitle}>Сумма товаров</p>
               <p className={s.detailsRowValue}>{cartTotal.toLocaleString('ru-RU')} ₽</p>
             </div>
-            {(user.discount && user.discount > 0) ? (
+            {user.discount && user.discount > 0 ? (
               <div className={s.detailsRow}>
                 <p className={s.detailsRowTitle}>Скидка {user.discount}%</p>
-                <p className={s.detailsRowValue}>-{(cartTotal * (user.discount/100)).toLocaleString('ru-RU')} ₽</p>
+                <p className={s.detailsRowValue}>
+                  -{(cartTotal * (user.discount / 100)).toLocaleString('ru-RU')} ₽
+                </p>
               </div>
-            ) : <></>}
+            ) : (
+              <></>
+            )}
             {form.selectedDelivery && (
               <div className={s.detailsRow}>
                 <p className={s.detailsRowTitle}>Доставка</p>

@@ -24,5 +24,6 @@ export interface IProduct {
   updatedAt: string;
   images: IImage[];
   isDeleted?: boolean;
+  selector?: Record<string, any>;
   category?: ICategory;
 }

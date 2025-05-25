@@ -28,12 +28,17 @@ export default function CatalogPage() {
   const { openCart } = useCartStore(state => state);
   const { user } = useUserStore(state => state);
 
+  const [selectorValue, setSelectorValue] = useState<string>('');
+
   async function getProduct() {
     const url = `/product/${id}`;
     try {
       const res = await fetch(apiUrlBuilder(url));
       const data = await res.json();
       setProductInfo(data);
+      setSelectorValue(data?.selector?.values?.[0]);
+
+      console.log(data.selector);
     } catch (error) {
       console.log(error);
     }
@@ -45,21 +50,22 @@ export default function CatalogPage() {
       await axios.post(apiUrlBuilder(url), {
         session: localStorage.getItem('session'),
         productId: productInfo?.id,
+        selectorValue,
       });
       openCart(user.id);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   const cut = (s: string) => {
-    return s
+    return s;
     // if(s.length > 40){
     //   return s.slice(0, 40) + "..."
     // } else {
     //   return s
     // }
-  }
+  };
 
   useEffect(() => {
     getProduct();
@@ -152,18 +158,38 @@ export default function CatalogPage() {
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Ключевой дескриптор</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>qwdqwdw dqwdqw  wqdwqkdwkqdm qwmdqwmdkqwmd mqwdqwmdkqd wqdmqkw dqwdqwdqwd</p>
+                  <p className={s.feautureValue}>{productInfo?.keyDescriptor}</p>
                 </div>
               )}
-              {productInfo && Object.entries(productInfo?.additionalFields).map(data => {
+              {productInfo &&
+                Object.entries(productInfo?.additionalFields).map(data => {
                   return (
                     <div className={s.feauture} key={data[0]}>
                       <p className={s.feautureName}>{data[0]}</p>
-                        <div className={s.divider}></div>
+                      <div className={s.divider}></div>
                       <p className={s.feautureValue}>{cut(data[1])}</p>
                     </div>
                   );
                 })}
+              {productInfo?.selector && (
+                <div className={s.feauture}>
+                  <p className={s.feautureName}>{productInfo?.selector?.name}</p>
+                  <div className={s.divider}></div>
+                  <div className={s.feautureValue}>
+                    <select
+                      className={s.selector}
+                      value={selectorValue}
+                      onChange={e => setSelectorValue(e.target.value)}
+                    >
+                      {productInfo?.selector?.values?.map((value: string) => (
+                        <option key={value} value={value}>
+                          {value}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              )}
             </div>
             <div className={s.priceBlock}>
               <div className={s.priceWrapper}>
