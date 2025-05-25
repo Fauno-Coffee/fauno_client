@@ -11,19 +11,19 @@ export default function SwiperSlider() {
             id: "goods",
             title: 'Goods',
             image: '/goods.png',
-            href: '/products?category=goods',
+            href: '/catalog?category=10&subcategory=13',
         },
         {
             id: "gift_kits",
             title: 'Gift kits',
             image: '/gifts.png',
-            href: '/products?category=gifts',
+            href: '/catalog?category=10&subcategory=12',
         },
         {
             id: "home_collection",
             title: 'Home collection',
             image: '/home.png',
-            href: '/products?category=home',
+            href: '/catalog?category=10&subcategory=11',
         },
     ];
 
