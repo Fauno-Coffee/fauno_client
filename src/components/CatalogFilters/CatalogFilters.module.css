@@ -6,6 +6,11 @@
   top: 20px;
   align-self: start;
   width: 100%;
+  transition: 400ms;
+}
+
+.container.down {
+  top: 104px;
 }
 
 .paper {

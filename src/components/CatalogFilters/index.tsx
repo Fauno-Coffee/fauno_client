@@ -37,6 +37,27 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
 
   const searchParams = useSearchParams();
 
+  const [show, setShow] = useState(false)
+
+  const controlNavbar = () => {
+    if(window.innerWidth > 1200){
+      if (window.scrollY > 450) { // if scroll down hide the navbar
+        setShow(false); 
+      } else { // if scroll up show the navbar
+        setShow(true);  
+      }
+    } else {
+      setShow(false)
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+    return () => {
+       window.removeEventListener('scroll', controlNavbar);
+    };
+  }, []);
+
   async function getCategories() {
     try {
       const res = await fetch(apiUrlBuilder('/category/main'));
@@ -94,7 +115,7 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
   }, [selectedCategory]);
 
   return (
-    <div className={s.container}>
+    <div className={`${s.container} ${show ? "" : s.down}`}>
       <div className={s.paper}>
         <div
           className={`${s.button} ${selectedCategory === null && s.selected}`}

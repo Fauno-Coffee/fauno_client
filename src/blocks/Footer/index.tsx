@@ -102,7 +102,7 @@ export const Footer = () => {
       </div>
 
       <div className={s.legal_wrapper}>
-        <span>2023-2024 © ИП Фадеев С. А. ИНН: 502 919 589 904 ОГРН 315 502 900 011 337</span>
+        <span>2023-{new Date().getFullYear()} © ИП Фадеев С. А. ИНН: 502 919 589 904 ОГРН 315 502 900 011 337</span>
         <span>
           <a href='#'>/ Политика обработки персональных данных</a>
         </span>

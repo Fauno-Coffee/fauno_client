@@ -26,7 +26,7 @@ export const NotCoffee = () => {
           <div className={s.cards}>
             <Link 
               className={s.card} 
-              href="/products?category=goods" 
+              href="/catalog?category=10&subcategory=13" 
             >
               <div className={s.card_bg} style={{backgroundImage: "url('/goods.png')"}}></div>
               <div className={s.shadow}></div>
@@ -37,7 +37,7 @@ export const NotCoffee = () => {
             </Link>
             <Link 
               className={s.card} 
-              href="/products?category=gifts" 
+              href="/catalog?category=10&subcategory=12" 
             >
               <div className={s.card_bg} style={{backgroundImage: "url('/gifts.png')"}}></div>
               <div className={s.shadow}></div>
@@ -48,7 +48,7 @@ export const NotCoffee = () => {
             </Link>
             <Link 
               className={s.card} 
-              href="/products?category=home" 
+              href="/catalog?category=10&subcategory=11"
             >
               <div className={s.card_bg} style={{backgroundImage: "url('/home.png')"}}></div>
               <div className={s.shadow}></div>

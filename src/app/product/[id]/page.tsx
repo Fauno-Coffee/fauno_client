@@ -53,11 +53,12 @@ export default function CatalogPage() {
   }
   
   const cut = (s: string) => {
-    if(s.length > 40){
-      return s.slice(0, 40) + "..."
-    } else {
-      return s
-    }
+    return s
+    // if(s.length > 40){
+    //   return s.slice(0, 40) + "..."
+    // } else {
+    //   return s
+    // }
   }
 
   useEffect(() => {
@@ -151,7 +152,7 @@ export default function CatalogPage() {
                 <div className={s.feauture}>
                   <p className={s.feautureName}>Ключевой дескриптор</p>
                   <div className={s.divider}></div>
-                  <p className={s.feautureValue}>{cut(productInfo?.keyDescriptor)}</p>
+                  <p className={s.feautureValue}>qwdqwdw dqwdqw  wqdwqkdwkqdm qwmdqwmdkqwmd mqwdqwmdkqd wqdmqkw dqwdqwdqwd</p>
                 </div>
               )}
               {productInfo && Object.entries(productInfo?.additionalFields).map(data => {

@@ -1,6 +1,7 @@
 .block{
   display: flex;
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
 }
@@ -112,6 +113,7 @@
 @media (max-width: 768px) {
   .blockContent{
     margin-top: 64px;
+    overflow: hidden;
     padding: 0;
   }
 

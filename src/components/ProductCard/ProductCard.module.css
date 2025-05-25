@@ -15,9 +15,10 @@
 
 .brightness {
   display: flex;
+  flex-direction: column;
+
   width: calc(100% - 32px);
   z-index: 3;
-  justify-content: space-between;
   position: absolute;
   top: 16px;
   left: 16px;
@@ -26,6 +27,12 @@
 }
 
 .brightnessTitle {
+  text-transform: uppercase;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.brightnessValue {
   text-transform: uppercase;
   opacity: 0.8;
 }
