@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { ArrowIcon } from '@/shared/assets';
 
 interface ICategoryCardProps {
-  category?: ICategory;
+  category?: Partial<ICategory>;
   noButton?: boolean;
   hardcodeImage?: boolean;
 }
