@@ -152,15 +152,52 @@ export const MobileProductsList: FC<IAllProductsListProps> = ({ products }) => {
       allProducts.push(...productsList);
     }
   });
+  
   return (
     <div className={s.mobileWrapper}>
-      {allProducts?.map((product, index) => {
+      {
+        products.map((productsList, index) => {
+          let category: ICategory | undefined = undefined;
+          
+          if(productsList && productsList.length > 0){
+            category = productsList[0].category
+          }
+
+          return(
+            <div key={"products_list_"+index} className={s.category}>
+              { category ? 
+                <Link href={'/catalog?category=' + category?.id} className={s.big_2x1}>
+                  <CategoryCard
+                  noButton
+                    category={{
+                      id: category?.id || 0,
+                      name: category?.name || '',
+                      description: category?.description || '',
+                      imageUrl: category?.horizontalImageUrl || '',
+                    }}
+                  />
+                </Link> : null
+              }
+              {
+                productsList.map((product, index) => {
+                  return (
+                    <Reveal key={product.id} delay={(index % 2) * 0.1} height='100%'>
+                      <ProductCard key={product?.id} product={product} />
+                    </Reveal>
+                  );
+                })
+              }
+            </div>
+          )
+        })
+      }
+      {/* {allProducts?.map((product, index) => {
         return (
           <Reveal key={product.id} delay={(index % 2) * 0.1} height='100%'>
             <ProductCard key={product?.id} product={product} />
           </Reveal>
         );
-      })}
+      })} */}
     </div>
   );
 };
