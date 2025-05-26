@@ -171,9 +171,10 @@ export const MobileProductsList: FC<IAllProductsListProps> = ({ products }) => {
                   noButton
                     category={{
                       id: category?.id || 0,
-                      name: category?.name || '',
+                      name: (category?.id === 1 || category?.parentId === 1 ) ? "filtro" : category.name,
                       description: category?.description || '',
-                      imageUrl: category?.horizontalImageUrl || '',
+                      imageUrl: category?.imageUrl || '',
+                      parentId: category?.parentId
                     }}
                   />
                 </Link> : null

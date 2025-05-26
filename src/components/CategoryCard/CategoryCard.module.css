@@ -168,9 +168,9 @@
     gap: 8px;
   }
  
-  /* .wrapper .content .category_desc {
+  .wrapper .content .category_desc {
     display: none;
-  } */
+  }
 
   .wrapper .content svg {
     display: none;
