@@ -56,13 +56,13 @@ export const RightImageProductsList: FC<IProductsListProps> = ({ products, categ
           // hardcodeImage
           />
       </Link>
-      {products?.slice(2,6).map((product, index) => {
+      {/* {products?.slice(2,6).map((product, index) => {
         return (
           <Reveal key={product.id} delay={index * 0.1} height='100%'>
             <ProductCard key={product?.id} product={product} />
           </Reveal>
         );
-      })}
+      })} */}
     </div>
   );
 };
