@@ -95,7 +95,7 @@ export const LeftImageProductsList: FC<IProductsListProps> = ({ products, catego
 };
 
 export const CenterImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
-  const productsSliced = [products.slice(0, 5), products.slice(5)];
+  const productsSliced = [products.slice(0, 5), products.slice(5, 6)];
   return (
     <div className={s.wrapper}>
       {products &&
