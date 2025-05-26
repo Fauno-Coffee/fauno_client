@@ -62,7 +62,7 @@ const getComponentByLayout = (layout: Layouts, products: IProduct[], category: I
   const Layouts: Record<Layouts, ReactElement> = {
     "bigLeftVideo": <BigLeftVideoProductsList key={category.id} products={products} category={category} />,
     "rightImage": <RightImageProductsList key={category.id} products={products} category={category} />,
-    "leftImage": <LeftImageProductsList key={category.id} products={products} category={category} />,
+    "leftImage": <RightImageProductsList key={category.id} products={products} category={category} />,
     "centerImage": <CenterImageProductsList key={category.id} products={products} category={category} />,
     "noImage": <NoImageProductsList key={category.id} products={products} category={category} />,
   }

@@ -17,7 +17,8 @@ interface IAllProductsListProps {
 }
 
 export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products, category }) => {
-  const productsToShow = products.slice(0, 4);
+  const productsToShow = products.slice(0, 8);
+  console.log(productsToShow)
   return (
     <div className={s.wrapper}>
       <div className={s.big_2x2}>
@@ -37,7 +38,7 @@ export const BigLeftVideoProductsList: FC<IProductsListProps> = ({ products, cat
 export const RightImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
   return (
     <div className={s.wrapper}>
-      {products?.map((product, index) => {
+      {products?.slice(0,2).map((product, index) => {
         return (
           <Reveal key={product.id} delay={index * 0.1} height='100%'>
             <ProductCard key={product?.id} product={product} />
@@ -53,26 +54,22 @@ export const RightImageProductsList: FC<IProductsListProps> = ({ products, categ
             imageUrl: category?.imageUrl || '',
           }}
           // hardcodeImage
-        />
+          />
       </Link>
+      {products?.slice(2,6).map((product, index) => {
+        return (
+          <Reveal key={product.id} delay={index * 0.1} height='100%'>
+            <ProductCard key={product?.id} product={product} />
+          </Reveal>
+        );
+      })}
     </div>
   );
 };
 
 export const LeftImageProductsList: FC<IProductsListProps> = ({ products, category }) => {
-  const productsSliced = [products.slice(0, 4), products.slice(4)];
   return (
     <div className={s.wrapper}>
-      {products &&
-        !!products?.length &&
-        productsSliced[0]?.map((product, index) => {
-          return (
-            <Reveal key={product.id} delay={index * 0.1} height='100%'>
-              <ProductCard key={product?.id} product={product} />
-            </Reveal>
-          );
-        })}
-
       <Link href={'/catalog?category=' + category?.id} className={s.big_2x1}>
         <CategoryCard
           category={{
@@ -86,7 +83,7 @@ export const LeftImageProductsList: FC<IProductsListProps> = ({ products, catego
 
       {products &&
         !!products?.length &&
-        productsSliced[1]?.map((product, index) => {
+        products.slice(0, 6)?.map((product, index) => {
           return (
             <Reveal key={product.id} delay={index * 0.1} height='100%'>
               <ProductCard key={product?.id} product={product} />

@@ -53,21 +53,21 @@ export const BurgerNavbar = () => {
                 Рецепты
               </Link>
             </span>
-            <span>
+            {/* <span>
               <a className={s.link_button} href='#'>
                 Доставка и оплата
               </a>
-            </span>
+            </span> */}
             <span>
               <a className={s.link_button} href='/business'>
                 Для бизнеса
               </a>
             </span>
-            <span>
+            {/* <span>
               <a className={s.link_button} href='#'>
                 О нас
               </a>
-            </span>
+            </span> */}
           </div>
           <div></div>
         </div>

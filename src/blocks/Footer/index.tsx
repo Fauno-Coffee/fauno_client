@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import s from './footer.module.css';
 import {
   CloudPaymentsLogo,
@@ -14,12 +15,12 @@ export const Footer = () => {
 
       <div className={s.data_wrapper}>
         <div className={s.data}>
-          <span className={s.heading}>
+          {/* <span className={s.heading}>
             <a href=''>О нас</a>
-          </span>
-          <span>
+          </span> */}
+          {/* <span>
             <a href=''>Доставка и оплата</a>
-          </span>
+          </span> */}
           <span>
             <a href=''>Для бизнеса</a>
           </span>
@@ -27,49 +28,46 @@ export const Footer = () => {
 
         <div className={s.data}>
           <span className={s.heading}>
-            <a href=''>Кофе</a>
+            <Link href='/catalog'>Кофе</Link>
           </span>
           <span>
-            <a href=''>Фильтр</a>
+            <Link href='/catalog'>Фильтр</Link>
           </span>
           <span>
-            <a href=''>Эспрессо</a>
+            <Link href='/catalog'>Эспрессо</Link>
           </span>
           <span>
-            <a href=''>Дрипы</a>
+            <Link href='/catalog'>Дрипы</Link>
           </span>
           <span>
-            <a href=''>Капсулы</a>
+            <Link href='/catalog'>Капсулы</Link>
           </span>
         </div>
 
         <div className={s.data}>
           <span className={s.heading}>
-            <a href=''>Не кофе</a>
+            <Link href='/catalog?category=10'>Не кофе</Link>
           </span>
           <span>
-            <a href=''>Аксессуары</a>
+            <Link href='/catalog?category=10&subcategory=13'>Мерч</Link>
           </span>
           <span>
-            <a href=''>Домашняя коллекция</a>
+            <Link href='/catalog?category=10&subcategory=12'>Подарочные наборы</Link>
           </span>
           <span>
-            <a href=''>Мерч</a>
+            <Link href='/catalog?category=10&subcategory=11'>Домашняя коллекция</Link>
           </span>
         </div>
 
         <div className={s.data}>
           <span className={s.heading}>
-            <a href=''>Контакты</a>
+            <p>Контакты</p>
           </span>
           <span>
-            <a href=''>Написать в Whatsapp</a>
+            <a href='mailto:fauno@fauno.coffee'>fauno@fauno.coffee</a>
           </span>
           <span>
-            <a href=''>fauno@fauno.coffee</a>
-          </span>
-          <span>
-            <a href=''>+7 999 999 99 99</a>
+            <a href='tel:89859119114'>+7 985 911-91-14</a>
           </span>
         </div>
 
@@ -78,13 +76,10 @@ export const Footer = () => {
             <a href=''>Медиа</a>
           </span>
           <span>
-            <a href=''>instagram*</a>
+            <a href=''>Instagram*</a>
           </span>
           <span>
-            <a href=''>fauno touring club</a>
-          </span>
-          <span>
-            <a href=''>подписаться на рассылку</a>
+            <a href=''>Telegram</a>
           </span>
         </div>
 

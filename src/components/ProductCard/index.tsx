@@ -40,7 +40,6 @@ export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = fals
   return (
     <Link href={'product/' + product?.link} className={s.card_wrapper}>
       <div className={s.brightness}>
-        <p className={s.brightnessTitle}>Ключевой Дескриптор</p>
         <p className={s.brightnessValue}>{product.keyDescriptor}</p>
       </div>
       {product?.images && !!product?.images?.length && (
