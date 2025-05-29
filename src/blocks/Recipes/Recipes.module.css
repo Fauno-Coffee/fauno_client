@@ -19,9 +19,9 @@
 }
 
 .title {
-  font-size: 8.6rem;
   line-height: 1;
   font-weight: 300;
+  font-size: 4.6rem;
   font-style: italic;
   margin: 0;
   flex-shrink: 0;

@@ -34,7 +34,9 @@ export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
       <div className={s.background_fx_up}></div>
       <div className={s.background_fx_down}></div>
       <div className={s.content}>
-        <div className={s.category_name}>filtro</div>
+        <Link href={`/catalog?category=1`} className={s.subcategory}>
+          <div className={s.category_name}>filtro</div>
+        </Link>
         <div className={s.categories}>
           <Link href={`/catalog?category=1&subcategory=5`} className={s.subcategory}>
             <span className={s.subcategory_name}>classico</span>
@@ -42,14 +44,14 @@ export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
               <ArrowIcon />
             </div>
           </Link>
-          <Link href={`/catalog?category=1&subcategory=9`} className={s.subcategory}>
-            <span className={s.subcategory_name}>integrale</span>
+          <Link href={`/catalog?category=1&subcategory=6`} className={s.subcategory}>
+            <span className={s.subcategory_name}>speciale</span>
             <div className={s.button_outlined}>
               <ArrowIcon />
             </div>
           </Link>
-          <Link href={`/catalog?category=1&subcategory=6`} className={s.subcategory}>
-            <span className={s.subcategory_name}>speciale</span>
+          <Link href={`/catalog?category=1&subcategory=9`} className={s.subcategory}>
+            <span className={s.subcategory_name}>integrale</span>
             <div className={s.button_outlined}>
               <ArrowIcon />
             </div>
