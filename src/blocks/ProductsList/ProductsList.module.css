@@ -3,8 +3,8 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 30px;
-  column-gap: 20px;
+  row-gap: 3.0rem;
+  column-gap: 2.0rem;
 }
 
 .big_2x2 {
@@ -39,15 +39,15 @@
   .mobileWrapper {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 2.2rem;
   }
 
   .category{
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 16px;
+    gap: 1.2rem;
+    padding: 0 1.6rem;
   }
 
   .catalog_wrapper {

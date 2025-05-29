@@ -3,14 +3,14 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding: 64px 0;
+  padding: 6.4rem 0;
 }
 
 .blockContent{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  padding: 0 40px;
+  gap: 2.2rem;
+  padding: 0 4.0rem;
   width: 100%;
 }
 
@@ -23,7 +23,7 @@
   height: 50%;
   border-radius: 50%;
   background: #dad8d1;
-  filter: blur(46px);
+  filter: blur(4.6rem);
   opacity: 0;
   transition: 400ms;
 }
@@ -41,23 +41,23 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 2.2rem;
   align-items: center;
   justify-content: center;
-  padding: 32px 0;
-  /* border-top: 1px solid #000000; */
+  padding: 3.2rem 0;
+  /* border-top: 0.1rem solid #000000; */
   transition: 300ms;
-  border-bottom: 1px solid #000000;
+  border-bottom: 0.1rem solid #000000;
 }
 
 .name{
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 300;
 }
 
 @media (max-width: 768px) {
   .block{
-    padding: 32px 16px;
+    padding: 3.2rem 1.6rem;
   }
 
   .blockContent{
@@ -70,14 +70,14 @@
   .feauture{
     flex-direction: row;
     justify-content: flex-start;
-    gap: 18px;
+    gap: 1.8rem;
     border-top: none;
-    padding: 22px 0px;
-    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 2.2rem 0.0rem;
+    border-bottom: 0.1rem solid rgba(0,0,0,0.3);
   }
 
   .feauture svg{
-    width: 42px;
+    width: 4.2rem;
     height: auto;
   }
 

@@ -2,7 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .card_wrapper:hover{
@@ -17,11 +18,11 @@
   display: flex;
   flex-direction: column;
 
-  width: calc(100% - 32px);
+  width: calc(100% - 3.2rem);
   z-index: 3;
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 1.6rem;
+  left: 1.6rem;
   opacity: 0;
   transition: 300ms;
 }
@@ -39,13 +40,13 @@
 
 .dotsWrapper {
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 9px;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.9rem;
   background: #301E03;
   opacity: 0.3;
 }
@@ -59,7 +60,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 323/380;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   overflow: hidden;
 }
 
@@ -68,19 +69,19 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 .card_info_text {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .buttonWrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1.2rem;
   height: 80%;
   aspect-ratio: 1;
   position: relative;
@@ -91,8 +92,8 @@
   top: 0;
   right: 0;
   background: #3C5F3B;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
   border: none;
   outline: none;
   cursor: pointer;
@@ -104,7 +105,7 @@
   }
 
   .card_wrapper {
-    gap: 12px;
+    gap: 1.2rem;
   }
 
   .brightness {
@@ -112,15 +113,15 @@
   }
 
   .card_info {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 
   .addToCart {
-    padding: 10px;
+    padding: 1.0rem;
   }
 
   .addToCart svg {
-    width: 21px;
-    height: 20px;
+    width: 2.1rem;
+    height: 2.0rem;
   }
 }

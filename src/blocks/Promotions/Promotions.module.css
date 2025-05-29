@@ -2,10 +2,10 @@
 
 .recipes_wrapper {
   width: 100%;
-  padding: 64px 40px;
+  padding: 6.4rem 4.0rem;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 6.4rem;
   box-sizing: border-box;
 }
 
@@ -15,12 +15,12 @@
   align-items: end;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 2.4rem;
 }
 
 .title {
-  font-size: 86px;
-  max-width: 670px;
+  font-size: 8.6rem;
+  max-width: 67.0rem;
   line-height: 1;
   font-weight: 300;
   font-style: italic;
@@ -29,7 +29,7 @@
 }
 
 .subtitle {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 300;
   line-height: 1.2;
   color: #333;
@@ -40,18 +40,18 @@
 /* Grid */
 .grid {
   display: grid;
-  gap: 32px;
-  /* минимум 280px, максимум 1fr */
+  gap: 3.2rem;
+  /* минимум 28.0rem, максимум 1fr */
   grid-template-columns: 1fr 1fr;
 }
 
 /* Карточка рецепта */
 .card {
   overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(0,0,0,0.2);
   position: relative;
-  border-radius: 12px;
+  border-radius: 1.2rem;
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -78,37 +78,37 @@
 
 .info {
   position: relative;
-  padding: 32px;
+  padding: 3.2rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.8rem;
   color: #000;
   z-index: 2;
 }
 
 .time{
   opacity: 0.8;
-  font-size: 20px;
+  font-size: 2.0rem;
   font-weight: 400;
 }
 
 .button{
   position: absolute;
-  bottom: 32px;
-  left: 32px;
+  bottom: 3.2rem;
+  left: 3.2rem;
   z-index: 3;
 }
 
 .cardTitle {
-  font-size: 46px;
+  font-size: 4.6rem;
   font-weight: 300;
   width: 100%;
-  margin: 0 0 8px 0;
+  margin: 0 0 0.8rem 0;
   text-wrap: balance;
 }
 
 .cardDesc {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 300;
   width: 100%;
   text-wrap: balance;
@@ -119,11 +119,11 @@
 /* Кнопка-стрелка */
 .arrow {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  width: 48px;
-  height: 48px;
-  border: 1px solid #fff;
+  bottom: 2.4rem;
+  left: 2.4rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  border: 0.1rem solid #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -133,10 +133,10 @@
 
 .arrow span {
   display: block;
-  width: 12px;
-  height: 12px;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-right: 0.2rem solid #fff;
+  border-bottom: 0.2rem solid #fff;
   transform: rotate(45deg);
 }
 
@@ -147,30 +147,30 @@
 /* Адаптивность */
 @media (max-width: 1200px) {
   .recipes_wrapper {
-    padding: 48px 32px;
+    padding: 4.8rem 3.2rem;
   }
   .title {
-    font-size: 40px;
+    font-size: 4.0rem;
   }
 }
 
 @media (max-width: 768px) {
   .recipes_wrapper {
-    padding: 32px 24px;
-    gap: 48px;
+    padding: 3.2rem 2.4rem;
+    gap: 4.8rem;
   }
   .header {
     flex-direction: column;
     align-items: flex-start;
   }
   .title {
-    font-size: 32px;
+    font-size: 3.2rem;
   }
   .subtitle {
-    font-size: 15px;
+    font-size: 1.5rem;
   }
   .grid {
-    gap: 24px;
+    gap: 2.4rem;
   }
 
   .info {
@@ -179,28 +179,28 @@
     padding: 0;
     color: #000;
     z-index: 2;
-    gap: 8px;
+    gap: 0.8rem;
   }
 
   .card{
-    border-radius: 0px;
+    border-radius: 0.0rem;
     border: none;
-    gap: 16px;
+    gap: 1.6rem;
   }
 
   .time{
-    font-size: 16px;
+    font-size: 1.6rem;
   }
   
   .button{
     position: absolute;
-    bottom: 16px;
-    left: 16px;
+    bottom: 1.6rem;
+    left: 1.6rem;
     z-index: 3;
   }
 
   .image{
-    border-radius: 8px;
+    border-radius: 0.8rem;
     overflow: hidden;
   }
 
@@ -213,30 +213,30 @@
   }
 
   .cardTitle{
-    font-size: 22px;
+    font-size: 2.2rem;
     margin: 0;
   }
 
   .cardDesc{
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 480px) {
   .recipes_wrapper {
-    padding: 24px 16px;
-    gap: 32px;
+    padding: 2.4rem 1.6rem;
+    gap: 3.2rem;
   }
   .cardTitle {
-    font-size: 28px;
+    font-size: 2.8rem;
     width: 100%;
   }
   .cardDesc {
-    font-size: 14px;
+    font-size: 1.4rem;
     width: 100%;
   }
   .grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 1.6rem;
   }
 }

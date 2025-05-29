@@ -4,18 +4,18 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  gap: 10.0rem;
   overflow: hidden;
-  max-width: 1440px;
-  font-size: 26px;
+  max-width: 144.0rem;
+  font-size: 2.6rem;
 }
 
 .content_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 3.2rem;
   width: 100%;
-  padding: 40px;
+  padding: 4.0rem;
 }
 
 .content_info {
@@ -26,14 +26,14 @@
 }
 
 .content_info_title {
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .content_info_scheme {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 26px;
+  gap: 2.6rem;
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -41,7 +41,7 @@
 .scheme_element {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .scheme_element p {
@@ -59,13 +59,13 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .listItem {
   display: flex;
   flex-direction: row;
-  gap: 22px;
+  gap: 2.2rem;
   flex-wrap: nowrap;
 }
 
@@ -78,23 +78,23 @@
 }
 
 .action_block {
-  padding: 40px;
+  padding: 4.0rem;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 6.4rem;
   width: 100%;
 }
 
 .line {
   width: 100%;
-  height: 1px;
+  height: 0.1rem;
   background: #000;
 }
 
 .actions_content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 3.2rem;
   text-align: center;
   text-wrap: balance;
 }
@@ -104,24 +104,24 @@
 }
 
 .actions_content_title {
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .actions_content_buttons {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .candle_img {
   width: 100%;
-  height: 480px;
+  height: 48.0rem;
   position: relative;
   pointer-events: none;
 }
 
 .content_heading {
-  font-size: 86px;
+  font-size: 8.6rem;
   font-style: italic;
   font-weight: 300;
 }
@@ -129,37 +129,37 @@
 .status_cards {
   display: flex;
   flex-direction: row;
-  gap: 22px;
+  gap: 2.2rem;
   justify-content: space-between;
-  padding: 40px;
+  padding: 4.0rem;
 }
 
 .status {
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 32px;
-  border-radius: 8px;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  padding: 3.2rem;
+  border-radius: 0.8rem;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 2.2rem;
 }
 
 .status_head {
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 1.2rem;
   align-items: center;
 }
 
 .status_number {
-  font-size: 46px;
+  font-size: 4.6rem;
 }
 
 .status_color {
   width: 100%;
-  height: 8px;
-  border-radius: 8px;
+  height: 0.8rem;
+  border-radius: 0.8rem;
 }
 
 .silver {
@@ -178,7 +178,7 @@
   .content_wrapper {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 3.0rem;
   }
 
   .status_cards {
@@ -186,8 +186,8 @@
   }
 
   .block {
-    gap: 20px;
-    font-size: 20px;
+    gap: 2.0rem;
+    font-size: 2.0rem;
   }
 
   .content_img, .content_img_gifts {
@@ -198,11 +198,11 @@
 
 @media (max-width: 768px) {
   .content_heading {
-    font-size: 50px;
+    font-size: 5.0rem;
   }
 
   .content_info_title {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   .content_img, .content_img_gifts {

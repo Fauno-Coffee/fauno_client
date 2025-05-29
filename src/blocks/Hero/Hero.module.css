@@ -31,12 +31,12 @@
 }
 
 .hero_content {
-  padding: 80px 10px 170px;
+  padding: 8.0rem 1.0rem 17.0rem;
 }
 
 @media (max-width: 768px) {
   .hero{
-    margin-top: 84px;
+    margin-top: 8.4rem;
   }
   
   .hero_content svg{
@@ -45,7 +45,7 @@
   }
 
   .hero_content{
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 12.0rem;
+    padding-bottom: 12.0rem;
   }
 }

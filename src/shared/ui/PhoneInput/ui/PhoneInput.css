@@ -1,5 +1,5 @@
 .PhoneInputCountryIcon--border {
-  border-radius: 4px;
+  border-radius: 0.4rem;
   overflow: hidden;
   box-shadow: none;
 }
@@ -17,16 +17,16 @@
 }
 
 .PhoneInput {
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+  border: 0.1rem solid rgba(0, 0, 0, 0.4);
+  border-radius: 0.8rem;
   background: #FFFEF5;
-  padding: 20px;
+  padding: 2.0rem;
 
 }
 
 .PhoneInput input {
-  font-size: 16px;
-  padding-left: 10px;
+  font-size: 1.6rem;
+  padding-left: 1.0rem;
   border: none;
   stroke: none;
   outline: none;

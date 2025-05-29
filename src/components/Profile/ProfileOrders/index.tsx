@@ -47,7 +47,7 @@ export const ProfileOrders: FC = () => {
 
   return (
     <ProfileBgCard title='История заказов'>
-      <table style={{borderSpacing: 0}}>
+      <table style={{borderSpacing: 0, fontSize: "1.6rem"}}>
         <thead>
           <tr>
             <td className={s.cell} style={{width: "25%"}}>Дата оформления</td>

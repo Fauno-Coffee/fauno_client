@@ -36,10 +36,10 @@ export const Clouds = () => {
   return (
     <section className={s.clouds_block}>
       <h1 className={s.heading}>
-        “Fauno заботится о качестве
+        Fauno заботится о качестве
         <br /> жизни и превращает редкий,
         <br /> особенный и необычный кофе
-        <br /> в ежедневный ритуал“
+        <br /> в ежедневный ритуал
       </h1>
       <div className={s.company}>
         <FaunoHeaderLogo width='auto' fill='black' />

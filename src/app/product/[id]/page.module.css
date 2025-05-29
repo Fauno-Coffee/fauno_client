@@ -4,22 +4,22 @@
     justify-content: center;
     width: 100%;
     flex-direction: column;
-    gap: 22px;
+    gap: 2.2rem;
 }
 
 .productGrid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    /* max-width: 1320px; */
+    gap: 1.2rem;
+    /* max-width: 132.0rem; */
     width: 100%;
-    padding: 12px 80px;
+    padding: 1.2rem 8.0rem;
 }
 
 .categoryWrapper{
     display: flex;
     width: 100%;
-    padding: 0 80px;
+    padding: 0 8.0rem;
 }
 
 .productImages{
@@ -38,7 +38,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 1.6rem;
     z-index: 3 !important;
 }
 
@@ -46,39 +46,40 @@
     background: #F4F2E4;
     width: 100%;
     height: 100%;
-    border-radius: 16px;
-    padding: 56px;
+    border-radius: 1.6rem;
+    padding: 5.6rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 22px;
+    gap: 2.2rem;
 }
 
 .pageBlock{
     background: #F4F2E4;
     width: 100%;
     height: 100%;
-    border-radius: 16px;
-    padding: 56px;
+    border-radius: 1.6rem;
+    padding: 5.6rem;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 2.2rem;
 }
 
 .name{
-    font-size: 64px;
-    font-weight: 300;
+    font-size: 6.4rem;
+    font-weight: 200;
     color: #302E2C;
 }
 
 .productHeading{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.6rem;
 }
 
 .description{
-    font-size: 20px;
+    font-size: 2.0rem;
+    font-weight: 300;
     text-wrap: balance;
     color: #302E2C;
 }
@@ -86,40 +87,41 @@
 .feauturesList{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.6rem;
 }
 
 .feauture {
   display: flex;
   align-items: flex-end; /* или baseline, как вам нужно */
-  gap: 10px;
+  gap: 1.0rem;
   width: 100%;
 }
 
 .feautureName {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 300;
   white-space: nowrap;
 }
 
 .divider {
   flex: 1;
-  min-width: 50px;
-  height: 1px;
+  min-width: 5.0rem;
+  height: 0.1rem;
   background: rgba(0, 0, 0, 0.2);
 }
 
 .feautureValue {
   text-align: right;
-  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: 300;
   min-width: 0;
   white-space: normal;
   overflow-wrap: break-word;
 }
 
 .selector {
-  padding: 5px 10px;
-  min-width: 200px;
+  padding: 0.5rem 1.0rem;
+  min-width: 20.0rem;
 }
 
 .priceBlock{
@@ -131,19 +133,19 @@
 
 .priceWrapper{
     display: flex;
-    gap: 12px;
+    gap: 1.2rem;
     align-items: flex-end;
 }
 
 .price{
-    font-size: 46px;
+    font-size: 4.6rem;
     color: #3C5F3B;
     text-wrap: nowrap;
 }
 
 .priceOld{
     color: #1b2c1a;
-    font-size: 32px;
+    font-size: 3.2rem;
     opacity: 0.6;
     font-weight: 300;
     text-decoration: line-through;
@@ -153,26 +155,27 @@
 .buttonWrapper{
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1.2rem;
 }
 
 .addToCart{
-    padding: 16px 64px;
-    border-radius: 12px;
+    padding: 1.6rem 6.4rem;
+    border-radius: 1.2rem;
     background: #3C5F3B;
     color: #FFF;
-    font-size: 18px;
+    font-size: 1.8rem;
     border: none;
     outline: none;
     cursor: pointer;
 }
 
 .blockHeading{
-    font-size: 32px;
+    font-size: 3.2rem;
+    font-weight: 300;
 }
 
 .productInfo{
-    font-size: 18px;
+    font-size: 1.8rem;
     text-wrap: balance;
     white-space: pre-wrap;
 }
@@ -180,18 +183,18 @@
 .recipe{
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1.2rem;
     width: 100%;
 }
 
 .recipeRow{
-    font-size: 18px;
+    font-size: 1.8rem;
     text-wrap: balance;
     white-space: pre-wrap;
 }
 
 .recipeRowFootnote{
-    font-size: 18px;
+    font-size: 1.8rem;
     text-wrap: balance;
     white-space: pre-wrap;
     opacity: 0.5;
@@ -207,11 +210,11 @@
   }
 
   .productGrid{
-    padding: 12px 24px;
+    padding: 1.2rem 2.4rem;
   }
 
   .categoryWrapper{
-    padding: 0 24px;
+    padding: 0 2.4rem;
   }
 }
 
@@ -222,24 +225,24 @@
   .productGrid {
     display: flex;
     flex-direction: column;
-    padding: 12px 40px;
-    gap: 16px;
+    padding: 1.2rem 4.0rem;
+    gap: 1.6rem;
   }
 }
 
 
 
-/* Tablet (≤768px) */
+/* Tablet (≤76.8rem) */
 @media (max-width: 768px) {
     .page{
-      margin-top: 84px;
+      margin-top: 8.4rem;
     }
     .productGridWrapper {
-      gap: 16px;
+      gap: 1.6rem;
     }
 
     .categoryWrapper {
-      padding: 0 40px;
+      padding: 0 4.0rem;
     }
 
     .productImages {
@@ -248,35 +251,35 @@
 
     .aboutProduct,
     .pageBlock {
-      padding: 40px;
+      padding: 4.0rem;
     }
 
     .name {
-      font-size: 48px;
+      font-size: 4.8rem;
     }
 
     .description {
-      font-size: 18px;
+      font-size: 1.8rem;
     }
 
     .feautureName,
     .feautureValue {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
 
     .priceBlock {
       flex-direction: column;
       align-items: flex-start;
-      gap: 22px;
-      padding-top: 12px;
+      gap: 2.2rem;
+      padding-top: 1.2rem;
     }
 
     .price {
-      font-size: 46px;
+      font-size: 4.6rem;
     }
 
     .priceOld {
-      font-size: 36px;
+      font-size: 3.6rem;
     }
 
     .buttonWrapper{
@@ -285,80 +288,80 @@
 
     .addToCart {
       width: 100%;
-      padding: 22px !important;
-      font-size: 16px;
+      padding: 2.2rem !important;
+      font-size: 1.6rem;
     }
 
     .blockHeading {
-      font-size: 28px;
+      font-size: 2.8rem;
     }
 
     .productInfo,
     .recipeRow,
     .recipeRowFootnote {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
   }
 
-  /* Mobile (≤480px) */
+  /* Mobile (≤48.0rem) */
   @media (max-width: 480px) {
     .selector {
-      min-width: 150px;
+      min-width: 15.0rem;
     }
     .productGrid {
-      padding: 8px 20px;
-      gap: 12px;
+      padding: 0.8rem 2.0rem;
+      gap: 1.2rem;
     }
 
     .categoryWrapper {
-      padding: 0 20px;
+      padding: 0 2.0rem;
     }
 
     .aboutProduct,
     .pageBlock {
-      padding: 24px;
+      padding: 2.4rem;
     }
 
     .name {
-      font-size: 32px;
+      font-size: 3.2rem;
     }
 
     .description {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
 
     .feautureName,
     .feautureValue {
-      font-size: 14px;
+      font-size: 1.4rem;
     }
 
     .priceBlock {
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 1.2rem;
     }
 
     .price {
-      font-size: 28px;
+      font-size: 2.8rem;
     }
 
     .priceOld {
-      font-size: 24px;
+      font-size: 2.4rem;
     }
 
     .addToCart {
-      padding: 12px 32px;
-      font-size: 14px;
+      padding: 1.2rem 3.2rem;
+      font-size: 1.4rem;
     }
 
     .blockHeading {
-      font-size: 24px;
+      font-size: 2.4rem;
     }
 
     .productInfo,
     .recipeRow,
     .recipeRowFootnote {
-      font-size: 14px;
+      font-size: 1.4rem;
     }
   }
   

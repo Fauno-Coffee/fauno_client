@@ -2,23 +2,23 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1.5fr;
-  gap: 64px;
+  gap: 6.4rem;
 }
 
 .cartItemsList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
+  gap: 1.6rem;
+  padding-bottom: 3.2rem;
+  border-bottom: 0.1rem solid rgba(0,0,0,0.4);
 }
 
 .detailsInfoList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 32px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
+  gap: 1.6rem;
+  padding: 3.2rem 0;
+  border-bottom: 0.1rem solid rgba(0,0,0,0.4);
 }
 
 .cityInput{
@@ -29,17 +29,17 @@
 .search_results {
 	position: absolute;
 	z-index: 3;
-	top: 80px;
+	top: 8.0rem;
 	left: 0;
-	border-radius: 14px;
-	padding: 4px;
+	border-radius: 1.4rem;
+	padding: 0.4rem;
 	background: #FFFFFF;
-	box-shadow: 0px 0px 3px rgba(165, 177, 202, .3), 0px 10px 40px rgba(165, 177, 202, .3);
+	box-shadow: 0.0rem 0.0rem 0.3rem rgba(165, 177, 202, .3), 0.0rem 1.0rem 4.0rem rgba(165, 177, 202, .3);
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-  min-width: 300px;
-	max-height: 220px;
+  min-width: 30.0rem;
+	max-height: 22.0rem;
 	overflow-y: auto;
 }
 
@@ -48,8 +48,8 @@
 	z-index: 4;
 	display: flex;
 	flex-direction: column;
-	padding: 8px;
-	border-radius: 8px;
+	padding: 0.8rem;
+	border-radius: 0.8rem;
 	cursor: pointer;
 	transition: 300ms;
 }
@@ -68,15 +68,15 @@
 }
 
 .search_name {
-	font-size: 16px;
+	font-size: 1.6rem;
 }
 
 .mobileDetailsInfoList {
   display: none;
   flex-direction: column;
-  gap: 16px;
-  padding: 22px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
+  gap: 1.6rem;
+  padding: 2.2rem 0;
+  border-bottom: 0.1rem solid rgba(0,0,0,0.4);
 }
 
 .cartItem {
@@ -89,18 +89,18 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
 }
 
 .itemName {
-  font-size: 20px;
-  margin: 0 0 4px;
+  font-size: 2.0rem;
+  margin: 0 0 0.4rem;
   font-weight: 500;
 }
 
 .itemPrice {
   margin: 0;
-  font-size: 18px;
+  font-size: 1.8rem;
   color: #4b4b4b;
   text-wrap: nowrap;
 }
@@ -113,21 +113,21 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 2.2rem;
 }
 
 .imageWrapper{
   position: relative;
-  width: 86px;
-  height: 86px;
-  border-radius: 8px;
+  width: 8.6rem;
+  height: 8.6rem;
+  border-radius: 0.8rem;
   overflow: hidden;
 }
 
 .detailsRow{
   display: flex;
   justify-content: space-between;
-  font-size: 22px;
+  font-size: 2.2rem;
 }
 
 .detailsRowValue{
@@ -136,20 +136,20 @@
 
 .blockWrapper{
   width: 100%;
-  padding: 64px 80px;
+  padding: 6.4rem 8.0rem;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 3.2rem;
 }
 
 .deliveryList{
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
 }
 
 .deliveryType{
-  padding-bottom: 12px;
+  padding-bottom: 1.2rem;
 }
 
 .delivery{
@@ -158,33 +158,33 @@
   width: fit-content;
   text-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  padding: 10px 22px;
-  border: 1px solid #3C5F3B20;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  padding: 1.0rem 2.2rem;
+  border: 0.1rem solid #3C5F3B20;
   opacity: 0.8;
-  border-radius: 22px;
+  border-radius: 2.2rem;
 }
 
 .delivery.selected{
-  border: 1px solid #3C5F3B;
+  border: 0.1rem solid #3C5F3B;
   opacity: 1;
 }
 
 .title{
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 300;
 }
 
 .fieldsRow{
   width: 100%;
-  gap: 12px;
+  gap: 1.2rem;
   display: flex;
 }
 
 .fieldsList{
   width: 100%;
-  gap: 22px;
+  gap: 2.2rem;
   display: flex;
   flex-direction: column;
 }
@@ -192,17 +192,17 @@
 .orderInfo{
   display: flex;
   flex-direction: column;
-  gap: 46px;
+  gap: 4.6rem;
 }
 
 .pay{
-  padding: 22px;
+  padding: 2.2rem;
   background: #3C5F3B;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 1.6rem;
   text-align: center;
   transition: 300ms;
   cursor: pointer;
@@ -210,48 +210,48 @@
 
 @media (max-width: 768px) {
   .blockWrapper{
-    margin-top: 84px;
-    padding: 24px;
+    margin-top: 8.4rem;
+    padding: 2.4rem;
   }
 
   .order_wrapper{
     display: flex;
     flex-direction: column-reverse;
-    gap: 22px;
+    gap: 2.2rem;
   }
 
   .imageWrapper{
     position: relative;
-    width: 64px;
-    min-width: 64px;
-    height: 64px;
-    border-radius: 8px;
+    width: 6.4rem;
+    min-width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 0.8rem;
     overflow: hidden;
   }
 
   .itemName{
-    font-size: 18px;
+    font-size: 1.8rem;
   }
   
   .itemPrice{
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 
   .itemInfo{
-    gap: 0px;
+    gap: 0.0rem;
   }
 
   .imageInfo{
-    gap: 16px;
+    gap: 1.6rem;
   }
 
   .title{
-    font-size: 26px;
+    font-size: 2.6rem;
     font-weight: 400;
   }
 
   .cartItemsList{
-    padding-bottom: 22px;
+    padding-bottom: 2.2rem;
   }
 
   .detailsInfoList{
@@ -263,7 +263,7 @@
   }
 
   .detailsRow{
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 
   .fieldsRow{

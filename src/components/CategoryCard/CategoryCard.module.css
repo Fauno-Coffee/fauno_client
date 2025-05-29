@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   overflow: hidden;
   height: 100%;
   width: 100%;
@@ -15,8 +15,8 @@
 }
 
 .wrapper:hover svg{
-  margin-left: 12px;
-  margin-right: 6px;
+  margin-left: 1.2rem;
+  margin-right: 0.6rem;
 }
 
 .all_wrapper .background, .wrapper .background {
@@ -59,20 +59,34 @@
 .all_wrapper .category_name {
   font-weight: 300;
   /* font-style: italic; */
-  font-size: 132px;
+  /* opacity: 0.8; */
+  font-size: 6.8rem;
+  padding-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.divider{
+  display: flex;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 0.6rem;
+  background: #FFFFFF;
 }
 
 .all_wrapper .categories {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2.0rem;
 }
 
 .all_wrapper .subcategory {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1px;
+  padding-bottom: 0.1rem;
 }
 
 .all_wrapper .subcategory:hover {
@@ -80,60 +94,60 @@
 }
 
 .all_wrapper .subcategory:hover .button_outlined {
-  border: 1px solid #FFFFFF;
-  padding: 8px 36px;
+  border: 0.1rem solid #FFFFFF;
+  padding: 0.8rem 3.6rem;
   transition: 400ms;
 }
 
 .button_outlined{
-  border: 1px solid rgba(0,0,0,0);
-  padding: 8px 0;
-  border-radius: 32px;
+  border: 0.1rem solid rgba(0,0,0,0);
+  padding: 0.8rem 0;
+  border-radius: 3.2rem;
   transition: 400ms;
 }
 
 .all_wrapper .subcategory .subcategory_name {
   font-weight: 300;
-  font-size: 68px;
+  font-size: 6.8rem;
 }
 
 .all_wrapper .content {
-  padding: 26px;
+  padding: 2.6rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 100%;
   width: 100%;
 }
 
 
 .wrapper .content {
-  padding: 64px 32px;
+  padding: 6.4rem 3.2rem;
   max-width: 60%;
   text-wrap: balance;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  gap: 20px;
+  gap: 2.0rem;
 }
 
 .wrapper .content .data {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  gap: 1.6rem;
   height: 100%;
 }
 
 .wrapper .content .category_name {
   font-weight: 300;
-  font-size: 46px;
+  font-size: 4.6rem;
 }
 
 .wrapper .content .category_desc {
   font-weight: 300;
-  font-size: 18px;
+  font-size: 1.8rem;
   text-wrap: balance;
 }
 
@@ -144,7 +158,7 @@
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     overflow: hidden;
     height: fit-content;
     width: 100%;
@@ -152,8 +166,8 @@
   }
 
   .wrapper .content {
-    padding: 22px;
-    padding-top: 64px;
+    padding: 2.2rem;
+    padding-top: 6.4rem;
     max-width: 100%;
     width: 100%;
     text-wrap: balance;
@@ -161,11 +175,11 @@
     flex-direction: row;
     justify-content: space-between;
     height: 100%;
-    gap: 4px;
+    gap: 0.4rem;
   }
 
   .wrapper .content .data {
-    gap: 8px;
+    gap: 0.8rem;
   }
  
   .wrapper .content .category_desc {

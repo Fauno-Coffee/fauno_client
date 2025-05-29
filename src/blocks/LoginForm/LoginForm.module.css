@@ -2,16 +2,16 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  padding: 20px;
-  max-width: 420px;
+  gap: 2.2rem;
+  padding: 2.0rem;
+  max-width: 42.0rem;
 }
 
 .submit_button {
-  font-size: 16px;
+  font-size: 1.6rem;
   background: #3C5F3B;
-  border-radius: 8px;
-  padding: 20px 22px;
+  border-radius: 0.8rem;
+  padding: 2.0rem 2.2rem;
   border: none;
   color: #FFFFFF;
   cursor: pointer;
@@ -20,24 +20,25 @@
 .info_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .subTitle {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 .phone {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
 }
 
 .ya_napisal_ne_tot_nomer {
   color: #3C5F3B;
+  font-size: 1.6rem;
 }
 
 .ya_napisal_ne_tot_nomer:hover {
@@ -48,5 +49,5 @@
 .codeInputStack {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 1.5rem;
 }

@@ -1,15 +1,15 @@
 .contacts_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.6rem;
 }
 
 .submit_button {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 700;
   background: #3C5F3B;
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 0.8rem;
+  padding: 1.2rem;
   border: none;
   color: #FFFFFF;
 }
@@ -19,8 +19,8 @@
 }
 
 .cell{
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.2) !important; 
+  padding: 1.6rem 0;
+  border-bottom: 0.1rem solid rgba(0,0,0,0.2) !important; 
 }
 
 thead .cell{

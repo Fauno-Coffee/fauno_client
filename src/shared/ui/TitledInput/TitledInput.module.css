@@ -2,31 +2,31 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .title {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .error {
-  font-size: 16px;
+  font-size: 1.6rem;
   color: #e30c2c;
 }
 
 .required::after{
   content: ' *';
   color: #e30c2c;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
 }
 
 .titled_input {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.4);
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid rgba(0,0,0,0.4);
   background: #FFFEF5;
   -moz-appearance: textfield;
   appearance: textfield;

@@ -11,9 +11,9 @@ export const Profile = () => {
 
   return (
     <div className={s.profile_wrapper}>
-      <div className={s.username}>
+      {/* <div className={s.username}>
         <span>{user?.name || 'Заполните Ваш профиль'}</span>
-      </div>
+      </div> */}
       <div className={s.cards_wrapper}>
         <ProfileSale />
         <ProfileContacts />

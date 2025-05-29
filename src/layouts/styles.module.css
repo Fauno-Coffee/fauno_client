@@ -8,7 +8,7 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0 0 0 / 0.3);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(0.2rem);
     z-index: 999;
     cursor: pointer;
   }
@@ -17,11 +17,11 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 3.2rem;
     height: 100%;
-    width: 600px;
+    width: 60.0rem;
     max-width: 100%;
-    padding: 32px;
+    padding: 3.2rem;
     background: #fffeF5;
     overflow-y: auto;
     cursor: default;
@@ -55,12 +55,13 @@
   
   .cartName {
     margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 3.2rem;
+    font-weight: 400;
   }
   
   .closeBtn {
-    font-size: 1.5rem;
+    font-size: 3.2rem;
+    font-weight: 300;
     line-height: 1;
     background: transparent;
     border: none;
@@ -72,13 +73,14 @@
   .cartItemsList {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 2.4rem;
   }
   
   .cartItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.6rem;
   }
   
   .itemInfo {
@@ -86,47 +88,48 @@
   }
   
   .itemName {
-    margin: 0 0 4px;
+    margin: 0 0 0.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
   }
   
   .itemPrice {
     margin: 0;
-    font-size: 16px;
+    font-size: 1.6rem;
     color: #4b4b4b;
   }
   
   .itemControls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.8rem;
   }
 
   .imageInfo{
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1.2rem;
   }
 
   .imageWrapper{
     position: relative;
-    width: 64px;
-    height: 64px;
-    border-radius: 8px;
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 0.8rem;
     overflow: hidden;
   }
 
   .orderButton{
-    margin-top: 22px;
-    padding: 22px;
+    margin-top: 2.2rem;
+    padding: 2.2rem;
     background: #3C5F3B;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     border: none;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: 1.6rem;
     text-align: center;
     transition: 300ms;
     cursor: pointer;
@@ -142,24 +145,24 @@
   }
   
   .qtyBtn {
-    width: 32px;
-    height: 32px;
+    width: 3.2rem;
+    height: 3.2rem;
     border-radius: 50%;
-    border: 1px solid #d1d1d1;
+    border: 0.1rem solid #d1d1d1;
     background: #fff;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     line-height: 1;
     padding: 0;
     cursor: pointer;
   }
   
   .qtyValue {
-    width: 24px;
+    width: 2.4rem;
     text-align: center;
   }
   
   .emptyMsg {
-    margin: 64px 0 0;
+    margin: 6.4rem 0 0;
     text-align: center;
     color: #7d7d7d;
   }
@@ -174,13 +177,13 @@
   
   @media (max-width: 768px) {
     .cartBackground{
-      height: calc(100dvh - 83px);
-      margin-top: 83px;
+      height: calc(100dvh - 8.3rem);
+      margin-top: 8.3rem;
     }
 
     .cartWrapper {
       width: 100%;
-      padding: 24px 16px;
+      padding: 2.4rem 1.6rem;
     }
   
     .itemInfo {
@@ -190,7 +193,7 @@
   
   @media (max-width: 480px) {
     .cartWrapper {
-      padding: 16px 12px;
+      padding: 1.6rem 1.2rem;
     }
   
     .cartName {
@@ -198,8 +201,8 @@
     }
   
     .qtyBtn {
-      width: 28px;
-      height: 28px;
+      width: 2.8rem;
+      height: 2.8rem;
     }
   }
   

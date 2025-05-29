@@ -7,12 +7,10 @@ import {numberWithSpaces} from '@/shared/utils/numberWithSpaces';
 
 export const ProfileSale: FC = () => {
   const {user} = useUserStore(state => state);
-  console.log(user);
 
   return (
     <ProfileBgCard
       title='Ваша скидка'
-      subTitle='Скидка увеличивается по мере увеличения суммы всех ваших заказов'
     >
       <div className={s.sale_wrapper}>
         <div className={s.sale_calculator_wrapper}>

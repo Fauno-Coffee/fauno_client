@@ -1,14 +1,14 @@
 .profile_wrapper {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 4.0rem;
   color: #302E2C;
 }
 
 .username {
   font-weight: 700;
-  font-size: 20px;
-  padding-block: 30px;
+  font-size: 2.0rem;
+  padding-block: 3.0rem;
 }
 
 .cards_wrapper {
@@ -16,7 +16,7 @@
   grid-template-columns: 1fr 1fr;
   /* display: flex; */
   flex-direction: row;
-  gap: 10px;
+  gap: 1.0rem;
 }
 
 @media (max-width: 1024px) {
@@ -28,6 +28,6 @@
 
 @media (max-width: 768px) {
   .profile_wrapper {
-    margin-top: 84px;
+    margin-top: 8.4rem;
   }
 }
