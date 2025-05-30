@@ -158,7 +158,7 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
 
       <div className={s.paper}>
         <div className={`${s.button_folding}`} onClick={() => setRegionsIsVisible(prev => !prev)}>
-          <span>Регион</span>
+          <span>Страна</span>
           <div className={`${s.arrow} ${regionsIsVisible ? s.visible : ''}`}>
             <LeftArrow />
           </div>

@@ -114,7 +114,7 @@ export default function CatalogPage() {
             <div className={s.feauturesList}>
               {productInfo?.weight && (
                 <div className={s.feauture}>
-                  <p className={s.feautureName}>Масса</p>
+                  <p className={s.feautureName}>Вес</p>
                   <div className={s.divider}></div>
                   <p className={s.feautureValue}>{productInfo?.weight}</p>
                 </div>
@@ -142,7 +142,7 @@ export default function CatalogPage() {
               )}
               {productInfo?.region && (
                 <div className={s.feauture}>
-                  <p className={s.feautureName}>Регион</p>
+                  <p className={s.feautureName}>Страна</p>
                   <div className={s.divider}></div>
                   <p className={s.feautureValue}>{cut(productInfo?.region)}</p>
                 </div>

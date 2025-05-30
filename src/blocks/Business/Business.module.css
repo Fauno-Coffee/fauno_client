@@ -229,7 +229,7 @@
   }
 
   .content_img, .content_img_gifts {
-    width: 100%;
+    display: none;
   }
 
 }
