@@ -52,5 +52,7 @@
 
   .catalog_wrapper {
     grid-template-columns: 1fr 1fr;
+    row-gap: 2.0rem;
+    column-gap: 1.0rem;
   }
 }

@@ -5,7 +5,7 @@
   padding: 6.4rem 4.0rem;
   display: flex;
   flex-direction: column;
-  gap: 6.4rem;
+  gap: 3.2rem;
   box-sizing: border-box;
 }
 
@@ -40,7 +40,7 @@
 /* Grid */
 .grid {
   display: grid;
-  gap: 3.2rem;
+  gap: 4.6rem;
   /* минимум 28.0rem, максимум 1fr */
   grid-template-columns: 1fr 1fr;
 }
@@ -86,56 +86,35 @@
   z-index: 2;
 }
 
-.button{
-  position: absolute;
-  bottom: 3.2rem;
-  left: 3.2rem;
-  z-index: 3;
+.content_img_gifts {
+  width: 100%;
+  position: relative;
+  pointer-events: none;
+  aspect-ratio: 60/50;
+  overflow: hidden;
 }
 
-.cardTitle {
-  font-size: 4.6rem;
-  font-weight: 300;
-  width: 50%;
-  margin: 0 0 0.8rem 0;
+.content_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.6rem;
+  width: 100%;
+  padding: 4.0rem;
+}
+
+.content_info {
+  width: 70%;
   text-wrap: balance;
-}
-
-.cardDesc {
-  font-size: 2.2rem;
-  font-weight: 300;
-  width: 50%;
-  text-wrap: balance;
-  line-height: 1.1;
-  margin: 0;
-}
-
-/* Кнопка-стрелка */
-.arrow {
-  position: absolute;
-  bottom: 2.4rem;
-  left: 2.4rem;
-  width: 4.8rem;
-  height: 4.8rem;
-  border: 0.1rem solid #fff;
-  border-radius: 50%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  font-size: 2.2rem;
   justify-content: center;
-  transition: background 0.2s;
 }
 
-.arrow span {
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-right: 0.2rem solid #fff;
-  border-bottom: 0.2rem solid #fff;
-  transform: rotate(45deg);
-}
-
-.arrow:hover {
-  background: rgba(255,255,255,0.2);
+.content_info_title {
+  font-size: 2.2rem;
+  opacity: 0.7;
 }
 
 /* Адаптивность */
@@ -149,67 +128,21 @@
 }
 
 @media (max-width: 768px) {
-  .recipes_wrapper {
-    padding: 3.2rem 2.4rem;
-    gap: 4.8rem;
-  }
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .title {
-    font-size: 3.2rem;
-  }
-  .subtitle {
-    font-size: 1.5rem;
-  }
-  .grid {
-    gap: 2.4rem;
+  .recipes_wrapper{
+    padding: 2rem 1.6rem;
   }
 
-  .info {
-    position: absolute;
+  .content_info{
+    font-size: 1.6rem !important;
+    width: 100%;
+  }
+
+  .content_wrapper{
     display: flex;
     flex-direction: column;
-    gap: 0.0rem;
-    top: 1.6rem;
-    left: 1.6rem;
-    right: 1.6rem;
-    color: #fff;
-    z-index: 2;
+    padding: 0;
   }
-  
-  .button{
-    position: absolute;
-    bottom: 1.6rem;
-    left: 1.6rem;
-    z-index: 3;
-  }
-
-  .image::after {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 100%);
-  }
-
-  .button{
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .recipes_wrapper {
-    padding: 2.4rem 1.6rem;
-    gap: 3.2rem;
-  }
-  .cardTitle {
-    font-size: 2.8rem;
-    width: 100%;
-  }
-  .cardDesc {
-    font-size: 1.4rem;
-    width: 100%;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
+  .mobileReverse{
+    flex-direction: column-reverse !important;
   }
 }

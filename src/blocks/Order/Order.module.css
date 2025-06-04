@@ -120,7 +120,6 @@
   position: relative;
   width: 8.6rem;
   height: 8.6rem;
-  border-radius: 0.8rem;
   overflow: hidden;
 }
 
@@ -198,7 +197,6 @@
 .pay{
   padding: 2.2rem;
   background: #3C5F3B;
-  border-radius: 0.8rem;
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
@@ -225,7 +223,6 @@
     width: 6.4rem;
     min-width: 6.4rem;
     height: 6.4rem;
-    border-radius: 0.8rem;
     overflow: hidden;
   }
 

@@ -1,0 +1,22 @@
+.breadcrubs{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #441902;
+    opacity: 0.8;
+    font-size: 1.8rem;
+    transition: 300ms;
+}
+
+.breadcrumb:hover{
+    opacity: 1;
+    text-decoration: none !important;
+}

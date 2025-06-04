@@ -19,6 +19,7 @@ import { NotCoffee } from '@/blocks/NotCoffee';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 import { StickyNavbar } from '@/components/StickyNavbar';
 import { FreeDelivery } from '@/blocks/FreeDelivery';
+import { Breadcrubs } from '@/blocks/Breadcrubs/Breadcrubs';
 
 export default function CatalogPage() {
   const { id } = useParams();
@@ -71,12 +72,17 @@ export default function CatalogPage() {
     getProduct();
   }, [id]);
 
+  const categoryId = productInfo?.category?.parentId || productInfo?.category?.id
+
   return (
     <div className={s.page}>
       <Navbar black />
       <StickyNavbar />
       <BurgerNavbar />
       <div className={s.productGridWrapper}>
+        <div className={s.breadcrubs}>
+          <Breadcrubs data={[{name: "Главная", link: "/"}, {name: "Каталог", link: "/catalog"}, {name: productInfo?.category?.name || '', link: "/catalog?category="+categoryId}]} />
+        </div>
         <div className={s.productGrid}>
           <div className={s.productImages}>
             <Swiper

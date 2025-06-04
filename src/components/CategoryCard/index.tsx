@@ -35,23 +35,23 @@ export const AllCategoriesCard: FC<ICategoryCardProps> = ({ category }) => {
       <div className={s.background_fx_down}></div>
       <div className={s.content}>
         <Link href={`/catalog?category=1`} className={s.subcategory}>
-          <div className={s.category_name}>filtro</div>
+          <div className={s.category_name}>Filtro</div>
         </Link>
         <div className={s.categories}>
           <Link href={`/catalog?category=1&subcategory=5`} className={s.subcategory}>
-            <span className={s.subcategory_name}>classico</span>
+            <span className={s.subcategory_name}>Classico</span>
             <div className={s.button_outlined}>
               <ArrowIcon />
             </div>
           </Link>
           <Link href={`/catalog?category=1&subcategory=6`} className={s.subcategory}>
-            <span className={s.subcategory_name}>speciale</span>
+            <span className={s.subcategory_name}>Speciale</span>
             <div className={s.button_outlined}>
               <ArrowIcon />
             </div>
           </Link>
           <Link href={`/catalog?category=1&subcategory=9`} className={s.subcategory}>
-            <span className={s.subcategory_name}>integrale</span>
+            <span className={s.subcategory_name}>Integrale</span>
             <div className={s.button_outlined}>
               <ArrowIcon />
             </div>

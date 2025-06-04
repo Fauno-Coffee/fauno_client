@@ -62,32 +62,36 @@ export const Catalog = () => {
   }, [category?.id, selectedRegions]);
 
   return (
-    <div className={s.catalog_wrapper}>
-      <Suspense>
-        <CatalogFilters
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          selectedSubCategory={selectedSubCategory}
-          setSelectedSubCategory={setSelectedSubCategory}
-          selectedRegions={selectedRegions}
-          setSelectedRegions={setSelectedRegions}
-        />
-      </Suspense>
-      <div className={s.products}>
+    <div className={s.catalogBlockWrapper}>
+      <div className={s.categoryWrapper}>
         {category && !isMobile && <CategoryCard category={category} noButton />}
-        {!category && !isMobile && (
-          <CategoryCard
-            category={
-              {
-                imageUrl: '/categorybg.jpeg',
-                name: 'Кофейные лоты, спешалти кофе, чай',
-              } as ICategory
-            }
-            hardcodeImage
-            noButton
+          {!category && !isMobile && (
+            <CategoryCard
+              category={
+                {
+                  imageUrl: '/categorybg.jpeg',
+                  name: 'Кофейные лоты, спешалти кофе, чай',
+                } as ICategory
+              }
+              hardcodeImage
+              noButton
+            />
+          )}
+      </div>
+      <div className={s.catalog_wrapper}>
+        <Suspense>
+          <CatalogFilters
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            selectedSubCategory={selectedSubCategory}
+            setSelectedSubCategory={setSelectedSubCategory}
+            selectedRegions={selectedRegions}
+            setSelectedRegions={setSelectedRegions}
           />
-        )}
-        {products && !!products?.length && <ProductsList products={products} />}
+        </Suspense>
+        <div className={s.products}>
+          {products && !!products?.length && <ProductsList products={products} />}
+        </div>
       </div>
     </div>
   );

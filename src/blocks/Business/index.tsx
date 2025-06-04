@@ -22,7 +22,7 @@ export const Business = () => {
               <GlobeIcon />
               <p>от закупок зеленого зерна в странах произрастания </p>
             </div>
-            <div style={{ flexShrink: 0, width: '18px' }}>
+            <div className={s.heroDiv} style={{ flexShrink: 0, width: '18px' }}>
               <ArrowIcon stroke='black' />
             </div>
             <div className={s.scheme_element}>
@@ -33,31 +33,31 @@ export const Business = () => {
 
           <div className={s.list}>
             <div className={s.listItem}>
-              <div style={{ flexShrink: 0 }}>
+              <div  className={s.check} style={{ flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <p>Собственное современное производство</p>
             </div>
             <div className={s.listItem}>
-              <div style={{ flexShrink: 0 }}>
+              <div className={s.check} style={{ flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <p>Персональный менеджер</p>
             </div>
             <div className={s.listItem}>
-              <div style={{ flexShrink: 0 }}>
+              <div className={s.check} style={{ flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <p>Постоянный контроль качества</p>
             </div>
             <div className={s.listItem}>
-              <div style={{ flexShrink: 0 }}>
+              <div className={s.check} style={{ flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <p>Обучение для вашего персонала</p>
             </div>
             <div className={s.listItem}>
-              <div style={{ flexShrink: 0 }}>
+              <div className={s.check} style={{ flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <p>Команда с более чем десятилетним опытом работы с кофе в сегменте specialty.</p>
@@ -78,7 +78,7 @@ export const Business = () => {
       </div>
 
       <div className={s.content_wrapper}>
-        <div className={s.content_img_gifts}>
+        <div className={`${s.content_img_gifts} ${s.imggifts}`}>
           <Image
             fill
             src='/gifts.png'

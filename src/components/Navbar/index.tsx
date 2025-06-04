@@ -33,6 +33,11 @@ export const Navbar: FC<INavbarProps> = ({ black }) => {
             Рецепты
           </Link>
         </span>
+        <span>
+          <Link className={s.link_button} href='/about'>
+            О компании
+          </Link>
+        </span>
         {/* <span>
           <a className={s.link_button} href='#'>
             Доставка и оплата

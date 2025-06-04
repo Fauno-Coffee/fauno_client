@@ -41,7 +41,7 @@ export const CatalogFilters: FC<ICatalogFiltersProps> = props => {
 
   const controlNavbar = () => {
     if(window.innerWidth > 1200){
-      if (window.scrollY > 450) { // if scroll down hide the navbar
+      if (window.scrollY > 0) { // if scroll down hide the navbar
         setShow(false); 
       } else { // if scroll up show the navbar
         setShow(true);  

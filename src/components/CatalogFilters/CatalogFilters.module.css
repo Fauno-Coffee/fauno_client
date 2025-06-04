@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   background: #F4F2E4;
-  border-radius: 0.8rem;
   overflow: hidden;
   font-size: 1.6rem;
 }

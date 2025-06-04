@@ -16,9 +16,8 @@
 }
 
 .title {
-  font-size: 7.2rem;
+  font-size: 4.6rem;
   font-weight: 300;
-  font-style: italic;
 }
 
 .image {
@@ -30,8 +29,15 @@
   aspect-ratio: 1/1.2;
 }
 
-.cart_button {
-  width: 100%;
+.cart_button button {
+  /* width: 100%; */
+  border: 1px solid #3C5F3B;
+  cursor: pointer !important;
+  background: none;
+  font-size: 1.6rem;
+  outline: none !important;
+  width: fit-content;
+  padding: 2.2rem  4.6rem !important;
 }
 
 @media screen and (max-width: 1400px) {

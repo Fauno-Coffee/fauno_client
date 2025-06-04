@@ -45,10 +45,10 @@ export const FreeDelivery = ({ product }: { product?: IProduct }) => {
         <div className={s.cart_button}>
           {productInCart ? (
             <Link href='/catalog'>
-              <Button>Перейти в каталог</Button>
+              <button>Перейти в каталог</button>
             </Link>
           ) : (
-            <Button onClick={addToCart}>Добавить в корзину</Button>
+            <button onClick={addToCart}>Добавить в корзину</button>
           )}
         </div>
       </div>

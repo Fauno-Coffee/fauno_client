@@ -6,7 +6,6 @@
 }
 
 .sale_calculator_wrapper {
-  border-radius: 0.8rem;
   background-color: #FFFEF5;
   padding: 2.0rem;
   display: flex;
@@ -57,7 +56,6 @@
 
 .sale_block_color {
   height: 0.8rem;
-  border-radius: 0.3rem;
   width: 100%;
 }
 

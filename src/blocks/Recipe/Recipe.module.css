@@ -36,7 +36,6 @@
   align-items: center;
   gap: 1.2rem;
   padding: 1.2rem 2.2rem;
-  border-radius: 3.2rem;
 }
 
 .button:hover{
@@ -68,7 +67,6 @@
 
 .imageWrapper{
   position: relative;
-  border-radius: 0.8rem;
   overflow: hidden;
   width: 100%;
   aspect-ratio: 16/9;

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { LeftArrow } from '@/shared/assets/LeftArrow';
+import { Breadcrubs } from '../Breadcrubs/Breadcrubs';
 
 export const Recipe = () => {
   const [recipe, setRecipe] = useState<IRecipe>();
@@ -31,12 +32,7 @@ export const Recipe = () => {
   return (
     <div className={s.recipes_wrapper}>
       <div className={s.header}>
-        <Link 
-        className={s.button}
-        href="/recipes">
-          <LeftArrow />
-          Назад к рецептам
-        </Link>
+        <Breadcrubs data={[{name: "Главная", link: "/"}, {name: "Рецепты", link: "/recipes"}, {name: recipe?.name || '', link: "/recipes/"+recipe?.link}]} />
         <h2 className={s.title}>{recipe?.name}</h2>
       </div>
       <div className={s.recipeSteps}>

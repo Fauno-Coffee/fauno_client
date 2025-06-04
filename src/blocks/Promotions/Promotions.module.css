@@ -48,10 +48,8 @@
 /* Карточка рецепта */
 .card {
   overflow: hidden;
-  border-radius: 1.6rem;
   border: 0.1rem solid rgba(0,0,0,0.2);
   position: relative;
-  border-radius: 1.2rem;
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -183,7 +181,6 @@
   }
 
   .card{
-    border-radius: 0.0rem;
     border: none;
     gap: 1.6rem;
   }
@@ -200,7 +197,6 @@
   }
 
   .image{
-    border-radius: 0.8rem;
     overflow: hidden;
   }
 

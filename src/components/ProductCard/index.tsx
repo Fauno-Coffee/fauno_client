@@ -18,7 +18,7 @@ interface IProductCardProps {
   isAddToCart?: boolean;
 }
 
-export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = false }) => {
+export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = true }) => {
   const { openCart } = useCartStore(state => state);
   const { user } = useUserStore(state => state);
 
@@ -40,6 +40,7 @@ export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = fals
   return (
     <Link href={'product/' + product?.link} className={s.card_wrapper}>
       <div className={s.brightness}>
+        <p className={s.brightnessTitle}>Основная нота</p>
         <p className={s.brightnessValue}>{product.keyDescriptor}</p>
       </div>
       {product?.images && !!product?.images?.length && (
@@ -60,15 +61,23 @@ export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = fals
           <span>{product?.name}</span>
           <span>{numberWithSpaces(product?.price)} ₽</span>
         </div>
-
-        { isAddToCart &&
+      </div>
+      { isAddToCart &&
           <div className={s.buttonWrapper}>
-            <button className={s.addToCart} onClick={addToCart}>
-              <AddToCartIcon />
+            <button 
+            className={s.addToCart} 
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log(e)
+              addToCart(e);
+            }}
+            >
+              Добавить в корзину
+              {/* <AddToCartIcon /> */}
             </button>
           </div>
-        }
-      </div>
+      }
     </Link>
   );
 };
