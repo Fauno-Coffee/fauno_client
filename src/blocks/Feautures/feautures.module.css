@@ -41,7 +41,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: 1.2rem;
   align-items: center;
   justify-content: center;
   padding: 3.2rem 0;
@@ -49,6 +49,10 @@
   transition: 300ms;
   border-bottom: 0.1rem solid #000000;
 }
+
+.feauture svg{
+  transform: scale(0.6);
+} 
 
 .name{
   font-size: 1.8rem;
