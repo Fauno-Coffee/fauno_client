@@ -33,7 +33,7 @@ export const Business = () => {
 
           <div className={s.list}>
             <div className={s.listItem}>
-              <div  className={s.check} style={{ flexShrink: 0 }}>
+              <div className={s.check} style={{ flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <p>Собственное современное производство</p>
@@ -108,25 +108,26 @@ export const Business = () => {
 
       <div className={s.action_block}>
         <div className={s.line}></div>
-
         <div className={s.actions_content}>
-          <div className={s.actions_content_title}>
-            Разместить заказ можно в свободной форме через мессенджеры WhatsApp и Telegram, просто
-            написав персональному менеджеру по номеру:{' '}
-            <span className={s.phone}>
-              <Link href='tel:+79859119114'>+7 (985) 911-911-4</Link>
-            </span>
+          <div className={s.actions_content_wrapper}>
+            <div className={s.actions_content_title}>
+              Разместить заказ можно в свободной форме через мессенджеры WhatsApp и Telegram, просто
+              написав персональному менеджеру по номеру:{' '}
+              <span className={s.phone}>
+                <Link href='tel:+79859119114'>+7 (985) 911-911-4</Link>
+              </span>
+            </div>
+            <p className={s.actions_content_desc}>
+              Минимальный заказ составляет всего 6 кг любого кофе в зернах. Счет для безналичной
+              оплаты будет выставлен в течение дня и сразу после оплаты заказ будет передан на
+              производство.
+            </p>
+            <p className={s.actions_content_desc}>
+              Кофе обжаривается непосредственно под вас; заказ собирается и передается в доставку в
+              течение 4-х рабочих дней. Доставка до дверей кофейни, терминала ТК или ПВЗ — за наш
+              счет.
+            </p>
           </div>
-          <p className={s.actions_content_desc}>
-            Минимальный заказ составляет всего 6 кг любого кофе в зернах. Счет для безналичной
-            оплаты будет выставлен в течение дня и сразу после оплаты заказ будет передан на
-            производство.
-          </p>
-          <p className={s.actions_content_desc}>
-            Кофе обжаривается непосредственно под вас; заказ собирается и передается в доставку в
-            течение 4-х рабочих дней. Доставка до дверей кофейни, терминала ТК или ПВЗ — за наш
-            счет.
-          </p>
           <div className={s.actions_content_buttons}>
             <Button>Telegram</Button>
             <Button>WhatsApp</Button>

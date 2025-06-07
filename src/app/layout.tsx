@@ -11,6 +11,7 @@ import { CartStoreProvider } from '@/shared/store/CartStoreProvider';
 import { CartLayout } from '@/layouts/CartLayout';
 import { UserStoreProvider } from '@/shared/stores/UserStore/UserStoreProvider';
 import Script from 'next/script';
+import { ZakharCrumbleCookie } from '@/layouts/CookieWrapper';
 
 export const metadata: Metadata = {
   title: 'Fauno',
@@ -22,20 +23,20 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang='en'>
       <head>
         <Script
-            id="cloudpayments-config"
-            strategy="beforeInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
+          id='cloudpayments-config'
+          strategy='beforeInteractive'
+          dangerouslySetInnerHTML={{
+            __html: `
                 window.cp_publicId = "${process.env.NEXT_PUBLIC_CP_PUBLIC_ID}";
                 window.cp_currency = "RUB";
                 window.cp_lang = "ru-RU";
               `,
-            }}
+          }}
         />
-        <Script src="https://widget.cloudpayments.ru/bundles/cloudpayments.js" />
-        <link rel="icon" href="/favicon.svg" sizes="any" />
+        <Script src='https://widget.cloudpayments.ru/bundles/cloudpayments.js' />
+        <link rel='icon' href='/favicon.svg' sizes='any' />
       </head>
-      
+
       <body className={`${SuisseIntl.className}`}>
         <UserStoreProvider>
           <CartStoreProvider>
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
             </SessionLayout>
           </CartStoreProvider>
         </UserStoreProvider>
+        <ZakharCrumbleCookie />
       </body>
     </html>
   );

@@ -6,6 +6,7 @@ import { ProfileBgCard } from '@/components/Profile/ProfileBgCard';
 import { useUserStore } from '@/shared/stores/UserStore/UserStoreProvider';
 import axios from 'axios';
 import { apiUrlBuilder } from '@/shared/utils/urlBuilder';
+import Link from 'next/link';
 
 export const ProfileContacts: FC = () => {
   const { token, user, setUser } = useUserStore(state => state);
@@ -13,6 +14,7 @@ export const ProfileContacts: FC = () => {
   const [name, setName] = useState(user?.name || '');
   const [phone, setPhone] = useState(user?.phone || '');
   const [mail, setMail] = useState(user?.mail || '');
+  const [soglasen, setSoglasen] = useState(false);
 
   useEffect(() => {
     setName(user?.name || '');
@@ -60,7 +62,24 @@ export const ProfileContacts: FC = () => {
           type='email'
           onChange={(e: ChangeEvent<HTMLInputElement>) => setMail(e.target.value)}
         />
-        <button className={s.submit_button} onClick={onSubmitContacts}>
+
+        <div className={s.checkbox_wrapper}>
+          <input
+            className={s.checkbox}
+            type='checkbox'
+            checked={soglasen}
+            onChange={e => setSoglasen(e.target.checked)}
+          />
+          <span className={s.checkbox_label}>
+            Я выражаю{' '}
+            <span className={s.link}>
+              <Link href='#'>своё согласие</Link>
+            </span>{' '}
+            на обработку персональных данных
+          </span>
+        </div>
+
+        <button className={s.submit_button} onClick={onSubmitContacts} disabled={!soglasen}>
           Обновить
         </button>
       </div>

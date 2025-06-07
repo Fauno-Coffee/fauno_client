@@ -43,7 +43,7 @@ export const Clouds = () => {
       </h1>
       <div className={s.company}>
         <FaunoHeaderLogo width='auto' fill='black' />
-        <Link href='/business' className={s.more}>
+        <Link href='/about' className={s.more}>
           Узнать больше о компании
         </Link>
       </div>

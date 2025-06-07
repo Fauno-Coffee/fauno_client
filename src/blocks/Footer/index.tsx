@@ -15,14 +15,14 @@ export const Footer = () => {
 
       <div className={s.data_wrapper}>
         <div className={s.data}>
-          {/* <span className={s.heading}>
-            <a href=''>О нас</a>
-          </span> */}
-          {/* <span>
-            <a href=''>Доставка и оплата</a>
-          </span> */}
+          <span className={s.heading}>
+            <Link href='/about'>О нас</Link>
+          </span>
           <span>
-            <a href=''>Для бизнеса</a>
+            <Link href='/delivery'>Доставка и оплата</Link>
+          </span>
+          <span>
+            <Link href='/business'>Для бизнеса</Link>
           </span>
         </div>
 
@@ -97,7 +97,10 @@ export const Footer = () => {
       </div>
 
       <div className={s.legal_wrapper}>
-        <span>2023-{new Date().getFullYear()} © ИП Фадеев С. А. ИНН: 502 919 589 904 ОГРН 315 502 900 011 337</span>
+        <span>
+          2023-{new Date().getFullYear()} © ИП Фадеев С. А. ИНН: 502 919 589 904 ОГРН 315 502 900
+          011 337
+        </span>
         <span>
           <a href='#'>/ Политика обработки персональных данных</a>
         </span>

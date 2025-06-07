@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import s from './ProductCard.module.css';
 
 import Image from 'next/image';
@@ -39,10 +39,12 @@ export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = true
 
   return (
     <Link href={'product/' + product?.link} className={s.card_wrapper}>
-      <div className={s.brightness}>
-        <p className={s.brightnessTitle}>Основная нота</p>
-        <p className={s.brightnessValue}>{product.keyDescriptor}</p>
-      </div>
+      {product.keyDescriptor && (
+        <div className={s.brightness}>
+          <p className={s.brightnessTitle}>Основная нота:</p>
+          <p className={s.brightnessValue}>{product.keyDescriptor}</p>
+        </div>
+      )}
       {product?.images && !!product?.images?.length && (
         <div className={s.image}>
           <Image
@@ -62,22 +64,22 @@ export const ProductCard: FC<IProductCardProps> = ({ product, isAddToCart = true
           <span>{numberWithSpaces(product?.price)} ₽</span>
         </div>
       </div>
-      { isAddToCart &&
-          <div className={s.buttonWrapper}>
-            <button 
-            className={s.addToCart} 
-            onClick={(e) => {
+      {isAddToCart && (
+        <div className={s.buttonWrapper}>
+          <button
+            className={s.addToCart}
+            onClick={e => {
               e.preventDefault();
               e.stopPropagation();
-              console.log(e)
+              console.log(e);
               addToCart(e);
             }}
-            >
-              Добавить в корзину
-              {/* <AddToCartIcon /> */}
-            </button>
-          </div>
-      }
+          >
+            Добавить в корзину
+            {/* <AddToCartIcon /> */}
+          </button>
+        </div>
+      )}
     </Link>
   );
 };

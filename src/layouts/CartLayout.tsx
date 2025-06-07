@@ -62,7 +62,7 @@ export const CartLayout: FC<LayoutProps> = ({ children }) => {
     router.push(user.id ? '/order' : '/login?backUrl=/order');
   };
 
-  const cartPrices = cart.map(p => p.product.price * p.count);
+  const cartPrices = cart?.map(p => p.product.price * p.count) || [];
   const cartTotal = cartPrices.reduce((prev, curr) => prev + curr, 0);
 
   return (

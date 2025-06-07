@@ -38,8 +38,6 @@ export default function CatalogPage() {
       const data = await res.json();
       setProductInfo(data);
       setSelectorValue(data?.selector?.values?.[0]);
-
-      console.log(data.selector);
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +70,10 @@ export default function CatalogPage() {
     getProduct();
   }, [id]);
 
-  const categoryId = productInfo?.category?.parentId || productInfo?.category?.id
+  console.log(productInfo);
+
+  const categoryId = productInfo?.category?.id;
+  const parentCategoryId = productInfo?.category?.parentCategory?.id;
 
   return (
     <div className={s.page}>
@@ -81,7 +82,29 @@ export default function CatalogPage() {
       <BurgerNavbar />
       <div className={s.productGridWrapper}>
         <div className={s.breadcrubs}>
-          <Breadcrubs data={[{name: "Главная", link: "/"}, {name: "Каталог", link: "/catalog"}, {name: productInfo?.category?.name || '', link: "/catalog?category="+categoryId}]} />
+          <Breadcrubs
+            data={[
+              { name: 'Главная', link: '/' },
+              {
+                name: 'Каталог',
+                link: '/catalog',
+              },
+              ...(parentCategoryId
+                ? [
+                    {
+                      name: productInfo?.category?.parentCategory?.name || '',
+                      link: `/catalog?category=${parentCategoryId}`,
+                    },
+                  ]
+                : []),
+              {
+                name: productInfo?.category?.name || '',
+                link: parentCategoryId
+                  ? `/catalog?category=${parentCategoryId}&subcategory=${categoryId}`
+                  : `/catalog?category=${categoryId}`,
+              },
+            ]}
+          />
         </div>
         <div className={s.productGrid}>
           <div className={s.productImages}>
