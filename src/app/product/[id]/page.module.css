@@ -323,7 +323,7 @@
 
     .aboutProduct,
     .pageBlock {
-      padding: 2.4rem;
+      padding: 2.4rem 0;
     }
 
     .name {

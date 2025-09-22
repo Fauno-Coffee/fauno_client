@@ -49,3 +49,18 @@
   display: flex;
   gap: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  .footer{
+    padding: 3.2rem 3.2rem;
+  }
+  .data_wrapper {
+    flex-direction: column;
+  }
+  .legal_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}

@@ -102,7 +102,7 @@ export const Footer = () => {
           011 337
         </span>
         <span>
-          <a href='#'>/ Политика обработки персональных данных</a>
+          <Link href='/agreement'>/ Политика обработки персональных данных</Link>
         </span>
         <span>
           <a href='#'>/ Оферта</a>

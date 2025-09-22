@@ -1,10 +1,12 @@
-import s from './Hero.module.css';
+import s from './page.module.css';
 import { Navbar } from '@/components/Navbar';
 import Image from 'next/image';
 import { BurgerNavbar } from '@/components/BurgerNavbar';
 import Link from 'next/link';
 
-export const Hero = () => {
+const Hero = () => {
+  // notFound()
+
   return (
     <div className={s.hero}>
       <div className={s.navbar_wrapper}>
@@ -23,8 +25,8 @@ export const Hero = () => {
           />
         </div>
         <div className={s.text}>
-          <h1>Доставка спешелти кофе с другого континента до ваших дверей</h1>
-          <Link href="/catalog" className={s.button}>Перейти в каталог</Link>
+          <h1>Страница не найдена</h1>
+          <Link href="/" className={s.button}>Перейти на главную</Link>
         </div>
         {/* <div className={s.hero_content}>
           <FaunoHeroLogo />
@@ -33,3 +35,5 @@ export const Hero = () => {
     </div>
   );
 };
+
+export default Hero

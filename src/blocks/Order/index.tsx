@@ -23,6 +23,11 @@ interface ICDEKOffice {
   code: string;
 }
 
+interface IBOXBERRYOffice {
+  Name: string;
+  Code: string;
+}
+
 interface IDelivery {
   name: string;
   days?: number;
@@ -31,6 +36,7 @@ interface IDelivery {
   cdekId?: number;
   cdekOfficeRequired: boolean;
   comment?: string;
+  boxberryOfficeRequired: boolean;
 }
 
 interface IForm {
@@ -38,9 +44,12 @@ interface IForm {
   mail: string;
   city: string;
   cityId: number | undefined;
+  boxberryCityId: number | undefined;
   selectedDelivery: IDelivery | undefined;
   officeName: string;
+  boxberryOfficeName: string;
   officeId: string;
+  boxberryOfficeId: string;
   address: string;
   flat: string;
   building: string;
@@ -56,6 +65,7 @@ const FAUNO_OPTIONS: IDelivery[] = [
     price: 450,
     addressRequired: true,
     cdekOfficeRequired: false,
+    boxberryOfficeRequired: false
   },
   {
     name: 'Доставка курьером (в пределах МКАД)',
@@ -63,17 +73,20 @@ const FAUNO_OPTIONS: IDelivery[] = [
     price: 500,
     addressRequired: true,
     cdekOfficeRequired: false,
+    boxberryOfficeRequired: false
   },
   {
     name: 'Самовывоз из кофейни fauno (ул. Самокатная 3, стр.13)',
     addressRequired: false,
     cdekOfficeRequired: false,
+    boxberryOfficeRequired: false
   },
   {
     name: 'Доставка курьером Яндекс, день в день',
     price: 1200,
     addressRequired: true,
     cdekOfficeRequired: false,
+    boxberryOfficeRequired: false
   },
 ];
 
@@ -86,9 +99,12 @@ export const Order = () => {
     name: user.name || '',
     mail: user.mail || '',
     city: '',
+    boxberryCityId: undefined,
     cityId: undefined,
     selectedDelivery: undefined,
+    boxberryOfficeId: '',
     officeName: '',
+    boxberryOfficeName: '',
     officeId: '',
     address: '',
     flat: '',
@@ -124,6 +140,7 @@ export const Order = () => {
 
   // CDEK data
   const [offices, setOffices] = useState([]);
+  const [boxberryOffices, setBoxberryOffices] = useState([]);
   const [deliveryOptions, setDeliveryOptions] = useState<IDelivery[]>([]);
 
   useEffect(() => {
@@ -131,13 +148,17 @@ export const Order = () => {
       if (!form.cityId) return;
 
       // Fetch offices
-      const officeRes = await fetch(apiUrlBuilder(`/order/office?cityCode=${form.cityId}`));
-      setOffices(await officeRes.json());
+      const officeRes = await fetch(apiUrlBuilder(`/order/office?cityCode=${form.cityId}&cityName=${form.city.split(',')[0]}`));
+      const responce = await officeRes.json()
+      setOffices(responce['offecies']);
+      setBoxberryOffices(responce['boxberryOffices']);
+      setForm(f => ({ ...f, boxberryCityId: responce['boxberryCityId'] }));
+
 
       // Fetch tariffs
       const weight = cart.reduce((sum, { product, count }) => sum + product.weight * count, 0);
       const tariffRes = await fetch(
-        apiUrlBuilder(`/order/tariffs?cityCode=${form.cityId}&weight=${weight}`),
+        apiUrlBuilder(`/order/tariffs?cityCode=${form.cityId}&boxberryCityId=${responce['boxberryCityId']}&weight=${weight}`),
       );
 
       const data = await tariffRes.json();
@@ -159,7 +180,19 @@ export const Order = () => {
     },
     [offices],
   );
-
+  
+  const [boxberryOfficeOptions, setBoxberryOfficeOptions] = useState<IBOXBERRYOffice[]>([]);
+  const searchBoxberryOffice = useCallback(
+    (str: string) => {
+      setForm(f => ({ ...f, boxberryOfficeName: str }));
+      if (!str) return setBoxberryOfficeOptions([]);
+      const fuse = new Fuse(boxberryOffices, { keys: ['Address'], threshold: 0.4 });
+      setBoxberryOfficeOptions(fuse.search(str).map(r => r.item));
+    },
+    [offices],
+  );
+  
+  
   // Handlers
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -174,6 +207,11 @@ export const Order = () => {
   const handleSelectOffice = (option: ICDEKOffice) => {
     setForm(f => ({ ...f, officeName: option.name, officeId: option.code }));
     setOfficeOptions([]);
+  };
+
+  const handleSelectBoxberryOffice = (option: IBOXBERRYOffice) => {
+    setForm(f => ({ ...f, boxberryOfficeName: option.Name, boxberryOfficeId: option.Code }));
+    setBoxberryOfficeOptions([]);
   };
 
   // Payment
@@ -195,6 +233,10 @@ export const Order = () => {
     }
 
     if (form.selectedDelivery.cdekOfficeRequired && !form.officeId) {
+      return toast.error('Выберите пункт выдачи CDEK');
+    }
+    
+    if (form.selectedDelivery.boxberryOfficeRequired && !form.boxberryOfficeId) {
       return toast.error('Выберите пункт выдачи CDEK');
     }
 
@@ -350,6 +392,33 @@ export const Order = () => {
                       onClick={() => handleSelectOffice(o)}
                     >
                       <p className={s.search_name}>{o.name}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {form.selectedDelivery?.boxberryOfficeRequired && (
+            <div className={s.cityInput}>
+              <TitledInput
+                autoComplete='none'
+                required
+                onFocus={e => e.target.setAttribute('autoComplete', 'none')}
+                title='Пункт выдачи Boxberry'
+                name='boxberryOfficeName'
+                value={form.boxberryOfficeName}
+                onChange={(e: any) => searchBoxberryOffice(e.target.value)}
+              />
+              {boxberryOfficeOptions.length > 0 && (
+                <div className={s.search_results}>
+                  <div className={s.outside_click_handler} onClick={() => setBoxberryOfficeOptions([])} />
+                  {boxberryOfficeOptions.map(o => (
+                    <div
+                      key={o.Code}
+                      className={s.search_result}
+                      onClick={() => handleSelectBoxberryOffice(o)}
+                    >
+                      <p className={s.search_name}>{o.Name}</p>
                     </div>
                   ))}
                 </div>

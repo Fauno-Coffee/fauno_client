@@ -37,6 +37,7 @@ export const ProfileContacts: FC = () => {
       if (res.status === 200 && res.data?.user?.id) {
         setUser(token, res.data?.user);
       }
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

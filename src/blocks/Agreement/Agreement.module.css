@@ -1,0 +1,149 @@
+/* Recipes.module.css */
+
+.recipes_wrapper {
+  width: 100%;
+  padding: 6.4rem 4.0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  box-sizing: border-box;
+}
+
+/* Header: заголовок + описание */
+.header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+}
+
+.title {
+  text-wrap: wrap;
+  line-height: 1;
+  font-weight: 300;
+  font-size: 4.6rem;
+  font-style: italic;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.subtitle {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #333;
+  max-width: 67.0rem;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 4.6rem;
+  /* минимум 28.0rem, максимум 1fr */
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Карточка рецепта */
+.card {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  padding-bottom: 66.66%; /* соотношение 3:2 */
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.image {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  top: 3.2rem;
+  left: 3.2rem;
+  right: 3.2rem;
+  color: #fff;
+  z-index: 2;
+}
+
+.content_img_gifts {
+  width: 100%;
+  position: relative;
+  pointer-events: none;
+  aspect-ratio: 60/50;
+  overflow: hidden;
+}
+
+.content_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.6rem;
+  width: 100%;
+  padding: 4.0rem;
+}
+
+.content_info {
+  width: 70%;
+  text-wrap: balance;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 2.2rem;
+  justify-content: center;
+}
+
+.content_info_title {
+  font-size: 2.2rem;
+  opacity: 0.7;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .recipes_wrapper {
+    padding: 4.8rem 3.2rem;
+  }
+  .title {
+    font-size: 4.0rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipes_wrapper{
+    padding: 2rem 1.6rem;
+  }
+
+  .content_info{
+    font-size: 1.6rem !important;
+    width: 100%;
+  }
+
+  .content_wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .mobileReverse{
+    flex-direction: column-reverse !important;
+  }
+}
